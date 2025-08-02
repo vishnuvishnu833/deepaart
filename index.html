@@ -543,10 +543,10 @@
       letter-spacing: 0.5px;
     }
 
-    /* Gallery Grid */
+    /* Gallery Grid - Updated to 2 columns */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 8px;
       margin-top: 15px;
     }
@@ -597,7 +597,7 @@
       font-size: 1rem;
     }
 
-    /* Colour Gallery */
+    /* Colour Gallery - Updated to 2 columns */
     .colour-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -744,7 +744,7 @@
       font-family: var(--font-heading);
     }
     
-    /* Thank You Section */
+    /* Thank You Section - Updated to 2 columns */
     .thank-you-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -831,7 +831,7 @@
       overflow: hidden;
     }
 
-    .lightbox-img {
+    .lightbox-media {
       max-width: 100%;
       max-height: 85vh;
       display: block;
@@ -874,6 +874,7 @@
       background: rgba(0,0,0,0.8);
     }
     
+    /* Moved zoom controls to bottom */
     .lightbox-zoom-controls {
       position: absolute;
       bottom: 20px;
@@ -882,6 +883,9 @@
       display: flex;
       gap: 10px;
       z-index: 1001;
+      background: rgba(0,0,0,0.7);
+      padding: 10px;
+      border-radius: 30px;
     }
     
     .zoom-btn {
@@ -925,15 +929,65 @@
     .lightbox-close:hover {
       background: rgba(0,0,0,0.8);
     }
-    
-    /* Zoom controls */
-    .zoom-controls {
-      position: absolute;
-      top: 20px;
-      left: 20px;
+
+    /* Video Player */
+    .video-player {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
       display: flex;
-      gap: 10px;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    
+    .video-player.show {
+      opacity: 1;
+      pointer-events: all;
+    }
+    
+    .video-player-content {
+      position: relative;
+      max-width: 95%;
+      max-height: 95vh;
+      width: auto;
+      height: auto;
+      text-align: center;
+    }
+    
+    .video-player-content video {
+      max-width: 100%;
+      max-height: 95vh;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    
+    .video-player-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      background: rgba(0,0,0,0.5);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
       z-index: 1001;
+    }
+    
+    .video-player-close:hover {
+      background: rgba(0,0,0,0.8);
     }
 
     /* Animations */
@@ -995,8 +1049,9 @@
         font-size: 1.5rem;
       }
       
+      /* Updated gallery layout for larger screens */
       .gallery-grid {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 12px;
       }
       
@@ -1006,6 +1061,10 @@
       
       .thank-you-grid {
         grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .video-player-content {
+        max-width: 85%;
       }
     }
   </style>
@@ -1048,7 +1107,7 @@
     <!-- Home Tab - Enhanced -->
     <div id="home-tab" class="tab-content active">
       <div class="welcome-box">
-        <video autoplay muted loop playsinline id="w-video">
+        <video autoplay muted loop playsinline id="w-video" loading="lazy">
           <source src="index/w.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
@@ -1168,7 +1227,7 @@
           </div>
         </div>
         <div class="next-section">
-          <button class="next-section-btn" onclick="switchTab('guests-tab')">View Guest Designs➤</button>
+          <button class="next-section-btn" onclick="switchTab('guests-tab')">View Guest Designs</button>
         </div>
       </div>
     </div>
@@ -1260,6 +1319,10 @@
             <img src="colour/C9.jpeg" alt="Maroon Colour" onclick="zoomImage(this, 'colours')">
           </div>
         </div>
+        <!-- Added View Prices button -->
+        <div class="next-section">
+          <button class="next-section-btn" onclick="switchTab('prices-tab')">View Prices</button>
+        </div>
       </div>
     </div>
 
@@ -1290,6 +1353,10 @@
         <h2><i class="fas fa-gift"></i> Special Offers</h2>
         <p>Book your wedding package and get free mehendi for the mother of the bride!</p>
         <p>Refer a friend and get 10% off your next appointment.</p>
+      </div>
+      <!-- Added View About button -->
+      <div class="next-section">
+        <button class="next-section-btn" onclick="switchTab('about-tab')">View About</button>
       </div>
     </div>
 
@@ -1334,26 +1401,26 @@
             <img src="images/thankyou2.jpeg" alt="Thank you note 2" onclick="zoomImage(this, 'about')">
           </div>
           <div class="thank-you-item">
-            <video autoplay muted loop playsinline poster="thanks/1p.jpeg">
-              <source src="thanks/1.mp4" type="video/mp4">
+            <video autoplay muted loop playsinline poster="thanks/1p.jpeg" loading="lazy" onclick="playVideo(this)">
+              <source data-src="thanks/1.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
           <div class="thank-you-item">
-            <video autoplay muted loop playsinline poster="thanks/2p.jpeg">
-              <source src="thanks/2.mp4" type="video/mp4">
+            <video autoplay muted loop playsinline poster="thanks/2p.jpeg" loading="lazy" onclick="playVideo(this)">
+              <source data-src="thanks/2.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
           <div class="thank-you-item">
-            <video autoplay muted loop playsinline poster="thanks/3p.jpeg">
-              <source src="thanks/3.mp4" type="video/mp4">
+            <video autoplay muted loop playsinline poster="thanks/3p.jpeg" loading="lazy" onclick="playVideo(this)">
+              <source data-src="thanks/3.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
           <div class="thank-you-item">
-            <video autoplay muted loop playsinline poster="thanks/4p.jpeg">
-              <source src="thanks/4.mp4" type="video/mp4">
+            <video autoplay muted loop playsinline poster="thanks/4p.jpeg" loading="lazy" onclick="playVideo(this)">
+              <source data-src="thanks/4.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
@@ -1393,17 +1460,28 @@
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox">
     <div class="lightbox-content">
-      <div class="zoom-controls">
+      <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+      <img src="" alt="" class="lightbox-media" id="lightbox-img">
+      <!-- Moved zoom controls to bottom -->
+      <div class="lightbox-zoom-controls">
         <button class="zoom-btn" onclick="zoomIn()">+</button>
         <button class="zoom-btn" onclick="zoomOut()">-</button>
         <button class="zoom-btn" onclick="resetZoom()"><i class="fas fa-sync"></i></button>
       </div>
-      <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
-      <img src="" alt="" class="lightbox-img" id="lightbox-img">
     </div>
     <div class="lightbox-controls">
       <button class="lightbox-btn" onclick="prevImage()">❮</button>
       <button class="lightbox-btn" onclick="nextImage()">❯</button>
+    </div>
+  </div>
+  
+  <!-- Video Player -->
+  <div class="video-player" id="video-player">
+    <div class="video-player-content">
+      <button class="video-player-close" onclick="closeVideoPlayer()">&times;</button>
+      <video id="fullscreen-video" controls>
+        Your browser does not support the video tag.
+      </video>
     </div>
   </div>
 
@@ -1413,6 +1491,11 @@
     let currentIndex = 0;
     let galleryItems = [];
     let lightboxScale = 1;
+    let currentX = 0;
+    let currentY = 0;
+    let startX = 0;
+    let startY = 0;
+    let isDragging = false;
     
     // Tab switching functionality
     function switchTab(tabId) {
@@ -1460,7 +1543,7 @@
       } else if (galleryName === 'colours') {
         galleryItems = Array.from(container.querySelectorAll('.colour-grid .colour-item img'));
       } else if (galleryName === 'about') {
-        galleryItems = Array.from(container.querySelectorAll('.thank-you-grid img, .thank-you-grid video'));
+        galleryItems = Array.from(container.querySelectorAll('.thank-you-grid img'));
       }
       
       // Find the index of the clicked image
@@ -1469,16 +1552,51 @@
       // Show the image in the lightbox
       const lightboxImg = document.getElementById('lightbox-img');
       lightboxImg.src = img.src;
-      if (img.tagName === 'VIDEO') {
-        lightboxImg.src = img.poster;
-      }
+      lightboxImg.style.display = 'block';
+      document.querySelector('.lightbox-zoom-controls').style.display = 'flex';
       
-      // Reset zoom
+      // Reset zoom and position
       lightboxScale = 1;
-      lightboxImg.style.transform = `scale(${lightboxScale})`;
+      currentX = 0;
+      currentY = 0;
+      updateLightboxTransform();
       
       document.getElementById('lightbox').classList.add('show');
       document.body.style.overflow = 'hidden';
+    }
+    
+    // Video playback functionality
+    function playVideo(videoElement) {
+      const videoPlayer = document.getElementById('video-player');
+      const fullscreenVideo = document.getElementById('fullscreen-video');
+      
+      // Get video source
+      const source = videoElement.querySelector('source').getAttribute('data-src');
+      
+      // Set video source
+      fullscreenVideo.src = source;
+      
+      // Show video player
+      videoPlayer.classList.add('show');
+      
+      // Play the video with sound
+      fullscreenVideo.muted = false;
+      fullscreenVideo.controls = true;
+      fullscreenVideo.play().catch(e => console.error('Video play failed:', e));
+    }
+    
+    function closeVideoPlayer() {
+      const videoPlayer = document.getElementById('video-player');
+      const fullscreenVideo = document.getElementById('fullscreen-video');
+      
+      // Pause and reset video
+      fullscreenVideo.pause();
+      fullscreenVideo.currentTime = 0;
+      fullscreenVideo.src = '';
+      
+      // Hide video player
+      videoPlayer.classList.remove('show');
+      document.body.style.overflow = '';
     }
 
     function closeLightbox() {
@@ -1503,11 +1621,8 @@
       const lightboxImg = document.getElementById('lightbox-img');
       const item = galleryItems[currentIndex];
       lightboxImg.src = item.src;
-      if (item.tagName === 'VIDEO') {
-        lightboxImg.src = item.poster;
-      }
       
-      // Reset zoom
+      // Reset zoom and position
       resetZoom();
     }
     
@@ -1526,12 +1641,102 @@
     
     function resetZoom() {
       lightboxScale = 1;
+      currentX = 0;
+      currentY = 0;
       updateLightboxTransform();
     }
     
     function updateLightboxTransform() {
       const lightboxImg = document.getElementById('lightbox-img');
-      lightboxImg.style.transform = `scale(${lightboxScale})`;
+      lightboxImg.style.transform = `translate(${currentX}px, ${currentY}px) scale(${lightboxScale})`;
+    }
+    
+    // Drag functionality
+    const lightboxImg = document.getElementById('lightbox-img');
+    
+    lightboxImg.addEventListener('mousedown', startDrag);
+    lightboxImg.addEventListener('touchstart', startDrag, { passive: false });
+    
+    function startDrag(e) {
+      if (lightboxScale <= 1) return; // Only allow dragging when zoomed
+      isDragging = true;
+      
+      if (e.type === 'touchstart') {
+        startX = e.touches[0].clientX - currentX;
+        startY = e.touches[0].clientY - currentY;
+      } else {
+        startX = e.clientX - currentX;
+        startY = e.clientY - currentY;
+      }
+      
+      document.addEventListener('mousemove', drag);
+      document.addEventListener('touchmove', drag, { passive: false });
+      document.addEventListener('mouseup', endDrag);
+      document.addEventListener('touchend', endDrag);
+      
+      lightboxImg.style.cursor = 'grabbing';
+    }
+    
+    function drag(e) {
+      if (!isDragging) return;
+      e.preventDefault();
+      
+      let clientX, clientY;
+      if (e.type === 'touchmove') {
+        clientX = e.touches[0].clientX;
+        clientY = e.touches[0].clientY;
+      } else {
+        clientX = e.clientX;
+        clientY = e.clientY;
+      }
+      
+      currentX = clientX - startX;
+      currentY = clientY - startY;
+      updateLightboxTransform();
+    }
+    
+    function endDrag() {
+      isDragging = false;
+      document.removeEventListener('mousemove', drag);
+      document.removeEventListener('touchmove', drag);
+      document.removeEventListener('mouseup', endDrag);
+      document.removeEventListener('touchend', endDrag);
+      lightboxImg.style.cursor = lightboxScale > 1 ? 'grab' : 'default';
+    }
+    
+    // Pinch-to-zoom functionality
+    let initialDistance = null;
+    
+    lightboxImg.addEventListener('touchstart', handleTouchStart, { passive: false });
+    lightboxImg.addEventListener('touchmove', handleTouchMove, { passive: false });
+    
+    function handleTouchStart(e) {
+      if (e.touches.length === 2) {
+        e.preventDefault();
+        initialDistance = Math.hypot(
+          e.touches[0].clientX - e.touches[1].clientX,
+          e.touches[0].clientY - e.touches[1].clientY
+        );
+      }
+    }
+    
+    function handleTouchMove(e) {
+      if (e.touches.length === 2 && initialDistance) {
+        e.preventDefault();
+        const currentDistance = Math.hypot(
+          e.touches[0].clientX - e.touches[1].clientX,
+          e.touches[0].clientY - e.touches[1].clientY
+        );
+        
+        const scaleChange = currentDistance / initialDistance;
+        const newScale = lightboxScale * scaleChange;
+        
+        // Limit zoom scale
+        if (newScale > 0.5 && newScale < 5) {
+          lightboxScale = newScale;
+          updateLightboxTransform();
+        }
+      }
     }
     
     // Close lightbox when clicking outside image
@@ -1581,6 +1786,31 @@
         preloader.appendChild(flower);
       }
       
+      // Lazy load videos
+      const lazyVideos = document.querySelectorAll('video[loading="lazy"]');
+      
+      const lazyVideoObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const video = entry.target;
+            const source = video.querySelector('source');
+            if (source && source.dataset.src) {
+              source.src = source.dataset.src;
+              video.load();
+              // Play if it's in view and autoplay is set
+              if (video.autoplay) {
+                video.play().catch(e => console.log('Autoplay prevented:', e));
+              }
+            }
+            lazyVideoObserver.unobserve(video);
+          }
+        });
+      }, { rootMargin: "200px" });
+      
+      lazyVideos.forEach(video => {
+        lazyVideoObserver.observe(video);
+      });
+      
       setTimeout(() => {
         document.getElementById("preloader").style.display = "none";
         document.getElementById("main-content").style.display = "block";
@@ -1593,7 +1823,7 @@
         
         // Autoplay videos in thank you section
         document.querySelectorAll('video').forEach(video => {
-          if (video !== wVideo) {
+          if (video !== wVideo && video.autoplay) {
             video.play().catch(e => console.log('Autoplay prevented:', e));
           }
         });
