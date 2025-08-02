@@ -772,6 +772,32 @@
       height: 100%;
       object-fit: cover;
     }
+    
+    /* Next Section Button */
+    .next-section {
+      display: flex;
+      justify-content: center;
+      margin: 25px 0 15px;
+    }
+    
+    .next-section-btn {
+      background: linear-gradient(135deg, var(--luxury-maroon), var(--luxury-gold));
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s;
+    }
+    
+    .next-section-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
 
     /* Lightbox */
     .lightbox {
@@ -802,6 +828,7 @@
       width: auto;
       height: auto;
       text-align: center;
+      overflow: hidden;
     }
 
     .lightbox-img {
@@ -811,6 +838,8 @@
       border-radius: 10px;
       margin: 0 auto;
       box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+      cursor: move;
     }
 
     .lightbox-controls {
@@ -822,6 +851,7 @@
       padding: 0 20px;
       transform: translateY(-50%);
       pointer-events: none;
+      z-index: 1001;
     }
 
     .lightbox-btn {
@@ -843,6 +873,36 @@
     .lightbox-btn:hover {
       background: rgba(0,0,0,0.8);
     }
+    
+    .lightbox-zoom-controls {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 1001;
+    }
+    
+    .zoom-btn {
+      pointer-events: auto;
+      background: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+    
+    .zoom-btn:hover {
+      background: rgba(0,0,0,0.8);
+    }
 
     .lightbox-close {
       position: absolute;
@@ -859,10 +919,21 @@
       align-items: center;
       justify-content: center;
       transition: background 0.3s;
+      z-index: 1001;
     }
     
     .lightbox-close:hover {
       background: rgba(0,0,0,0.8);
+    }
+    
+    /* Zoom controls */
+    .zoom-controls {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      display: flex;
+      gap: 10px;
+      z-index: 1001;
     }
 
     /* Animations */
@@ -1039,14 +1110,65 @@
             <img src="images/H7.jpeg" alt="Bridal design 6" onclick="zoomImage(this, 'bride')">
           </div>
           <div class="gallery-item">
-            <img src="images/L1.jpeg" alt="Bridal design 7" onclick="zoomImage(this, 'bride')">
+            <img src="images/H8.jpeg" alt="Bridal design 7" onclick="zoomImage(this, 'bride')">
           </div>
           <div class="gallery-item">
-            <img src="images/L2.jpeg" alt="Bridal design 8" onclick="zoomImage(this, 'bride')">
+            <img src="images/H9.jpeg" alt="Bridal design 8" onclick="zoomImage(this, 'bride')">
           </div>
           <div class="gallery-item">
-            <img src="images/L3.jpeg" alt="Bridal design 9" onclick="zoomImage(this, 'bride')">
+            <img src="images/H10.jpeg" alt="Bridal design 9" onclick="zoomImage(this, 'bride')">
           </div>
+          <div class="gallery-item">
+            <img src="images/H11.jpeg" alt="Bridal design 10" onclick="zoomImage(this, 'bride')">
+          </div>
+          <div class="gallery-item">
+            <img src="images/H12.jpeg" alt="Bridal design 11" onclick="zoomImage(this, 'bride')">
+          </div>
+          <div class="gallery-item">
+            <img src="images/H13.jpeg" alt="Bridal design 12" onclick="zoomImage(this, 'bride')">
+          </div>
+          <div class="gallery-item">
+            <img src="images/H14.jpeg" alt="Bridal design 13" onclick="zoomImage(this, 'bride')">
+          </div>
+          <div class="gallery-item">
+            <img src="images/H15.jpeg" alt="Bridal design 14" onclick="zoomImage(this, 'bride')">
+          </div>
+          <div class="gallery-item">
+            <img src="images/H16.jpeg" alt="Bridal design 15" onclick="zoomImage(this, 'bride')">
+          </div>
+          <div class="gallery-item">
+            <img src="images/H17.jpeg" alt="Bridal design 16" onclick="zoomImage(this, 'bride')">
+          </div>
+          <div class="gallery-item">
+            <img src="images/L1.jpeg" alt="Bridal design 17" onclick="zoomImage(this, 'bride')">
+          </div>
+          <div class="gallery-item">
+            <img src="images/L2.jpeg" alt="Bridal design 18" onclick="zoomImage(this, 'bride')">
+          </div>
+          <div class="gallery-item">
+            <img src="images/L3.jpeg" alt="Bridal design 19" onclick="zoomImage(this, 'bride')">
+          </div>
+          <div class="gallery-item">
+            <img src="images/L4.jpeg" alt="Bridal design 20" onclick="zoomImage(this, 'bride')">
+          </div>
+          <div class="gallery-item">
+            <img src="images/L5.jpeg" alt="Bridal design 21" onclick="zoomImage(this, 'bride')">
+          </div>
+          <div class="gallery-item">
+            <img src="images/L6.jpeg" alt="Bridal design 22" onclick="zoomImage(this, 'bride')">
+          </div>
+          <div class="gallery-item">
+            <img src="images/L7.jpeg" alt="Bridal design 23" onclick="zoomImage(this, 'bride')">
+          </div>
+          <div class="gallery-item">
+            <img src="images/L8.jpeg" alt="Bridal design 24" onclick="zoomImage(this, 'bride')">
+          </div>
+          <div class="gallery-item">
+            <img src="images/L9.jpeg" alt="Bridal design 25" onclick="zoomImage(this, 'bride')">
+          </div>
+        </div>
+        <div class="next-section">
+          <button class="next-section-btn" onclick="switchTab('guests-tab')">View Guest Designs</button>
         </div>
       </div>
     </div>
@@ -1084,6 +1206,21 @@
           <div class="gallery-item">
             <img src="guest/G9.jpeg" alt="Guest design 9" onclick="zoomImage(this, 'guests')">
           </div>
+          <div class="gallery-item">
+            <img src="guest/G10.jpeg" alt="Guest design 10" onclick="zoomImage(this, 'guests')">
+          </div>
+          <div class="gallery-item">
+            <img src="guest/G11.jpeg" alt="Guest design 11" onclick="zoomImage(this, 'guests')">
+          </div>
+          <div class="gallery-item">
+            <img src="guest/G12.jpeg" alt="Guest design 12" onclick="zoomImage(this, 'guests')">
+          </div>
+          <div class="gallery-item">
+            <img src="guest/G13.jpeg" alt="Guest design 13" onclick="zoomImage(this, 'guests')">
+          </div>
+        </div>
+        <div class="next-section">
+          <button class="next-section-btn" onclick="switchTab('colours-tab')">View Colour Collection</button>
         </div>
       </div>
     </div>
@@ -1097,32 +1234,30 @@
         <div class="colour-grid">
           <div class="colour-item">
             <img src="colour/C1.jpeg" alt="Natural Brown" onclick="zoomImage(this, 'colours')">
-            <h4>Natural Brown</h4>
-            <p>Traditional shade for authentic look</p>
           </div>
           <div class="colour-item">
-            <img src="colour/C9.jpeg" alt="Maroon" onclick="zoomImage(this, 'colours')">
-            <h4>Rich Maroon</h4>
-            <p>Long-lasting vibrant color</p>
+            <img src="colour/C2.jpeg" alt="Rich Maroon" onclick="zoomImage(this, 'colours')">
           </div>
           <div class="colour-item">
-            <img src="colour/C7.jpeg" alt="Dark Red" onclick="zoomImage(this, 'colours')">
-            <h4>Dark Red</h4>
-            <p>For special occasions</p>
+            <img src="colour/C3.jpeg" alt="Dark Red" onclick="zoomImage(this, 'colours')">
           </div>
           <div class="colour-item">
-            <h4>Natural vs Chemical</h4>
-            <p>We use only natural, skin-safe ingredients in our mehendi cones. Chemical-free and safe for all skin types.</p>
+            <img src="colour/C4.jpeg" alt="Deep Brown" onclick="zoomImage(this, 'colours')">
           </div>
           <div class="colour-item">
-            <img src="colour/C6.jpeg" alt="Cone Types" onclick="zoomImage(this, 'colours')">
-            <h4>Premium Cones</h4>
-            <p>Easy to apply, perfect flow</p>
+            <img src="colour/C5.jpeg" alt="Vibrant Orange" onclick="zoomImage(this, 'colours')">
+          </div>
+          <div class="colour-item">
+            <img src="colour/C6.jpeg" alt="Premium Cones" onclick="zoomImage(this, 'colours')">
+          </div>
+          <div class="colour-item">
+            <img src="colour/C7.jpeg" alt="Dark Red Shade" onclick="zoomImage(this, 'colours')">
           </div>
           <div class="colour-item">
             <img src="colour/C8.jpeg" alt="Shade Chart" onclick="zoomImage(this, 'colours')">
-            <h4>Shade Chart</h4>
-            <p>Choose your perfect color tone</p>
+          </div>
+          <div class="colour-item">
+            <img src="colour/C9.jpeg" alt="Maroon Colour" onclick="zoomImage(this, 'colours')">
           </div>
         </div>
       </div>
@@ -1258,6 +1393,11 @@
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox">
     <div class="lightbox-content">
+      <div class="zoom-controls">
+        <button class="zoom-btn" onclick="zoomIn()">+</button>
+        <button class="zoom-btn" onclick="zoomOut()">-</button>
+        <button class="zoom-btn" onclick="resetZoom()"><i class="fas fa-sync"></i></button>
+      </div>
       <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
       <img src="" alt="" class="lightbox-img" id="lightbox-img">
     </div>
@@ -1272,6 +1412,7 @@
     let currentGallery = '';
     let currentIndex = 0;
     let galleryItems = [];
+    let lightboxScale = 1;
     
     // Tab switching functionality
     function switchTab(tabId) {
@@ -1331,6 +1472,11 @@
       if (img.tagName === 'VIDEO') {
         lightboxImg.src = img.poster;
       }
+      
+      // Reset zoom
+      lightboxScale = 1;
+      lightboxImg.style.transform = `scale(${lightboxScale})`;
+      
       document.getElementById('lightbox').classList.add('show');
       document.body.style.overflow = 'hidden';
     }
@@ -1338,6 +1484,7 @@
     function closeLightbox() {
       document.getElementById('lightbox').classList.remove('show');
       document.body.style.overflow = '';
+      resetZoom();
     }
     
     function nextImage() {
@@ -1359,6 +1506,32 @@
       if (item.tagName === 'VIDEO') {
         lightboxImg.src = item.poster;
       }
+      
+      // Reset zoom
+      resetZoom();
+    }
+    
+    // Zoom functionality
+    function zoomIn() {
+      lightboxScale += 0.2;
+      updateLightboxTransform();
+    }
+    
+    function zoomOut() {
+      if(lightboxScale > 0.5) {
+        lightboxScale -= 0.2;
+        updateLightboxTransform();
+      }
+    }
+    
+    function resetZoom() {
+      lightboxScale = 1;
+      updateLightboxTransform();
+    }
+    
+    function updateLightboxTransform() {
+      const lightboxImg = document.getElementById('lightbox-img');
+      lightboxImg.style.transform = `scale(${lightboxScale})`;
     }
     
     // Close lightbox when clicking outside image
@@ -1366,6 +1539,11 @@
       if (e.target === this || e.target.classList.contains('lightbox-close')) {
         closeLightbox();
       }
+    });
+    
+    // Prevent closing when clicking on image or controls
+    document.querySelector('.lightbox-content').addEventListener('click', function(e) {
+      e.stopPropagation();
     });
     
     // Keyboard navigation for lightbox
@@ -1377,6 +1555,12 @@
           nextImage();
         } else if (e.key === 'ArrowLeft') {
           prevImage();
+        } else if (e.key === '+') {
+          zoomIn();
+        } else if (e.key === '-') {
+          zoomOut();
+        } else if (e.key === '0') {
+          resetZoom();
         }
       }
     });
