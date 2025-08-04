@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Deepa Mehendi Artist | Premium Henna Services | Lucknow</title>
+  <link rel="preload" href="index/w.mp4" as="video">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" as="font" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Great+Vibes&display=swap" as="font" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
@@ -51,14 +54,14 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: linear-gradient(135deg, #fff8f0 0%, var(--light) 100%);
+      background: linear-gradient(135deg, #0a1929 0%, #1a3658 100%);
       display: flex;
       justify-content: center;
       align-items: center;
       font-size: clamp(24px, 8vw, 32px);
-      color: var(--dark);
+      color: var(--white);
       z-index: 9999;
-      animation: fadeOut 1.5s ease 3.5s forwards;
+      animation: fadeOut 1.5s ease 5.5s forwards;
       overflow: hidden;
     }
 
@@ -66,61 +69,181 @@
       text-align: center;
       padding: 20px;
       position: relative;
+      z-index: 3;
     }
 
-    .mehendi-pattern {
+    .ocean-waves {
       position: absolute;
+      bottom: 0;
+      left: 0;
       width: 100%;
+      height: 20%;
+      background: linear-gradient(to top, rgba(10, 25, 41, 0.9), transparent);
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .wave {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 200%;
       height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="%23d4af37"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="%23d4af37"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23d4af37"/></svg>');
+      background-repeat: repeat-x;
+      background-position: 0 bottom;
+      animation: wave 15s linear infinite;
+      transform: translate3d(0, 0, 0);
+      opacity: 0.8;
+    }
+
+    .wave:nth-child(2) {
+      animation-duration: 12s;
+      animation-delay: -5s;
+      opacity: 0.6;
+      height: 80%;
+      bottom: -10%;
+    }
+
+    .wave:nth-child(3) {
+      animation-duration: 18s;
+      animation-delay: -2s;
+      opacity: 0.4;
+      height: 90%;
+      bottom: -15%;
+    }
+
+    .gold-particles {
+      position: absolute;
       top: 0;
       left: 0;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M30,50 Q50,30 70,50 T90,50" fill="none" stroke="%23a0522d" stroke-width="0.5" opacity="0.3"/></svg>');
-      opacity: 0.2;
-      z-index: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .particle {
+      position: absolute;
+      background: radial-gradient(circle, var(--luxury-gold) 0%, transparent 70%);
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: floatParticle linear infinite;
+    }
+
+    .moon {
+      position: absolute;
+      top: 10%;
+      right: 10%;
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, #f5f3ce 0%, #d4af37 70%);
+      border-radius: 50%;
+      box-shadow: 0 0 40px rgba(212, 175, 55, 0.8);
+      z-index: 2;
     }
 
     #preloader h1 {
       font-family: var(--font-special);
       font-size: clamp(32px, 10vw, 48px);
-      color: var(--luxury-maroon);
+      color: var(--white);
       margin-bottom: 10px;
       animation: fadeIn 1s ease forwards, float 3s ease-in-out infinite;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+      text-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
       position: relative;
-      z-index: 1;
+      z-index: 3;
     }
 
-    #preloader .hindi-line {
+    .hindi-line {
       font-family: 'Georgia', serif;
       font-size: clamp(18px, 6vw, 24px);
-      color: var(--luxury-maroon);
+      color: var(--white);
       margin-top: 20px;
       animation: fadeIn 1s ease 0.5s forwards;
       opacity: 0;
       position: relative;
-      z-index: 1;
+      z-index: 3;
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
     }
 
-    #preloader .blessing {
+    .blessing {
       font-family: 'Georgia', serif;
       font-style: italic;
       font-size: clamp(14px, 4vw, 16px);
-      color: var(--dark);
+      color: var(--light);
       margin-top: 30px;
       animation: fadeIn 1s ease 1s forwards;
       opacity: 0;
       position: relative;
-      z-index: 1;
+      z-index: 3;
     }
 
-    .flower {
+    .signature-container {
+      margin-top: 20px;
+      position: relative;
+      height: 60px;
+    }
+
+    #signature {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5rem;
+      color: var(--luxury-gold);
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+      stroke: var(--luxury-gold);
+      stroke-width: 1;
+      fill: none;
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: sign 3s ease forwards 2s;
+    }
+
+    .skip-splash {
       position: absolute;
-      width: 30px;
-      height: 30px;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 Q60,30 50,50 Q40,30 50,10" fill="%23a0522d" opacity="0.6"/></svg>');
-      background-size: contain;
-      animation: float 4s ease-in-out infinite, fadeIn 1s ease forwards;
-      z-index: 0;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--light);
+      background: rgba(0, 0, 0, 0.3);
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      text-decoration: none;
+      z-index: 10;
+      animation: fadeIn 1s ease 3s forwards;
+      opacity: 0;
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      cursor: pointer;
+    }
+
+    .mute-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: var(--light);
+      background: rgba(0, 0, 0, 0.3);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      font-size: 1.2rem;
+      cursor: pointer;
+      border: 1px solid rgba(212, 175, 55, 0.5);
+    }
+
+    @keyframes wave {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    @keyframes floatParticle {
+      to { transform: translateY(-100vh); }
+    }
+
+    @keyframes sign {
+      to { stroke-dashoffset: 0; }
     }
 
     @keyframes float {
@@ -176,6 +299,7 @@
       width: 100%;
       background: linear-gradient(to right, var(--white), #fffaf0);
       padding: 10px 15px;
+      padding-top: env(safe-area-inset-top);
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
       z-index: 900;
       display: flex;
@@ -252,6 +376,7 @@
       box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
       z-index: 900;
       padding: 5px 0;
+      padding-bottom: env(safe-area-inset-bottom);
       height: 70px;
       border-top: 1px solid rgba(164, 82, 45, 0.1);
     }
@@ -1017,23 +1142,43 @@
       .video-player-content {
         max-width: 85%;
       }
+      
+      .moon {
+        width: 120px;
+        height: 120px;
+      }
     }
   </style>
 </head>
 <body>
   <!-- Splash Screen -->
   <div id="preloader">
-    <div class="mehendi-pattern"></div>
+    <div class="ocean-waves">
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+    </div>
+    
+    <div class="gold-particles" id="gold-particles"></div>
+    
+    <div class="moon"></div>
+    
     <div class="preloader-content">
-      <div class="flower" style="top:10%; left:15%; transform:rotate(15deg); animation-delay:0.2s;"></div>
-      <div class="flower" style="top:20%; right:20%; transform:rotate(-10deg); animation-delay:0.4s;"></div>
-      <div class="flower" style="bottom:15%; left:25%; transform:rotate(25deg); animation-delay:0.6s;"></div>
-      <div class="flower" style="bottom:25%; right:15%; transform:rotate(-15deg); animation-delay:0.8s;"></div>
-      
       <div class="hindi-line">श्री हित हरिवंश</div>
       <h1>Deepa Mehendi Artist</h1>
+      <div class="signature-container">
+        <svg id="signature" viewBox="0 0 500 100" preserveAspectRatio="xMidYMid meet">
+          <path d="M50,20 C70,30 90,10 110,20 C130,30 150,50 170,40 C190,30 210,10 230,20 C250,30 270,50 290,40 C310,30 330,10 350,20 C370,30 390,50 410,40 C430,30 450,10 470,20" fill="none" stroke="currentColor"/>
+        </svg>
+      </div>
       <div class="blessing">🌟 शुभ मंगल सौभाग्य 🌟</div>
     </div>
+    
+    <button class="mute-toggle" id="mute-toggle">
+      <i class="fas fa-volume-up"></i>
+    </button>
+    
+    <button class="skip-splash" id="skip-splash">Tap to Enter</button>
   </div>
 
   <!-- Top Header -->
@@ -1796,19 +1941,58 @@
 
     // Preloader function
     window.addEventListener("load", function() {
-      // Create decorative flowers for the splash screen
-      const preloader = document.getElementById('preloader');
-      for (let i = 0; i < 8; i++) {
-        const flower = document.createElement('div');
-        flower.className = 'flower';
-        flower.style.top = `${Math.random() * 80 + 10}%`;
-        flower.style.left = `${Math.random() * 80 + 10}%`;
-        flower.style.transform = `rotate(${Math.random() * 60 - 30}deg)`;
-        flower.style.animationDelay = `${Math.random() * 0.5}s`;
-        flower.style.width = `${Math.random() * 20 + 15}px`;
-        flower.style.height = flower.style.width;
-        preloader.appendChild(flower);
+      // Create gold particles effect
+      const particlesContainer = document.getElementById('gold-particles');
+      const particleCount = 100;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        // Random position and size
+        const size = Math.random() * 10 + 2;
+        const left = Math.random() * 100;
+        const top = Math.random() * 100;
+        const duration = Math.random() * 10 + 5;
+        const delay = Math.random() * 5;
+        
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${left}%`;
+        particle.style.top = `${top}%`;
+        particle.style.animation = `floatParticle ${duration}s linear ${delay}s infinite`;
+        
+        particlesContainer.appendChild(particle);
       }
+      
+      // Skip splash functionality
+      const skipButton = document.getElementById('skip-splash');
+      skipButton.addEventListener('click', function() {
+        document.getElementById("preloader").style.animation = "fadeOut 1s ease forwards";
+        setTimeout(() => {
+          document.getElementById("preloader").style.display = "none";
+          document.getElementById("main-content").style.display = "block";
+          
+          // Autoplay videos
+          const wVideo = document.getElementById('w-video');
+          if (wVideo) {
+            wVideo.play().catch(e => console.log('Autoplay prevented:', e));
+          }
+        }, 500);
+      });
+      
+      // Mute toggle functionality
+      const muteButton = document.getElementById('mute-toggle');
+      const splashVideo = document.getElementById('w-video');
+      muteButton.addEventListener('click', function() {
+        if (splashVideo.muted) {
+          splashVideo.muted = false;
+          this.innerHTML = '<i class="fas fa-volume-up"></i>';
+        } else {
+          splashVideo.muted = true;
+          this.innerHTML = '<i class="fas fa-volume-mute"></i>';
+        }
+      });
       
       // Lazy load videos
       const lazyVideos = document.querySelectorAll('video[loading="lazy"]');
@@ -1835,23 +2019,20 @@
         lazyVideoObserver.observe(video);
       });
       
+      // Auto transition after 5.5 seconds
       setTimeout(() => {
-        document.getElementById("preloader").style.display = "none";
-        document.getElementById("main-content").style.display = "block";
-        
-        // Autoplay videos
-        const wVideo = document.getElementById('w-video');
-        if (wVideo) {
-          wVideo.play().catch(e => console.log('Autoplay prevented:', e));
-        }
-        
-        // Autoplay videos in thank you section
-        document.querySelectorAll('video').forEach(video => {
-          if (video !== wVideo && video.autoplay) {
-            video.play().catch(e => console.log('Autoplay prevented:', e));
+        document.getElementById("preloader").style.animation = "fadeOut 1s ease forwards";
+        setTimeout(() => {
+          document.getElementById("preloader").style.display = "none";
+          document.getElementById("main-content").style.display = "block";
+          
+          // Autoplay videos
+          const wVideo = document.getElementById('w-video');
+          if (wVideo) {
+            wVideo.play().catch(e => console.log('Autoplay prevented:', e));
           }
-        });
-      }, 3000);
+        }, 1000);
+      }, 5500);
     });
   </script>
 </body>
