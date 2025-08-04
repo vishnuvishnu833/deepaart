@@ -586,11 +586,18 @@
 
     .featured-grid, 
     .gallery-grid,
-    .colour-grid,
     .thank-you-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 12px;
+      margin-top: 15px;
+    }
+    
+    /* Colour gallery - one column layout */
+    .colour-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 15px;
       margin-top: 15px;
     }
     
@@ -1133,10 +1140,13 @@
       /* Updated gallery layout for larger screens */
       .featured-grid,
       .gallery-grid,
-      .colour-grid,
       .thank-you-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 12px;
+      }
+      
+      .colour-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
       
       .video-player-content {
@@ -1146,6 +1156,15 @@
       .moon {
         width: 120px;
         height: 120px;
+      }
+    }
+    
+    /* Mobile-specific fixes */
+    @media (max-width: 767px) {
+      .skip-splash {
+        bottom: 50px; /* Higher position for visibility */
+        padding: 10px 25px; /* Larger button */
+        font-size: 1rem; /* Larger text */
       }
     }
   </style>
