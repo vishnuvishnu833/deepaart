@@ -44,7 +44,7 @@
       position: relative;
     }
 
-    /* Splash Screen - Enhanced */
+    /* Enhanced Splash Screen */
     #preloader {
       position: fixed;
       top: 0;
@@ -66,6 +66,7 @@
       text-align: center;
       padding: 20px;
       position: relative;
+      z-index: 10;
     }
 
     .mehendi-pattern {
@@ -113,14 +114,32 @@
       z-index: 1;
     }
 
-    .flower {
+    .decorative-element {
       position: absolute;
+      z-index: 0;
+      animation: float 4s ease-in-out infinite, fadeIn 1s ease forwards;
+    }
+
+    .lotus {
       width: 30px;
       height: 30px;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 Q60,30 50,50 Q40,30 50,10" fill="%23a0522d" opacity="0.6"/></svg>');
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 Q60,30 50,50 Q40,30 50,10 M40,20 Q50,40 60,20 Q50,0 40,20" fill="%23a0522d" opacity="0.6"/></svg>');
       background-size: contain;
-      animation: float 4s ease-in-out infinite, fadeIn 1s ease forwards;
-      z-index: 0;
+    }
+
+    .star {
+      width: 25px;
+      height: 25px;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="50,10 61,40 95,40 66,60 75,95 50,75 25,95 34,60 5,40 39,40" fill="%23d4af37" opacity="0.7"/></svg>');
+      background-size: contain;
+    }
+
+    .glitter {
+      width: 15px;
+      height: 15px;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="8" fill="%23d4af37" opacity="0.8"/></svg>');
+      background-size: contain;
+      animation: blink 2s infinite;
     }
 
     @keyframes float {
@@ -167,84 +186,137 @@
       0% { background-position: -100% 0; }
       100% { background-position: 200% 0; }
     }
+    
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0.8; }
+    }
+    
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes glow {
+      0% { box-shadow: 0 0 5px var(--luxury-gold); }
+      50% { box-shadow: 0 0 20px var(--luxury-gold); }
+      100% { box-shadow: 0 0 5px var(--luxury-gold); }
+    }
+    
+    @keyframes slideIn {
+      from { transform: translateX(-100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes slideOut {
+      from { transform: translateX(0); opacity: 1; }
+      to { transform: translateX(100%); opacity: 0; }
+    }
+    
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    @keyframes scaleIn {
+      from { transform: scale(0.5); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
 
     /* Top Header - Enhanced */
     header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: linear-gradient(to right, var(--white), #fffaf0);
-  padding: 8px 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  z-index: 900;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: auto;
-  flex-wrap: wrap;
-  row-gap: 6px;
-  border-bottom: 1px solid rgba(164, 82, 45, 0.1);
-}
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(to right, var(--white), #fffaf0);
+      padding: 8px 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      z-index: 900;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: auto;
+      flex-wrap: wrap;
+      row-gap: 6px;
+      border-bottom: 1px solid rgba(164, 82, 45, 0.1);
+    }
 
-.brand-area {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex: 1 1 auto;
-  min-width: 0;
-}
+    .brand-area {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1 1 auto;
+      min-width: 0;
+    }
 
-.brand-area h2 {
-  font-family: var(--font-special);
-  font-size: 1.4rem;
-  color: var(--luxury-maroon);
-  line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+    .brand-area h2 {
+      font-family: var(--font-special);
+      font-size: 1.4rem;
+      color: var(--luxury-maroon);
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
-.brand-area p {
-  font-size: 0.7rem;
-  color: var(--luxury-gold);
-  font-style: italic;
-  line-height: 1;
-}
+    .brand-area p {
+      font-size: 0.7rem;
+      color: var(--luxury-gold);
+      font-style: italic;
+      line-height: 1;
+    }
 
-.location {
-  font-size: 0.75rem;
-  padding: 6px 10px;
-  background: rgba(164, 82, 45, 0.05);
-  color: var(--dark);
-  border-radius: 20px;
-  font-weight: bold;
-  font-family: var(--font-heading);
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  flex-shrink: 0;
-}
+    .location {
+      font-size: 0.75rem;
+      padding: 6px 10px;
+      background: rgba(164, 82, 45, 0.05);
+      color: var(--dark);
+      border-radius: 20px;
+      font-weight: bold;
+      font-family: var(--font-heading);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      flex-shrink: 0;
+    }
 
-.header-whatsapp {
-  background: linear-gradient(135deg, var(--whatsapp-green), #128C7E);
-  color: white;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.4rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  margin-left: 10px;
-  flex-shrink: 0;
-}
-
+    .header-whatsapp {
+      background: linear-gradient(135deg, var(--whatsapp-green), #128C7E);
+      color: white;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.4rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      margin-left: 10px;
+      flex-shrink: 0;
+    }
     
     .header-whatsapp:hover {
       transform: scale(1.1);
       box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+      animation: pulse 1.5s infinite;
     }
 
     /* Bottom Navigation - Enhanced */
@@ -378,21 +450,41 @@
     }
 
     /* Home Tab - Enhanced */
-    .welcome-box {
+    .image-slider {
       width: 100%;
-      margin: 0 auto 20px;
+      height: 350px;
+      position: relative;
       border-radius: 15px;
       overflow: hidden;
+      margin-bottom: 20px;
       box-shadow: var(--shadow);
-      position: relative;
-      height: 350px;
-      background: linear-gradient(45deg, #f5e4c3, #fcf8f3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
-
-    .welcome-overlay {
+    
+    .slider-container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      background-size: cover;
+      background-position: center;
+      border-radius: 15px;
+    }
+    
+    .slide.active {
+      opacity: 1;
+      z-index: 1;
+    }
+    
+    .slide-overlay {
       position: absolute;
       top: 0;
       left: 0;
@@ -406,18 +498,19 @@
       text-align: center;
       padding: 20px;
       z-index: 2;
+      border-radius: 15px;
     }
-
-    .welcome-overlay h1 {
-      font-family: var(--font-heading); /* Updated font for better readability */
+    
+    .slide-overlay h1 {
+      font-family: var(--font-heading);
       font-size: 2.8rem;
       color: var(--white);
       text-shadow: 0 2px 10px rgba(0,0,0,0.5);
       margin-bottom: 15px;
       animation: fadeInDown 1s ease;
     }
-
-    .welcome-overlay p {
+    
+    .slide-overlay p {
       font-family: var(--font-heading);
       font-size: 1.3rem;
       color: var(--white);
@@ -427,13 +520,30 @@
       animation: fadeInUp 1s ease 0.2s forwards;
       opacity: 0;
     }
-
-    .welcome-box video {
+    
+    .slider-nav {
+      position: absolute;
+      bottom: 15px;
+      left: 0;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      z-index: 3;
+    }
+    
+    .slider-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      margin: 0 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .slider-dot.active {
+      background: var(--luxury-gold);
+      transform: scale(1.3);
     }
 
     .certified-badge {
@@ -625,6 +735,48 @@
       letter-spacing: 0.5px;
     }
     
+    /* Enhanced View Gallery Button */
+    .glowing-button {
+      background: linear-gradient(135deg, var(--luxury-maroon), var(--luxury-gold));
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s;
+      animation: glow 2s infinite;
+      position: relative;
+      overflow: hidden;
+      margin: 20px auto;
+      display: block;
+    }
+    
+    .glowing-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      animation: none;
+    }
+    
+    .glowing-button::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: rgba(255,255,255,0.1);
+      transform: rotate(30deg);
+      transition: all 0.6s;
+    }
+    
+    .glowing-button:hover::after {
+      transform: rotate(30deg) translate(50%, 50%);
+    }
+
     /* Price Table */
     .rate-table {
       width: 100%;
@@ -650,7 +802,7 @@
       background: #fffaf0;
     }
 
-    /* About Artist */
+    /* About Artist - Enhanced */
     .artist-info {
       display: flex;
       gap: 15px;
@@ -659,8 +811,8 @@
     }
 
     .artist-photo {
-      width: 90px;
-      height: 90px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       object-fit: cover;
       border: 3px solid var(--light);
@@ -701,33 +853,137 @@
       font-size: 0.95rem;
     }
 
-    .certification {
+    /* Enhanced Certification Section */
+    .certification-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .certification-card {
+      background: linear-gradient(135deg, #fff8f0, #f5e4c3);
+      border-radius: 15px;
+      padding: 20px;
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-top: 15px;
-      background: #fffaf0;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      gap: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border: 1px solid rgba(164, 82, 45, 0.1);
+      position: relative;
+      overflow: hidden;
     }
-
-    .certification i {
-      color: var(--luxury-gold);
-      font-size: 1.8rem;
+    
+    .certification-badge {
+      width: 80px;
+      height: 80px;
+      background: var(--luxury-gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: var(--white);
+      flex-shrink: 0;
+      animation: rotate 8s linear infinite;
     }
-
-    .certification div {
+    
+    .certification-details {
       flex: 1;
     }
-
-    .certification strong {
-      display: block;
-      margin-bottom: 3px;
-      color: var(--dark);
+    
+    .certification-details h4 {
+      color: var(--luxury-maroon);
+      font-size: 1.1rem;
+      margin-bottom: 5px;
       font-family: var(--font-heading);
     }
     
+    .certification-details p {
+      text-align: left;
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 0;
+    }
+    
+    .certification-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      animation: shine 4s infinite;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      margin-top: 30px;
+      border-top: 1px solid rgba(164, 82, 45, 0.1);
+      padding-top: 20px;
+    }
+    
+    .faq-section h3 {
+      text-align: center;
+      color: var(--luxury-maroon);
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+      font-family: var(--font-heading);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    
+    .faq-item {
+      margin-bottom: 15px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    
+    .faq-question {
+      background: linear-gradient(135deg, #fff8f0, #f5e4c3);
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: bold;
+      color: var(--dark);
+      font-family: var(--font-heading);
+      transition: all 0.3s;
+    }
+    
+    .faq-question:hover {
+      background: linear-gradient(135deg, #f5e4c3, #f0d8b0);
+    }
+    
+    .faq-question i {
+      transition: transform 0.3s;
+    }
+    
+    .faq-answer {
+      background: var(--white);
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #555;
+    }
+    
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+      padding: 15px 20px;
+    }
+    
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+
     /* Next Section Button */
     .next-section {
       display: flex;
@@ -951,34 +1207,6 @@
       background: rgba(0,0,0,0.8);
     }
 
-    /* Animations */
-    @keyframes blink {
-      0%, 50%, 100% { opacity: 1; }
-      25%, 75% { opacity: 0.8; }
-    }
-    
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
     /* Responsive Adjustments */
     @media (min-width: 768px) {
       body {
@@ -998,15 +1226,15 @@
         padding: 20px;
       }
       
-      .welcome-box {
+      .image-slider {
         height: 450px;
       }
       
-      .welcome-overlay h1 {
+      .slide-overlay h1 {
         font-size: 3.5rem;
       }
       
-      .welcome-overlay p {
+      .slide-overlay p {
         font-size: 1.5rem;
       }
       
@@ -1028,18 +1256,32 @@
       .video-player-content {
         max-width: 85%;
       }
+      
+      .certification-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .certification-card {
+        flex: 0 0 calc(50% - 10px);
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Splash Screen -->
+  <!-- Enhanced Splash Screen -->
   <div id="preloader">
     <div class="mehendi-pattern"></div>
     <div class="preloader-content">
-      <div class="flower" style="top:10%; left:15%; transform:rotate(15deg); animation-delay:0.2s;"></div>
-      <div class="flower" style="top:20%; right:20%; transform:rotate(-10deg); animation-delay:0.4s;"></div>
-      <div class="flower" style="bottom:15%; left:25%; transform:rotate(25deg); animation-delay:0.6s;"></div>
-      <div class="flower" style="bottom:25%; right:15%; transform:rotate(-15deg); animation-delay:0.8s;"></div>
+      <div class="decorative-element lotus" style="top:10%; left:15%; transform:rotate(15deg); animation-delay:0.2s;"></div>
+      <div class="decorative-element star" style="top:20%; right:20%; transform:rotate(-10deg); animation-delay:0.4s;"></div>
+      <div class="decorative-element glitter" style="bottom:15%; left:25%; animation-delay:0.6s;"></div>
+      <div class="decorative-element star" style="bottom:25%; right:15%; transform:rotate(15deg); animation-delay:0.8s;"></div>
+      <div class="decorative-element lotus" style="top:30%; left:40%; transform:rotate(25deg); animation-delay:1.0s;"></div>
+      <div class="decorative-element glitter" style="top:40%; right:35%; animation-delay:1.2s;"></div>
+      <div class="decorative-element star" style="bottom:35%; left:70%; transform:rotate(-25deg); animation-delay:1.4s;"></div>
+      <div class="decorative-element glitter" style="top:15%; right:65%; animation-delay:1.6s;"></div>
       
       <div class="hindi-line">श्री हित हरिवंश</div>
       <h1>Deepa Mehendi Artist</h1>
@@ -1073,14 +1315,39 @@
   <div id="main-content" style="display:none;">
     <!-- Home Tab - Enhanced -->
     <div id="home-tab" class="tab-content active">
-      <div class="welcome-box">
-        <video autoplay muted loop playsinline id="w-video" loading="lazy">
-          <source src="index/w.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-        <div class="welcome-overlay">
-          <h1>Artistry in Henna</h1>
-          <p>Exquisite Designs for Your Special Occasions</p>
+      <!-- Image Slider -->
+      <div class="image-slider">
+        <div class="slider-container">
+          <div class="slide active" style="background-image: url('images/H2.jpeg');">
+            <div class="slide-overlay">
+              <h1>Exquisite Designs</h1>
+              <p>Traditional Mehendi for Special Occasions</p>
+            </div>
+          </div>
+          <div class="slide" style="background-image: url('images/H3.jpeg');">
+            <div class="slide-overlay">
+              <h1>Bridal Perfection</h1>
+              <p>Intricate Patterns for Your Wedding Day</p>
+            </div>
+          </div>
+          <div class="slide" style="background-image: url('images/H4.jpeg');">
+            <div class="slide-overlay">
+              <h1>Artistry in Henna</h1>
+              <p>Handcrafted Designs with Love</p>
+            </div>
+          </div>
+          <div class="slide" style="background-image: url('images/H5.jpeg');">
+            <div class="slide-overlay">
+              <h1>Modern & Traditional</h1>
+              <p>Beautiful Fusion Styles</p>
+            </div>
+          </div>
+        </div>
+        <div class="slider-nav">
+          <div class="slider-dot active"></div>
+          <div class="slider-dot"></div>
+          <div class="slider-dot"></div>
+          <div class="slider-dot"></div>
         </div>
       </div>
 
@@ -1107,7 +1374,8 @@
             <img src="images/H5.jpeg" alt="Bridal design 4" onclick="zoomImage(this, 'home')">
           </div>
         </div>
-        <a href="#" class="view-all" onclick="switchTab('bride-tab')">View Bridal Gallery</a>
+        <!-- Enhanced View Gallery Button -->
+        <button class="glowing-button" onclick="switchTab('bride-tab')">View Bride Gallery</button>
       </div>
     </div>
 
@@ -1194,16 +1462,10 @@
           </div>
           
           <div class="gallery-item"> <img src="images/H18.jpeg" alt="Bridal design 26" onclick="zoomImage(this, 'bride')"> </div>
-<div class="gallery-item"> <img src="images/H19.jpeg" alt="Bridal design 27" onclick="zoomImage(this, 'bride')"> </div>
-<div class="gallery-item"> <img src="images/H20.jpeg" alt="Bridal design 28" onclick="zoomImage(this, 'bride')"> </div>
-<div class="gallery-item"> <img src="images/H21.jpeg" alt="Bridal design 29" onclick="zoomImage(this, 'bride')"> </div>
-<div class="gallery-item"> <img src="images/H22.jpeg" alt="Bridal design 30" onclick="zoomImage(this, 'bride')"> </div>
-<div class="gallery-item"> <img src="images/H23.jpeg" alt="Bridal design 31" onclick="zoomImage(this, 'bride')"> </div>
-<div class="gallery-item"> <img src="images/H24.jpeg" alt="Bridal design 32" onclick="zoomImage(this, 'bride')"> </div>
-<div class="gallery-item"> <img src="images/H25.jpeg" alt="Bridal design 33" onclick="zoomImage(this, 'bride')"> </div>
-<div class="gallery-item"> <img src="images/H26.jpeg" alt="Bridal design 34" onclick="zoomImage(this, 'bride')"> </div>
-<div class="gallery-item"> <img src="images/H27.jpeg" alt="Bridal design 35" onclick="zoomImage(this, 'bride')"> </div>
-
+          <div class="gallery-item"> <img src="images/H19.jpeg" alt="Bridal design 27" onclick="zoomImage(this, 'bride')"> </div>
+          <div class="gallery-item"> <img src="images/H20.jpeg" alt="Bridal design 28" onclick="zoomImage(this, 'bride')"> </div>
+          <div class="gallery-item"> <img src="images/H21.jpeg" alt="Bridal design 29" onclick="zoomImage(this, 'bride')"> </div>
+          <div class="gallery-item"> <img src="images/H22.jpeg" alt="Bridal design 30" onclick="zoomImage(this, 'bride')"> </div>
         </div>
         <div class="next-section">
           <button class="next-section-btn" onclick="switchTab('guests-tab')">View Guest Designs</button>
@@ -1258,29 +1520,22 @@
           </div>
           
           <div class="gallery-item"> <img src="guest/G14.jpeg" alt="Guest design 14" onclick="zoomImage(this, 'guests')"> </div>
-<div class="gallery-item"> <img src="guest/G15.jpeg" alt="Guest design 15" onclick="zoomImage(this, 'guests')"> </div>
-<div class="gallery-item"> <img src="guest/G16.jpeg" alt="Guest design 16" onclick="zoomImage(this, 'guests')"> </div>
-<div class="gallery-item"> <img src="guest/G17.jpeg" alt="Guest design 17" onclick="zoomImage(this, 'guests')"> </div>
-<div class="gallery-item"> <img src="guest/G18.jpeg" alt="Guest design 18" onclick="zoomImage(this, 'guests')"> </div>
-<div class="gallery-item"> <img src="guest/G19.jpeg" alt="Guest design 19" onclick="zoomImage(this, 'guests')"> </div>
-<div class="gallery-item"> <img src="guest/G20.jpeg" alt="Guest design 20" onclick="zoomImage(this, 'guests')"> </div>
-<div class="gallery-item"> <img src="guest/G21.jpeg" alt="Guest design 21" onclick="zoomImage(this, 'guests')"> </div>
-<div class="gallery-item"> <img src="guest/G22.jpeg" alt="Guest design 22" onclick="zoomImage(this, 'guests')"> </div>
-<div class="gallery-item"> <img src="guest/G23.jpeg" alt="Guest design 23" onclick="zoomImage(this, 'guests')"> </div>
-<div class="gallery-item"> <img src="guest/G24.jpeg" alt="Guest design 24" onclick="zoomImage(this, 'guests')"> </div>
-<div class="gallery-item"> <img src="guest/G25.jpeg" alt="Guest design 25" onclick="zoomImage(this, 'guests')"> </div>
-<div class="gallery-item"> <img src="guest/G26.jpeg" alt="Guest design 26" onclick="zoomImage(this, 'guests')"> </div>
-<div class="gallery-item"> <img src="guest/G27.jpeg" alt="Guest design 27" onclick="zoomImage(this, 'guests')"> </div>
-<div class="gallery-item"> <img src="guest/G28.jpeg" alt="Guest design 28" onclick="zoomImage(this, 'guests')"> </div>
-<div class="gallery-item"> <img src="guest/S1.jpeg" alt="Guest design 29" onclick="zoomImage(this, 'guests')"> </div>
-<div class="gallery-item"> <img src="guest/S2.jpeg" alt="Guest design 30" onclick="zoomImage(this, 'guests')"> </div>
-<div class="gallery-item"> <img src="guest/S3.jpeg" alt="Guest design 31" onclick="zoomImage(this, 'guests')"> </div>
-<div class="gallery-item"> <img src="guest/S4.jpeg" alt="Guest design 32" onclick="zoomImage(this, 'guests')"> </div>
-<div class="gallery-item"> <img src="guest/S5.jpeg" alt="Guest design 33" onclick="zoomImage(this, 'guests')"> </div>
-<div class="gallery-item"> <img src="guest/S6.jpeg" alt="Guest design 34" onclick="zoomImage(this, 'guests')"> </div>
-<div class="gallery-item"> <img src="guest/S7.jpeg" alt="Guest design 35" onclick="zoomImage(this, 'guests')"> </div>
-<div class="gallery-item"> <img src="guest/S8.jpeg" alt="Guest design 36" onclick="zoomImage(this, 'guests')"> </div>
-
+          <div class="gallery-item"> <img src="guest/G15.jpeg" alt="Guest design 15" onclick="zoomImage(this, 'guests')"> </div>
+          <div class="gallery-item"> <img src="guest/G16.jpeg" alt="Guest design 16" onclick="zoomImage(this, 'guests')"> </div>
+          <div class="gallery-item"> <img src="guest/G17.jpeg" alt="Guest design 17" onclick="zoomImage(this, 'guests')"> </div>
+          <div class="gallery-item"> <img src="guest/G18.jpeg" alt="Guest design 18" onclick="zoomImage(this, 'guests')"> </div>
+          <div class="gallery-item"> <img src="guest/G19.jpeg" alt="Guest design 19" onclick="zoomImage(this, 'guests')"> </div>
+          <div class="gallery-item"> <img src="guest/G20.jpeg" alt="Guest design 20" onclick="zoomImage(this, 'guests')"> </div>
+          <div class="gallery-item"> <img src="guest/G21.jpeg" alt="Guest design 21" onclick="zoomImage(this, 'guests')"> </div>
+          <div class="gallery-item"> <img src="guest/G22.jpeg" alt="Guest design 22" onclick="zoomImage(this, 'guests')"> </div>
+          <div class="gallery-item"> <img src="guest/G23.jpeg" alt="Guest design 23" onclick="zoomImage(this, 'guests')"> </div>
+          <div class="gallery-item"> <img src="guest/G24.jpeg" alt="Guest design 24" onclick="zoomImage(this, 'guests')"> </div>
+          <div class="gallery-item"> <img src="guest/G25.jpeg" alt="Guest design 25" onclick="zoomImage(this, 'guests')"> </div>
+          <div class="gallery-item"> <img src="guest/G26.jpeg" alt="Guest design 26" onclick="zoomImage(this, 'guests')"> </div>
+          <div class="gallery-item"> <img src="guest/G27.jpeg" alt="Guest design 27" onclick="zoomImage(this, 'guests')"> </div>
+          <div class="gallery-item"> <img src="guest/G28.jpeg" alt="Guest design 28" onclick="zoomImage(this, 'guests')"> </div>
+          <div class="gallery-item"> <img src="guest/S1.jpeg" alt="Guest design 29" onclick="zoomImage(this, 'guests')"> </div>
+          <div class="gallery-item"> <img src="guest/S2.jpeg" alt="Guest design 30" onclick="zoomImage(this, 'guests')"> </div>
         </div>
         <div class="next-section">
           <button class="next-section-btn" onclick="switchTab('colours-tab')">View Colour Collection</button>
@@ -1364,13 +1619,13 @@
       </div>
     </div>
 
-    <!-- About Tab -->
+    <!-- About Tab - Enhanced -->
     <div id="about-tab" class="tab-content">
       <div class="section">
         <h2><i class="fas fa-user"></i> About Your Artist</h2>
         
         <div class="artist-info">
-          <img src="about.jpeg" alt="Deepa" class="artist-photo">
+          <img src="https://via.placeholder.com/120" alt="Deepa" class="artist-photo">
           <div class="artist-details">
             <h3>Deepa Mehendi Artist</h3>
             <p><i class="fas fa-star"></i> 12+ years of experience</p>
@@ -1379,18 +1634,74 @@
           </div>
         </div>
         
-        <div class="certification">
-          <i class="fas fa-certificate"></i>
-          <div>
-            <strong>WedMeGood Certified</strong>
-            <p>Professional Mehendi Artist since 2013</p>
-          </div>
-        </div>
-        
         <div class="journey-section">
           <h3><i class="fas fa-road"></i> My Journey</h3>
           <p>I began my journey as a mehendi artist over 12 years ago. What started as a passion soon became my profession as I mastered various styles including Rajasthani, Arabic, and modern fusion designs.</p>
           <p>My journey has been filled with memorable moments - from designing mehendi for brides on their most special day to creating intricate patterns for festivals and celebrations. I believe that mehendi is more than just body art; it's a cultural tradition that connects generations and brings joy to celebrations.</p>
+        </div>
+        
+        <!-- Enhanced Certification Section -->
+        <div class="certification-container">
+          <div class="certification-card">
+            <div class="certification-badge">
+              <i class="fas fa-award"></i>
+            </div>
+            <div class="certification-details">
+              <h4>WedMeGood Certified</h4>
+              <p>Professional Mehendi Artist since 2013 with verified expertise in traditional and modern designs.</p>
+            </div>
+          </div>
+          
+          <div class="certification-card">
+            <div class="certification-badge">
+              <i class="fas fa-certificate"></i>
+            </div>
+            <div class="certification-details">
+              <h4>Artistry Excellence</h4>
+              <p>Recognized for exceptional skill in intricate bridal mehendi designs with natural coloring.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- FAQ Section -->
+        <div class="faq-section">
+          <h3><i class="fas fa-question-circle"></i> Frequently Asked Questions</h3>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              How far in advance should I book? <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              For bridal appointments, we recommend booking at least 3-6 months in advance, especially during wedding season. For other events, 1-2 months in advance is usually sufficient.
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              How long does mehendi last? <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              Our natural henna typically lasts 1-3 weeks depending on your skin type, aftercare, and exposure to water. The color will deepen in the first 48 hours and gradually fade over time.
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              Do you travel for appointments? <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              Yes, we provide mobile services throughout Lucknow and surrounding areas. Travel fees may apply depending on location.
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              What safety measures do you take? <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              We use only natural, chemical-free henna cones. All application tools are sterilized and we follow strict hygiene protocols. We also provide aftercare instructions to ensure the best results.
+            </div>
+          </div>
         </div>
       </div>
       
@@ -1810,21 +2121,70 @@
       }
     });
 
+    // Image slider functionality
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.slider-dot');
+    
+    function showSlide(index) {
+      // Hide all slides
+      slides.forEach(slide => slide.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
+      
+      // Show selected slide
+      slides[index].classList.add('active');
+      dots[index].classList.add('active');
+      
+      slideIndex = index;
+    }
+    
+    function nextSlide() {
+      let newIndex = slideIndex + 1;
+      if (newIndex >= slides.length) newIndex = 0;
+      showSlide(newIndex);
+    }
+    
+    // Initialize slider
+    function initSlider() {
+      // Set up dot navigation
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => showSlide(index));
+      });
+      
+      // Auto advance slides
+      setInterval(nextSlide, 5000);
+    }
+    
+    // FAQ toggle functionality
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const item = question.parentElement;
+        item.classList.toggle('active');
+      });
+    });
+    
     // Preloader function
     window.addEventListener("load", function() {
-      // Create decorative flowers for the splash screen
+      // Create decorative elements for the splash screen
       const preloader = document.getElementById('preloader');
-      for (let i = 0; i < 8; i++) {
-        const flower = document.createElement('div');
-        flower.className = 'flower';
-        flower.style.top = `${Math.random() * 80 + 10}%`;
-        flower.style.left = `${Math.random() * 80 + 10}%`;
-        flower.style.transform = `rotate(${Math.random() * 60 - 30}deg)`;
-        flower.style.animationDelay = `${Math.random() * 0.5}s`;
-        flower.style.width = `${Math.random() * 20 + 15}px`;
-        flower.style.height = flower.style.width;
-        preloader.appendChild(flower);
+      for (let i = 0; i < 12; i++) {
+        const element = document.createElement('div');
+        let type = 'lotus';
+        if (i % 3 === 0) type = 'star';
+        if (i % 3 === 1) type = 'glitter';
+        
+        element.className = `decorative-element ${type}`;
+        element.style.top = `${Math.random() * 80 + 10}%`;
+        element.style.left = `${Math.random() * 80 + 10}%`;
+        element.style.transform = `rotate(${Math.random() * 60 - 30}deg)`;
+        element.style.animationDelay = `${Math.random() * 0.5}s`;
+        element.style.width = `${Math.random() * 20 + 15}px`;
+        element.style.height = element.style.width;
+        preloader.appendChild(element);
       }
+      
+      // Initialize slider
+      initSlider();
       
       // Lazy load videos
       const lazyVideos = document.querySelectorAll('video[loading="lazy"]');
@@ -1855,15 +2215,9 @@
         document.getElementById("preloader").style.display = "none";
         document.getElementById("main-content").style.display = "block";
         
-        // Autoplay videos
-        const wVideo = document.getElementById('w-video');
-        if (wVideo) {
-          wVideo.play().catch(e => console.log('Autoplay prevented:', e));
-        }
-        
         // Autoplay videos in thank you section
         document.querySelectorAll('video').forEach(video => {
-          if (video !== wVideo && video.autoplay) {
+          if (video.autoplay) {
             video.play().catch(e => console.log('Autoplay prevented:', e));
           }
         });
