@@ -194,9 +194,8 @@
       top: 0;
       left: 0;
       width: 100%;
-      background: linear-gradient(to right, var(--white), #fffaf0);
+      background: var(--white);
       padding: 8px 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
       z-index: 900;
       display: flex;
       justify-content: space-between;
@@ -204,7 +203,6 @@
       height: auto;
       flex-wrap: wrap;
       row-gap: 6px;
-      border-bottom: 1px solid rgba(164, 82, 45, 0.1);
     }
 
     .brand-area {
@@ -235,9 +233,7 @@
     .location {
       font-size: 0.75rem;
       padding: 6px 10px;
-      background: rgba(164, 82, 45, 0.05);
       color: var(--dark);
-      border-radius: 20px;
       font-weight: bold;
       font-family: var(--font-heading);
       display: flex;
@@ -256,14 +252,13 @@
       justify-content: center;
       align-items: center;
       font-size: 1.4rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
       margin-left: 10px;
       flex-shrink: 0;
+      transition: all 0.3s;
     }
     
     .header-whatsapp:hover {
       transform: scale(1.1);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.25);
     }
 
     /* Bottom Navigation - Enhanced */
@@ -275,11 +270,9 @@
       background: var(--white);
       display: flex;
       justify-content: space-around;
-      box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
       z-index: 900;
       padding: 5px 0;
       height: 70px;
-      border-top: 1px solid rgba(164, 82, 45, 0.1);
     }
 
     .nav-item {
@@ -339,26 +332,12 @@
       display: block;
     }
 
-    /* Common Section Styles - Enhanced */
+    /* Common Section Styles - Box-free design */
     .section {
-      background: var(--white);
-      border-radius: 15px;
       padding: 20px;
       margin-bottom: 20px;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(164, 82, 45, 0.05);
       position: relative;
       overflow: hidden;
-    }
-
-    .section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, var(--luxury-maroon), var(--luxury-gold));
     }
 
     .section h2 {
@@ -402,7 +381,6 @@
       margin: 0 auto 20px;
       border-radius: 15px;
       overflow: hidden;
-      box-shadow: var(--shadow);
       position: relative;
       height: 350px;
       background: linear-gradient(45deg, #f5e4c3, #fcf8f3);
@@ -456,9 +434,7 @@
     }
 
     .certified-badge {
-      background: linear-gradient(135deg, var(--light), var(--luxury-gold));
       color: var(--dark);
-      border-radius: 20px;
       padding: 12px 20px;
       text-align: center;
       margin: 15px 0;
@@ -469,7 +445,6 @@
       gap: 10px;
       font-size: 1rem;
       font-family: var(--font-heading);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       position: relative;
       overflow: hidden;
     }
@@ -493,7 +468,6 @@
       margin: 15px auto;
       border-radius: 15px;
       overflow: hidden;
-      box-shadow: var(--shadow);
     }
     
     .slide {
@@ -601,7 +575,6 @@
       font-family: var(--font-heading);
       font-size: 1.1rem;
       cursor: pointer;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
       transition: all 0.4s;
       position: relative;
       overflow: hidden;
@@ -622,7 +595,6 @@
     
     .view-bride-btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     }
     
     .view-bride-btn:hover::after {
@@ -657,24 +629,20 @@
     
     .gallery-item,
     .thank-you-item {
-      background: var(--light);
       border-radius: 10px;
       overflow: hidden;
       position: relative;
       aspect-ratio: 1/1;
       transition: all 0.4s ease;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       opacity: 0;
       transform-origin: center;
     }
     
     .colour-item {
-      background: var(--light);
       border-radius: 10px;
       overflow: hidden;
       position: relative;
       transition: all 0.4s ease;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       opacity: 0;
       transform-origin: center;
     }
@@ -738,7 +706,6 @@
     .thank-you-item:hover {
       transform: scale(1.05) translateY(-5px);
       z-index: 10;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
 
     .gallery-item:hover img,
@@ -751,26 +718,24 @@
     /* Price Table */
     .rate-table {
       width: 100%;
-      border-collapse: collapse;
       font-size: 0.9rem;
       margin-top: 15px;
       font-family: var(--font-heading);
     }
 
     .rate-table th, .rate-table td {
-      border: 1px solid #eee;
       padding: 12px;
       text-align: center;
     }
 
     .rate-table th {
-      background: linear-gradient(to right, var(--luxury-maroon), #a0522d);
-      color: var(--white);
+      color: var(--dark);
       font-weight: 600;
+      border-bottom: 1px solid #eee;
     }
 
-    .rate-table tr:nth-child(even) {
-      background: #fffaf0;
+    .rate-table td {
+      border-bottom: 1px solid #eee;
     }
 
     /* About Artist */
@@ -786,8 +751,11 @@
       height: 90px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid var(--light);
-      box-shadow: var(--shadow);
+      transition: transform 0.3s;
+    }
+    
+    .artist-photo:hover {
+      transform: scale(1.05);
     }
 
     .artist-details {
@@ -823,33 +791,6 @@
       margin-bottom: 10px;
       font-size: 0.95rem;
     }
-
-    .certification {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 15px;
-      background: #fffaf0;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-    }
-
-    .certification i {
-      color: var(--luxury-gold);
-      font-size: 1.8rem;
-    }
-
-    .certification div {
-      flex: 1;
-    }
-
-    .certification strong {
-      display: block;
-      margin-bottom: 3px;
-      color: var(--dark);
-      font-family: var(--font-heading);
-    }
     
     /* Certifications Section */
     .certifications-container {
@@ -860,10 +801,6 @@
     }
     
     .certification-card {
-      background: white;
-      border-radius: 10px;
-      padding: 15px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       text-align: center;
       transition: all 0.3s;
       display: flex;
@@ -874,7 +811,6 @@
     
     .certification-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 15px rgba(0,0,0,0.15);
     }
     
     .certification-card i {
@@ -890,6 +826,13 @@
       color: var(--dark);
     }
     
+    .certification-subtext {
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-top: 5px;
+      font-weight: normal;
+    }
+    
     /* FAQ Section */
     .faq-container {
       margin-top: 20px;
@@ -899,12 +842,10 @@
       margin-bottom: 15px;
       border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
     
     .faq-question {
       padding: 15px;
-      background: var(--light);
       font-family: var(--font-heading);
       font-weight: bold;
       color: var(--dark);
@@ -916,7 +857,7 @@
     }
     
     .faq-question:hover {
-      background: #f0e0c0;
+      color: var(--luxury-maroon);
     }
     
     .faq-question i {
@@ -931,7 +872,6 @@
       padding: 0 15px;
       max-height: 0;
       overflow: hidden;
-      background: white;
       transition: all 0.3s ease;
       font-size: 0.95rem;
       line-height: 1.5;
@@ -959,22 +899,16 @@
       font-family: var(--font-heading);
       font-size: 1rem;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
       transition: all 0.3s;
     }
     
     .next-section-btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
     }
     
     /* Footer */
     .footer {
-      background: var(--luxury-maroon);
-      color: var(--light);
       padding: 30px 15px 20px;
-      border-radius: 15px;
-      margin-top: 30px;
       text-align: center;
     }
     
@@ -987,7 +921,7 @@
     }
     
     .footer-links a {
-      color: var(--light);
+      color: var(--dark);
       text-decoration: none;
       font-family: var(--font-heading);
       font-size: 1rem;
@@ -998,7 +932,6 @@
     
     .footer-links a:hover {
       color: var(--luxury-gold);
-      background: rgba(255, 255, 255, 0.1);
     }
     
     .social-icons {
@@ -1014,16 +947,14 @@
       justify-content: center;
       width: 45px;
       height: 45px;
-      background: rgba(255, 255, 255, 0.1);
-      color: var(--light);
+      color: var(--dark);
       border-radius: 50%;
       font-size: 1.3rem;
       transition: all 0.3s;
     }
     
     .social-icons a:hover {
-      background: var(--luxury-gold);
-      color: var(--luxury-maroon);
+      color: var(--luxury-gold);
       transform: translateY(-3px);
     }
     
@@ -1071,7 +1002,6 @@
       display: block;
       border-radius: 10px;
       margin: 0 auto;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
       transition: transform 0.3s;
       cursor: move;
     }
@@ -1205,7 +1135,6 @@
       max-width: 100%;
       max-height: 95vh;
       border-radius: 10px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
     
     .video-player-close {
@@ -1268,7 +1197,6 @@
         max-width: 600px;
         left: 50%;
         transform: translateX(-50%);
-        border-radius: 30px 30px 0 0;
       }
       
       .tab-content {
@@ -1689,14 +1617,6 @@
           </div>
         </div>
         
-        <div class="certification">
-          <i class="fas fa-certificate"></i>
-          <div>
-            <strong>WedMeGood Certified</strong>
-            <p>Professional Mehendi Artist since 2013</p>
-          </div>
-        </div>
-        
         <div class="journey-section">
           <h3><i class="fas fa-road"></i> My Journey</h3>
           <p>I began my journey as a mehendi artist over 12 years ago. What started as a passion soon became my profession as I mastered various styles including Rajasthani, Arabic, and modern fusion designs.</p>
@@ -1711,6 +1631,7 @@
           <div class="certification-card">
             <i class="fas fa-award"></i>
             <p>WedMeGood Certified</p>
+            <p class="certification-subtext">100+ bridal 5-star reviews</p>
           </div>
           <div class="certification-card">
             <i class="fas fa-medal"></i>
