@@ -486,119 +486,131 @@
     }
 
     /* Featured Designs Slideshow - IMPROVED FOR MOBILE */
-    .slideshow-container {
-      position: relative;
-      width: 100%;
-      margin: 25px auto 15px;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-      transition: all 0.4s;
-      aspect-ratio: 4/3;
-    }
-    
-    .slideshow-container:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    }
-    
-    .slide {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .slide.active {
-      opacity: 1;
-      z-index: 2;
-    }
-    
-    .slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 8s ease;
-    }
-    
-    .slide.active img {
-      transform: scale(1.05);
-    }
-    
-    .slide-caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      color: white;
-      padding: 15px;
-      text-align: center;
-      font-family: var(--font-heading);
-      z-index: 3;
-      font-size: 1.1rem;
-      letter-spacing: 1px;
-    }
-    
-    .slideshow-dots {
-      position: absolute;
-      bottom: 15px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 8px;
-      z-index: 4;
-    }
-    
-    .dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.5);
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    
-    .dot.active {
-      background: var(--luxury-gold);
-      transform: scale(1.3);
-    }
-    
-    .slideshow-controls {
-      position: absolute;
-      top: 50%;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      padding: 0 15px;
-      transform: translateY(-50%);
-      z-index: 4;
-    }
-    
-    .slideshow-btn {
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      background: rgba(0, 0, 0, 0.6);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    
-    .slideshow-btn:hover {
-      background: rgba(0, 0, 0, 0.9);
-      transform: scale(1.1);
-    }
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full screen height */
+  margin: 0;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: none;
+  transition: all 0.4s;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Full fill */
+  transition: transform 8s ease;
+}
+
+.slide.active img {
+  transform: scale(1.05);
+}
+
+.slide-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-family: var(--font-heading);
+  z-index: 3;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+}
+
+.slideshow-dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 4;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.dot.active {
+  background: var(--luxury-gold);
+  transform: scale(1.3);
+}
+
+.slideshow-controls {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  transform: translateY(-50%);
+  z-index: 4;
+}
+
+.slideshow-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.slideshow-btn:hover {
+  background: rgba(0, 0, 0, 0.9);
+  transform: scale(1.1);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .slide-caption {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
+  .slideshow-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+}
 
     /* View Bride Gallery Button */
     .view-bride-btn {
