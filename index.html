@@ -18,7 +18,7 @@
       --primary: #a0522d;
       --secondary: #d4af37;
       --accent: #e67e22;
-      --light: #fdfdfd; /* Light white background */
+      --light: #fdfdfd;
       --dark: #4b2e2e;
       --text: #333;
       --white: #ffffff;
@@ -37,17 +37,17 @@
       scroll-behavior: smooth;
       font-family: 'Georgia', 'Times New Roman', Times, serif;
       overflow-x: hidden;
-      background-color: var(--light); /* Light background */
+      background-color: var(--light);
     }
 
     body {
       color: var(--text);
       padding-top: 60px;
       position: relative;
-      background-color: var(--light); /* Light background */
+      background-color: var(--light);
     }
 
-    /* Splash Screen - Enhanced */
+    /* Splash Screen */
     #preloader {
       position: fixed;
       top: 0;
@@ -126,7 +126,6 @@
       z-index: 0;
     }
 
-    /* Sparkle effect */
     .sparkle {
       position: absolute;
       width: 8px;
@@ -189,7 +188,7 @@
       100% { background-position: 200% 0; }
     }
 
-    /* Top Header - Enhanced */
+    /* Top Header */
     header {
       position: fixed;
       top: 0;
@@ -263,7 +262,7 @@
       transform: scale(1.1);
     }
 
-    /* Bottom Navigation - Enhanced */
+    /* Bottom Navigation */
     .bottom-nav {
       position: fixed;
       bottom: 0;
@@ -335,7 +334,7 @@
       display: block;
     }
 
-    /* Common Section Styles - Box-free design */
+    /* Common Section Styles */
     .section {
       padding: 20px;
       margin-bottom: 20px;
@@ -378,7 +377,7 @@
       line-height: 1.6;
     }
 
-    /* Home Tab - Enhanced */
+    /* Home Tab */
     .welcome-box {
       width: 100%;
       margin: 0 auto 20px;
@@ -437,7 +436,7 @@
       border-radius: 15px;
     }
 
-    /* NEW: Elegant Text Section */
+    /* Elegant Text Section */
     .elegant-text-section {
       text-align: center;
       padding: 30px 20px;
@@ -486,16 +485,16 @@
       font-style: italic;
     }
 
-    /* Featured Designs Slideshow */
+    /* Featured Designs Slideshow - IMPROVED FOR MOBILE */
     .slideshow-container {
       position: relative;
       width: 100%;
-      height: 380px;
       margin: 25px auto 15px;
       border-radius: 15px;
       overflow: hidden;
       box-shadow: 0 15px 35px rgba(0,0,0,0.15);
       transition: all 0.4s;
+      aspect-ratio: 4/3;
     }
     
     .slideshow-container:hover {
@@ -864,7 +863,7 @@
       line-height: 1.7;
     }
     
-    /* Certifications Section */
+    /* Certifications Section - UPDATED */
     .certifications-container {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -911,15 +910,7 @@
       font-style: italic;
     }
     
-    /* Updated Certification Titles */
-    .cert-title {
-      font-size: 1.1rem;
-      color: var(--luxury-maroon);
-      font-weight: bold;
-      margin-bottom: 5px;
-      font-family: var(--font-heading);
-    }
-    
+    /* Updated Certification Titles - HEADING REMOVED */
     .cert-description {
       font-size: 0.85rem;
       color: #666;
@@ -1103,11 +1094,14 @@
       height: auto;
       text-align: center;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .lightbox-media {
       max-width: 100%;
-      max-height: 85vh;
+      max-height: calc(85vh - 70px); /* Space for zoom controls */
       display: block;
       border-radius: 10px;
       margin: 0 auto;
@@ -1147,20 +1141,18 @@
       background: rgba(0,0,0,0.8);
     }
     
-    /* Enhanced zoom controls positioning */
+    /* Enhanced zoom controls positioning - UPDATED */
     .lightbox-zoom-controls {
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
       display: flex;
       gap: 10px;
-      z-index: 1001;
+      margin-top: 15px;
       background: rgba(0,0,0,0.7);
       padding: 10px;
       border-radius: 30px;
       transition: opacity 0.3s;
-      opacity: 0.7;
+      opacity: 0.8;
+      position: relative;
+      z-index: 1001;
     }
     
     .lightbox-zoom-controls:hover {
@@ -1327,7 +1319,7 @@
       }
       
       .slideshow-container {
-        height: 450px;
+        aspect-ratio: 16/9;
       }
       
       .gallery-grid,
@@ -1356,7 +1348,7 @@
     
     @media (min-width: 992px) {
       .slideshow-container {
-        height: 500px;
+        aspect-ratio: 16/9;
       }
       
       .gallery-grid,
@@ -1388,7 +1380,7 @@
     </div>
   </div>
 
-  <!-- Top Header - Enhanced -->
+  <!-- Top Header -->
   <header>
     <div class="brand-area">
       <div class="logo-symbol">
@@ -1412,7 +1404,7 @@
 
   <!-- Main Content - Tabs -->
   <div id="main-content" style="display:none;">
-    <!-- Home Tab - Enhanced -->
+    <!-- Home Tab -->
     <div id="home-tab" class="tab-content active">
       <div class="welcome-box">
         <video autoplay muted loop playsinline id="w-video" loading="lazy">
@@ -1425,7 +1417,7 @@
         </div>
       </div>
 
-      <!-- NEW: Elegant Text Section -->
+      <!-- Elegant Text Section -->
       <div class="elegant-text-section">
         <p class="elegant-text">
           "Our team is highly skilled in bridal and festive Mehendi designs, creating timeless patterns that celebrate tradition with modern elegance."
@@ -1470,7 +1462,7 @@
           </div>
         </div>
         
-        <!-- Redesigned View Bride Gallery Button -->
+        <!-- View Bride Gallery Button -->
         <a href="#" class="view-bride-btn" onclick="switchTab('bride-tab')">
           View Bride Gallery <i class="fas fa-arrow-right"></i>
         </a>
@@ -1483,7 +1475,6 @@
         <h2><i class="fas fa-crown"></i> Bridal Collection</h2>
         <p>Exquisite designs crafted especially for the bride</p>
         <div class="gallery-grid">
-          <!-- Gallery items remain the same -->
           <div class="gallery-item">
             <img src="images/H2.jpeg" alt="Bridal design 1" onclick="zoomImage(this, 'bride')">
           </div>
@@ -1583,7 +1574,6 @@
         <h2><i class="fas fa-users"></i> Guest Designs</h2>
         <p>Beautiful designs for all occasions</p>
         <div class="gallery-grid">
-          <!-- Gallery items remain the same -->
           <div class="gallery-item">
             <img src="guest/G1.jpeg" alt="Guest design 1" onclick="zoomImage(this, 'guests')">
           </div>
@@ -1654,7 +1644,7 @@
       </div>
     </div>
 
-    <!-- Colours Tab - Updated to single column -->
+    <!-- Colours Tab -->
     <div id="colours-tab" class="tab-content">
       <div class="section">
         <h2><i class="fas fa-palette"></i> Our Colour Collection</h2>
@@ -1750,34 +1740,29 @@
         </div>
       </div>
       
-      <!-- Certifications Section - Updated -->
+      <!-- Certifications Section - UPDATED -->
       <div class="section">
         <h2><i class="fas fa-certificate"></i> Certifications</h2>
         <div class="certifications-container">
           <div class="certification-card">
             <i class="fas fa-award"></i>
-            <div class="cert-title">Certification</div>
             <div class="cert-description">Certified in premium wedding and festive Mehendi artistry</div>
           </div>
           <div class="certification-card">
             <i class="fas fa-medal"></i>
-            <div class="cert-title">Mehendi Excellence</div>
             <div class="cert-description">Awarded for consistency and creativity in Mehendi designs</div>
           </div>
           <div class="certification-card">
             <i class="fas fa-star"></i>
-            <div class="cert-title">Bridal Specialist</div>
             <div class="cert-description">Recognized for expertise in bridal Mehendi artistry</div>
           </div>
           
           <div class="certification-card">
             <i class="fas fa-trophy"></i>
-            <div class="cert-title">Design Innovation</div>
             <div class="cert-description">Pioneering modern Mehendi design techniques</div>
           </div>
           <div class="certification-card">
             <i class="fas fa-certificate"></i>
-            <div class="cert-title">Natural Ingredients</div>
             <div class="cert-description">Certified for using only natural, skin-safe henna</div>
           </div>
         </div>
@@ -1792,20 +1777,20 @@
             <div class="faq-answer">It's recommended to book at least 1-2 months in advance for weddings to ensure availability. For other events, 2-3 weeks notice is usually sufficient.</div>
           </div>
           <div class="faq-item">
-            <div class="faq-question">Do you offer outstation mehndi services?<i class="fas fa-chevron-down"></i></div>
+            <div class="faq-question">Do you take Mehendi bookings outside Lucknow?<i class="fas fa-chevron-down"></i></div>
             <div class="faq-answer">Yes, we provide services throughout Lucknow. Travel charges may apply for locations outside Lucknow city limits.</div>
           </div>
           <div class="faq-item">
-            <div class="faq-question">What products do you use?<i class="fas fa-chevron-down"></i></div>
-            <div class="faq-answer">We use only natural, chemical-free henna cones made from fresh ingredients to ensure deep, long-lasting color and skin safety.</div>
+            <div class="faq-question">Is the advance payment refundable?<i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer">No, the advance is not refundable as it locks your date and time and confirms your booking.</div>
           </div>
           <div class="faq-item">
             <div class="faq-question">How long does the application take?<i class="fas fa-chevron-down"></i></div>
             <div class="faq-answer">Bridal designs typically take 3-5 hours depending on complexity. Guest designs usually take 30-90 minutes per person.</div>
           </div>
           <div class="faq-item">
-            <div class="faq-question">What should I do for better color?<i class="fas fa-chevron-down"></i></div>
-            <div class="faq-answer">Keep the design covered with lemon-sugar solution for 1-2 hours after application. Avoid water contact for 12 hours for best results.</div>
+            <div class="faq-question">What products do you use?<i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer">We use only natural, chemical-free henna cones made from fresh ingredients to ensure deep, long-lasting color and skin safety.</div>
           </div>
         </div>
       </div>
@@ -1868,7 +1853,6 @@
           <a href="#" target="_blank">
             <i class="fab fa-facebook"></i>
           </a>
-          <!-- Pinterest link added -->
           <a href="https://www.pinterest.com/deepamehendiartist" target="_blank">
             <i class="fab fa-pinterest"></i>
           </a>
@@ -2039,7 +2023,7 @@
         }
       });
       
-      // Scroll to top - ensure gallery starts from top
+      // Scroll to top
       window.scrollTo(0, 0);
       
       // Trigger animations for new tab
@@ -2121,7 +2105,6 @@
       const lightboxImg = document.getElementById('lightbox-img');
       lightboxImg.src = img.src;
       lightboxImg.style.display = 'block';
-      document.querySelector('.lightbox-zoom-controls').style.display = 'flex';
       
       // Reset zoom and position
       lightboxScale = 1;
@@ -2194,17 +2177,15 @@
       resetZoom();
     }
     
-    // Zoom functionality
+    // Zoom functionality - IMPROVED
     function zoomIn() {
-      lightboxScale += 0.2;
+      lightboxScale = Math.min(lightboxScale + 0.25, 3);
       updateLightboxTransform();
     }
     
     function zoomOut() {
-      if(lightboxScale > 0.5) {
-        lightboxScale -= 0.2;
-        updateLightboxTransform();
-      }
+      lightboxScale = Math.max(lightboxScale - 0.25, 1);
+      updateLightboxTransform();
     }
     
     function resetZoom() {
@@ -2272,7 +2253,7 @@
       lightboxImg.style.cursor = lightboxScale > 1 ? 'grab' : 'default';
     }
     
-    // Pinch-to-zoom functionality
+    // Pinch-to-zoom functionality - LESS SENSITIVE
     let initialDistance = null;
     
     lightboxImg.addEventListener('touchstart', handleTouchStart, { passive: false });
@@ -2296,11 +2277,12 @@
           e.touches[0].clientY - e.touches[1].clientY
         );
         
-        const scaleChange = currentDistance / initialDistance;
+        // Less sensitive zoom with smaller increments
+        const scaleChange = (currentDistance - initialDistance) * 0.005 + 1;
         const newScale = lightboxScale * scaleChange;
         
         // Limit zoom scale
-        if (newScale > 0.5 && newScale < 5) {
+        if (newScale > 0.5 && newScale < 3) {
           lightboxScale = newScale;
           updateLightboxTransform();
         }
