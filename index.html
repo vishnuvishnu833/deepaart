@@ -489,7 +489,7 @@
 .slideshow-container {
   position: relative;
   width: 100%;
-  height: 100vh; /* Full screen height */
+  height: 80vh; /* 80% screen height for better balance */
   margin: 0;
   border-radius: 0;
   overflow: hidden;
@@ -518,7 +518,7 @@
 .slide img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Full fill */
+  object-fit: cover;
   transition: transform 8s ease;
 }
 
@@ -597,6 +597,9 @@
 
 /* Mobile adjustments */
 @media (max-width: 768px) {
+  .slideshow-container {
+    height: 70vh; /* Smaller on mobile */
+  }
   .slide-caption {
     font-size: 0.9rem;
     padding: 8px;
@@ -611,6 +614,7 @@
     font-size: 1rem;
   }
 }
+
 
     /* View Bride Gallery Button */
     .view-bride-btn {
