@@ -188,142 +188,143 @@
       100% { background-position: 200% 0; }
     }
 
-    /* Top Header */header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: var(--white);
-  padding: 8px 12px;
-  z-index: 900;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 60px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-  flex-wrap: nowrap;
-  white-space: nowrap;
-  overflow: hidden;
-}
+    /* Top Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: var(--white);
+      padding: 8px 12px;
+      z-index: 900;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 60px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      flex-wrap: nowrap;
+      white-space: nowrap;
+      overflow: hidden;
+    }
 
-.brand-area {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex: 1 1 auto;
-  min-width: 0;
-}
+    .brand-area {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1 1 auto;
+      min-width: 0;
+    }
 
-.brand-area h2 {
-  font-family: var(--font-heading);
-  font-size: 1.2rem;
-  color: var(--luxury-maroon);
-  line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-weight: 600;
-}
+    .brand-area h2 {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      color: var(--luxury-maroon);
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-weight: 600;
+    }
 
-.brand-area p {
-  font-size: 0.65rem;
-  color: var(--luxury-gold);
-  font-style: italic;
-  line-height: 1;
-}
+    .brand-area p {
+      font-size: 0.65rem;
+      color: var(--luxury-gold);
+      font-style: italic;
+      line-height: 1;
+    }
 
-.location {
-  font-size: 0.75rem;
-  padding: 6px 10px;
-  color: var(--dark);
-  font-weight: bold;
-  font-family: var(--font-heading);
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  flex-shrink: 0;
-}
+    .location {
+      font-size: 0.75rem;
+      padding: 6px 10px;
+      color: var(--dark);
+      font-weight: bold;
+      font-family: var(--font-heading);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      flex-shrink: 0;
+    }
 
-.header-whatsapp {
-  background: linear-gradient(135deg, var(--whatsapp-green), #128C7E);
-  color: white;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.4rem;
-  margin-left: 10px;
-  flex-shrink: 0;
-  transition: all 0.3s;
-}
+    .header-whatsapp {
+      background: linear-gradient(135deg, var(--whatsapp-green), #128C7E);
+      color: white;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.4rem;
+      margin-left: 10px;
+      flex-shrink: 0;
+      transition: all 0.3s;
+    }
 
-.header-whatsapp:hover {
-  transform: scale(1.1);
-}
+    .header-whatsapp:hover {
+      transform: scale(1.1);
+    }
 
-/* Bottom Navigation */
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: var(--white);
-  display: flex;
-  justify-content: space-around;
-  z-index: 900;
-  padding: 5px 0;
-  height: 70px;
-  box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
-  border-top: 1px solid rgba(0,0,0,0.05);
-}
+    /* Bottom Navigation */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: var(--white);
+      display: flex;
+      justify-content: space-around;
+      z-index: 900;
+      padding: 5px 0;
+      height: 70px;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+      border-top: 1px solid rgba(0,0,0,0.05);
+    }
 
-.nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  color: #777;
-  font-size: 0.7rem;
-  padding: 8px 5px;
-  width: 16.66%;
-  transition: all 0.3s;
-  position: relative;
-  overflow: hidden;
-}
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #777;
+      font-size: 0.7rem;
+      padding: 8px 5px;
+      width: 16.66%;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
 
-.nav-item.active {
-  color: var(--luxury-gold);
-}
+    .nav-item.active {
+      color: var(--luxury-gold);
+    }
 
-.nav-item i {
-  font-size: 1.3rem;
-  margin-bottom: 3px;
-  transition: all 0.3s;
-}
+    .nav-item i {
+      font-size: 1.3rem;
+      margin-bottom: 3px;
+      transition: all 0.3s;
+    }
 
-.nav-item span {
-  font-size: 0.65rem;
-  transition: all 0.3s;
-}
+    .nav-item span {
+      font-size: 0.65rem;
+      transition: all 0.3s;
+    }
 
-.nav-item.active::before {
-  content: '';
-  position: absolute;
-  top: -5px;
-  width: 60%;
-  height: 3px;
-  background: var(--luxury-gold);
-  border-radius: 2px;
-}
+    .nav-item.active::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      width: 60%;
+      height: 3px;
+      background: var(--luxury-gold);
+      border-radius: 2px;
+    }
 
-.nav-item:hover i {
-  transform: translateY(-5px);
-  color: var(--luxury-gold);
-}
+    .nav-item:hover i {
+      transform: translateY(-5px);
+      color: var(--luxury-gold);
+    }
 
     /* Tab Content */
     .tab-content {
@@ -379,6 +380,27 @@
       color: #555;
       margin-bottom: 15px;
       line-height: 1.6;
+    }
+
+    /* Full-width image container */
+    .full-width-image {
+      width: 100%;
+      height: 15vh;
+      margin: 20px 0;
+      overflow: hidden;
+      border-radius: 5px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .full-width-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .full-width-image:hover img {
+      transform: scale(1.05);
     }
 
     /* Home Tab */
@@ -1480,6 +1502,11 @@
           View Bride Gallery <i class="fas fa-arrow-right"></i>
         </a>
       </div>
+      
+      <!-- Full-width image below home section -->
+      <div class="full-width-image">
+        <img src="images/image-H5.jpeg" alt="Bridal Mehendi Design">
+      </div>
     </div>
 
     <!-- Bride Tab -->
@@ -1606,6 +1633,11 @@
         <div class="next-section">
           <button class="next-section-btn" onclick="switchTab('guests-tab')">View Guest Designs</button>
         </div>
+      </div>
+      
+      <!-- Full-width image below bride section -->
+      <div class="full-width-image">
+        <img src="images/image-H6.jpeg" alt="Bridal Hand Design">
       </div>
     </div>
 
@@ -1750,6 +1782,11 @@
           <button class="next-section-btn" onclick="switchTab('colours-tab')">View Colour Collection</button>
         </div>
       </div>
+      
+      <!-- Full-width image below guests section -->
+      <div class="full-width-image">
+        <img src="images/image-H7.jpeg" alt="Guest Mehendi Design">
+      </div>
     </div>
 
     <!-- Colours Tab -->
@@ -1791,6 +1828,11 @@
           <button class="next-section-btn" onclick="switchTab('prices-tab')">View Prices</button>
         </div>
       </div>
+      
+      <!-- Full-width image below colours section -->
+      <div class="full-width-image">
+        <img src="images/image-H8.jpeg" alt="Mehendi Colour Collection">
+      </div>
     </div>
 
     <!-- Prices Tab -->
@@ -1821,6 +1863,12 @@
         <p>Book your wedding package and get free mehendi for the mother of the bride!</p>
         <p>Refer a friend and get 10% off your next appointment.</p>
       </div>
+      
+      <!-- Full-width image below prices section -->
+      <div class="full-width-image">
+        <img src="images/image-H9.jpeg" alt="Mehendi Pricing">
+      </div>
+      
       <div class="next-section">
         <button class="next-section-btn" onclick="switchTab('about-tab')">View About</button>
       </div>
@@ -1933,6 +1981,11 @@
             </video>
           </div>
         </div>
+      </div>
+      
+      <!-- Full-width image below about section -->
+      <div class="full-width-image">
+        <img src="images/image-H10.jpeg" alt="Mehendi Artist at Work">
       </div>
       
       <!-- Footer -->
