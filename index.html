@@ -994,6 +994,7 @@
       display: flex;
       justify-content: center;
       margin: 25px 0 15px;
+      position: relative;
     }
     
     .next-section-btn {
@@ -1008,6 +1009,29 @@
       cursor: pointer;
       transition: all 0.3s;
       box-shadow: 0 5px 15px rgba(128, 0, 32, 0.3);
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+    
+    /* NEW: Rotating golden light effect */
+    .next-section-btn::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      left: -6px;
+      right: -6px;
+      bottom: -6px;
+      background: linear-gradient(45deg, #ffd700, #ff9900, #ffd700, #ff9900);
+      background-size: 200% 200%;
+      border-radius: 35px;
+      z-index: -1;
+      animation: rotateLight 2.5s linear infinite;
+    }
+    
+    @keyframes rotateLight {
+      0% { transform: rotate(0deg); background-position: 0% 0%; }
+      100% { transform: rotate(360deg); background-position: 100% 100%; }
     }
     
     .next-section-btn:hover {
@@ -1194,9 +1218,9 @@
     
     .zoom-btn {
       pointer-events: auto;
-      background: rgba(0,0,0,0.5);
-      color: white;
-      border: none;
+      background: white;
+      color: red;
+      border: 2px solid red;
       width: 40px;
       height: 40px;
       border-radius: 50%;
@@ -1205,11 +1229,24 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background 0.3s;
+      transition: all 0.3s;
+      font-weight: bold;
+    }
+    
+    .reset-btn {
+      width: auto;
+      padding: 0 15px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: bold;
+      background: white;
+      color: red;
+      border: 2px solid red;
     }
     
     .zoom-btn:hover {
-      background: rgba(0,0,0,0.8);
+      background: #ffcccc;
+      transform: scale(1.1);
     }
 
     .lightbox-close {
@@ -1962,7 +1999,7 @@
       <div class="lightbox-zoom-controls">
         <button class="zoom-btn" onclick="zoomIn()">+</button>
         <button class="zoom-btn" onclick="zoomOut()">-</button>
-        <button class="zoom-btn" onclick="resetZoom()"><i class="fas fa-sync"></i></button>
+        <button class="zoom-btn reset-btn" onclick="resetZoom()">Reset Zoom</button>
       </div>
     </div>
     <div class="lightbox-controls">
