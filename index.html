@@ -382,25 +382,23 @@
       line-height: 1.6;
     }
 
-    /* Full-width image container */
-    .full-width-image {
+    /* NEW: Footer Image Section */
+    .footer-image-section {
       width: 100%;
-      height: 15vh;
-      margin: 20px 0;
+      height: 18vh;
       overflow: hidden;
-      border-radius: 5px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      position: relative;
+      border-radius: 0;
+      margin-top: 30px;
+      margin-bottom: -20px;
+      box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
     }
 
-    .full-width-image img {
+    .footer-image {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-
-    .full-width-image:hover img {
-      transform: scale(1.05);
+      display: block;
     }
 
     /* Home Tab */
@@ -1503,9 +1501,9 @@
         </a>
       </div>
       
-      <!-- Full-width image below home section -->
-      <div class="full-width-image">
-        <img src="images/H5.jpeg" alt="Bridal Mehendi Design">
+      <!-- Footer Image -->
+      <div class="footer-image-section">
+        <img src="images/image-H5.jpeg" alt="Bridal Mehendi Design" class="footer-image">
       </div>
     </div>
 
@@ -1590,54 +1588,15 @@
           <div class="gallery-item">
             <img src="images/L9.jpeg" alt="Bridal design 25" onclick="zoomImage(this, 'bride')">
           </div>
-          <div class="gallery-item">
-  <img src="images/H18.jpeg" alt="Bridal design 18" onclick="zoomImage(this, 'bride')">
-</div>
-<div class="gallery-item">
-  <img src="images/H19.jpeg" alt="Bridal design 19" onclick="zoomImage(this, 'bride')">
-</div>
-<div class="gallery-item">
-  <img src="images/H20.jpeg" alt="Bridal design 20" onclick="zoomImage(this, 'bride')">
-</div>
-<div class="gallery-item">
-  <img src="images/H21.jpeg" alt="Bridal design 21" onclick="zoomImage(this, 'bride')">
-</div>
-<div class="gallery-item">
-  <img src="images/H22.jpeg" alt="Bridal design 22" onclick="zoomImage(this, 'bride')">
-</div>
-<div class="gallery-item">
-  <img src="images/H23.jpeg" alt="Bridal design 23" onclick="zoomImage(this, 'bride')">
-</div>
-<div class="gallery-item">
-  <img src="images/H24.jpeg" alt="Bridal design 24" onclick="zoomImage(this, 'bride')">
-</div>
-<div class="gallery-item">
-  <img src="images/H25.jpeg" alt="Bridal design 25" onclick="zoomImage(this, 'bride')">
-</div>
-<div class="gallery-item">
-  <img src="images/H26.jpeg" alt="Bridal design 26" onclick="zoomImage(this, 'bride')">
-</div>
-<div class="gallery-item">
-  <img src="images/H27.jpeg" alt="Bridal design 27" onclick="zoomImage(this, 'bride')">
-</div>
-<div class="gallery-item">
-  <img src="images/H28.jpeg" alt="Bridal design 28" onclick="zoomImage(this, 'bride')">
-</div>
-<div class="gallery-item">
-  <img src="images/H29.jpeg" alt="Bridal design 29" onclick="zoomImage(this, 'bride')">
-</div>
-<div class="gallery-item">
-  <img src="images/H30.jpeg" alt="Bridal design 30" onclick="zoomImage(this, 'bride')">
-</div>
         </div>
         <div class="next-section">
           <button class="next-section-btn" onclick="switchTab('guests-tab')">View Guest Designs</button>
         </div>
       </div>
       
-      <!-- Full-width image below bride section -->
-      <div class="full-width-image">
-        <img src="images/H6.jpeg" alt="Bridal Hand Design">
+      <!-- Footer Image -->
+      <div class="footer-image-section">
+        <img src="images/image-H6.jpeg" alt="Bridal Hand Design" class="footer-image">
       </div>
     </div>
 
@@ -1685,31 +1644,7 @@
           </div>
           <div class="gallery-item">
             <img src="guest/G13.jpeg" alt="Guest design 13" onclick="zoomImage(this, 'guests')">
-          </div><div class="gallery-item">
-  <img src="guest/S1.jpeg" alt="Guest design 1" onclick="zoomImage(this, 'guests')">
-</div>
-<div class="gallery-item">
-  <img src="guest/S2.jpeg" alt="Guest design 2" onclick="zoomImage(this, 'guests')">
-</div>
-<div class="gallery-item">
-  <img src="guest/S3.jpeg" alt="Guest design 3" onclick="zoomImage(this, 'guests')">
-</div>
-<div class="gallery-item">
-  <img src="guest/S4.jpeg" alt="Guest design 4" onclick="zoomImage(this, 'guests')">
-</div>
-<div class="gallery-item">
-  <img src="guest/S5.jpeg" alt="Guest design 5" onclick="zoomImage(this, 'guests')">
-</div>
-<div class="gallery-item">
-  <img src="guest/S6.jpeg" alt="Guest design 6" onclick="zoomImage(this, 'guests')">
-</div>
-<div class="gallery-item">
-  <img src="guest/S7.jpeg" alt="Guest design 7" onclick="zoomImage(this, 'guests')">
-</div>
-<div class="gallery-item">
-  <img src="guest/S8.jpeg" alt="Guest design 8" onclick="zoomImage(this, 'guests')">
-</div>
-
+          </div>
           <div class="gallery-item">
             <img src="guest/G14.jpeg" alt="Guest design 14" onclick="zoomImage(this, 'guests')">
           </div>
@@ -1746,46 +1681,15 @@
           <div class="gallery-item">
             <img src="guest/G25.jpeg" alt="Guest design 25" onclick="zoomImage(this, 'guests')">
           </div>
-          <div class="gallery-item">
-  <img src="guest/G26.jpeg" alt="Guest design 26" onclick="zoomImage(this, 'guests')">
-</div>
-<div class="gallery-item">
-  <img src="guest/G27.jpeg" alt="Guest design 27" onclick="zoomImage(this, 'guests')">
-</div>
-<div class="gallery-item">
-  <img src="guest/G28.jpeg" alt="Guest design 28" onclick="zoomImage(this, 'guests')">
-</div>
-<div class="gallery-item">
-  <img src="guest/G29.jpeg" alt="Guest design 29" onclick="zoomImage(this, 'guests')">
-</div>
-<div class="gallery-item">
-  <img src="guest/G30.jpeg" alt="Guest design 30" onclick="zoomImage(this, 'guests')">
-</div>
-<div class="gallery-item">
-  <img src="guest/G31.jpeg" alt="Guest design 31" onclick="zoomImage(this, 'guests')">
-</div>
-<div class="gallery-item">
-  <img src="guest/G32.jpeg" alt="Guest design 32" onclick="zoomImage(this, 'guests')">
-</div>
-<div class="gallery-item">
-  <img src="guest/G33.jpeg" alt="Guest design 33" onclick="zoomImage(this, 'guests')">
-</div>
-<div class="gallery-item">
-  <img src="guest/G34.jpeg" alt="Guest design 34" onclick="zoomImage(this, 'guests')">
-</div>
-<div class="gallery-item">
-  <img src="guest/G35.jpeg" alt="Guest design 35" onclick="zoomImage(this, 'guests')">
-</div>
-
         </div>
         <div class="next-section">
           <button class="next-section-btn" onclick="switchTab('colours-tab')">View Colour Collection</button>
         </div>
       </div>
       
-      <!-- Full-width image below guests section -->
-      <div class="full-width-image">
-        <img src="images/H7.jpeg" alt="Guest Mehendi Design">
+      <!-- Footer Image -->
+      <div class="footer-image-section">
+        <img src="images/image-H7.jpeg" alt="Guest Mehendi Design" class="footer-image">
       </div>
     </div>
 
@@ -1829,9 +1733,9 @@
         </div>
       </div>
       
-      <!-- Full-width image below colours section -->
-      <div class="full-width-image">
-        <img src="images/image-H8.jpeg" alt="Mehendi Colour Collection">
+      <!-- Footer Image -->
+      <div class="footer-image-section">
+        <img src="images/image-H8.jpeg" alt="Mehendi Colour Collection" class="footer-image">
       </div>
     </div>
 
@@ -1864,13 +1768,13 @@
         <p>Refer a friend and get 10% off your next appointment.</p>
       </div>
       
-      <!-- Full-width image below prices section -->
-      <div class="full-width-image">
-        <img src="images/H9.jpeg" alt="Mehendi Pricing">
-      </div>
-      
       <div class="next-section">
         <button class="next-section-btn" onclick="switchTab('about-tab')">View About</button>
+      </div>
+      
+      <!-- Footer Image -->
+      <div class="footer-image-section">
+        <img src="images/image-H9.jpeg" alt="Mehendi Pricing" class="footer-image">
       </div>
     </div>
 
@@ -1983,9 +1887,9 @@
         </div>
       </div>
       
-      <!-- Full-width image below about section -->
-      <div class="full-width-image">
-        <img src="images/H10.jpeg" alt="Mehendi Artist at Work">
+      <!-- Footer Image -->
+      <div class="footer-image-section">
+        <img src="images/image-H10.jpeg" alt="Mehendi Artist at Work" class="footer-image">
       </div>
       
       <!-- Footer -->
