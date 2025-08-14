@@ -47,44 +47,6 @@
       background-color: var(--light);
     }
 
-    /* NEW: Golden Border Animation */
-    .golden-border-btn {
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-    }
-    
-    .golden-border-btn::before {
-      content: '';
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      background: linear-gradient(45deg, 
-        transparent, transparent 25%, 
-        var(--luxury-gold) 25%, var(--luxury-gold) 50%,
-        transparent 50%, transparent 75%,
-        var(--luxury-gold) 75%, var(--luxury-gold)
-      );
-      background-size: 400% 400%;
-      border-radius: inherit;
-      z-index: -1;
-      animation: goldenBorderAnimation 3s linear infinite;
-      opacity: 0.8;
-      transition: opacity 0.3s;
-    }
-    
-    .golden-border-btn:hover::before {
-      opacity: 1;
-      animation-duration: 4s;
-    }
-    
-    @keyframes goldenBorderAnimation {
-      0% { background-position: 0% 0%; }
-      100% { background-position: 100% 100%; }
-    }
-    
     /* Splash Screen */
     #preloader {
       position: fixed;
@@ -1078,6 +1040,64 @@
       box-shadow: 0 8px 20px rgba(128, 0, 32, 0.4);
     }
     
+    /* NEW: Golden Rotating Border Animation */
+    .golden-border-animation {
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      right: -3px;
+      bottom: -3px;
+      border-radius: 50px;
+      overflow: hidden;
+      z-index: -1;
+    }
+    
+    .golden-border-animation::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(
+        transparent,
+        var(--luxury-gold),
+        transparent,
+        var(--luxury-gold),
+        transparent
+      );
+      animation: rotateBorder 3s linear infinite;
+    }
+    
+    .next-section-btn .golden-border-animation::before {
+      animation-duration: 3s;
+    }
+    
+    .view-bride-btn .golden-border-animation::before {
+      animation-duration: 3.5s;
+    }
+    
+    @keyframes rotateBorder {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    
+    .next-section-btn:hover .golden-border-animation::before,
+    .view-bride-btn:hover .golden-border-animation::before {
+      animation-duration: 4s;
+    }
+    
+    .next-section-btn .golden-border-animation::after,
+    .view-bride-btn .golden-border-animation::after {
+      content: '';
+      position: absolute;
+      inset: 2px;
+      background: linear-gradient(135deg, var(--luxury-maroon), var(--luxury-gold));
+      border-radius: 50px;
+    }
+
     /* Footer */
     .footer {
       padding: 40px 15px 30px;
@@ -1572,8 +1592,9 @@
         </div>
         
         <!-- View Bride Gallery Button with new animation -->
-        <a href="#" class="view-bride-btn golden-border-btn" onclick="switchTab('bride-tab')">
-          View Bride Gallery <i class="fas fa-arrow-right"></i>
+        <a href="#" class="view-bride-btn" onclick="switchTab('bride-tab')">
+          <span>View Bride Gallery <i class="fas fa-arrow-right"></i></span>
+          <div class="golden-border-animation"></div>
         </a>
       </div>
       
@@ -1666,7 +1687,10 @@
           </div>
         </div>
         <div class="next-section">
-          <button class="next-section-btn golden-border-btn" onclick="switchTab('guests-tab')">View Guest Designs</button>
+          <button class="next-section-btn" onclick="switchTab('guests-tab')">
+            <span>View Guest Designs</span>
+            <div class="golden-border-animation"></div>
+          </button>
         </div>
       </div>
       
@@ -1759,7 +1783,10 @@
           </div>
         </div>
         <div class="next-section">
-          <button class="next-section-btn golden-border-btn" onclick="switchTab('colours-tab')">View Colour Collection</button>
+          <button class="next-section-btn" onclick="switchTab('colours-tab')">
+            <span>View Colour Collection</span>
+            <div class="golden-border-animation"></div>
+          </button>
         </div>
       </div>
       
@@ -1805,7 +1832,10 @@
           </div>
         </div>
         <div class="next-section">
-          <button class="next-section-btn golden-border-btn" onclick="switchTab('prices-tab')">View Prices</button>
+          <button class="next-section-btn" onclick="switchTab('prices-tab')">
+            <span>View Prices</span>
+            <div class="golden-border-animation"></div>
+          </button>
         </div>
       </div>
       
@@ -1845,7 +1875,10 @@
       </div>
       
       <div class="next-section">
-        <button class="next-section-btn golden-border-btn" onclick="switchTab('about-tab')">View About</button>
+        <button class="next-section-btn" onclick="switchTab('about-tab')">
+          <span>View About</span>
+          <div class="golden-border-animation"></div>
+        </button>
       </div>
       
       <!-- Footer Image -->
@@ -2142,7 +2175,7 @@
       dot.addEventListener('click', () => goToSlide(index));
     });
     
-    // Tab switching functionality - ENHANCED TO ALWAYS START AT TOP
+    // Tab switching functionality - ENHANCED TO ALWAYS START AT TOP WITH HEADER OFFSET
     function switchTab(tabId) {
       // Hide all tab contents
       document.querySelectorAll('.tab-content').forEach(tab => {
@@ -2161,16 +2194,23 @@
         }
       });
       
-      // Calculate header height for proper offset
-      const headerHeight = document.querySelector('header').offsetHeight;
-      
       // Scroll to top of the tab content with header offset
+      const headerHeight = 60; // Height of the fixed header
+      const scrollPosition = headerHeight;
+      
+      // Scroll immediately to top (with header offset)
+      window.scrollTo({
+        top: scrollPosition,
+        behavior: 'smooth'
+      });
+      
+      // Scroll again after a short delay to ensure correct position
       setTimeout(() => {
         window.scrollTo({
-          top: targetTab.offsetTop - headerHeight,
+          top: scrollPosition,
           behavior: 'smooth'
         });
-      }, 1800); // Delay to ensure DOM/layout is ready
+      }, 300);
       
       // Trigger animations for new tab
       setTimeout(() => {
