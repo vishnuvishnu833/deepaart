@@ -47,6 +47,44 @@
       background-color: var(--light);
     }
 
+    /* NEW: Golden Border Animation */
+    .golden-border-btn {
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .golden-border-btn::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, 
+        transparent, transparent 25%, 
+        var(--luxury-gold) 25%, var(--luxury-gold) 50%,
+        transparent 50%, transparent 75%,
+        var(--luxury-gold) 75%, var(--luxury-gold)
+      );
+      background-size: 400% 400%;
+      border-radius: inherit;
+      z-index: -1;
+      animation: goldenBorderAnimation 3s linear infinite;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+    
+    .golden-border-btn:hover::before {
+      opacity: 1;
+      animation-duration: 4s;
+    }
+    
+    @keyframes goldenBorderAnimation {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 100% 100%; }
+    }
+    
     /* Splash Screen */
     #preloader {
       position: fixed;
@@ -1534,7 +1572,7 @@
         </div>
         
         <!-- View Bride Gallery Button with new animation -->
-        <a href="#" class="view-bride-btn" onclick="switchTab('bride-tab')">
+        <a href="#" class="view-bride-btn golden-border-btn" onclick="switchTab('bride-tab')">
           View Bride Gallery <i class="fas fa-arrow-right"></i>
         </a>
       </div>
@@ -1628,7 +1666,7 @@
           </div>
         </div>
         <div class="next-section">
-          <button class="next-section-btn" onclick="switchTab('guests-tab')">View Guest Designs</button>
+          <button class="next-section-btn golden-border-btn" onclick="switchTab('guests-tab')">View Guest Designs</button>
         </div>
       </div>
       
@@ -1721,7 +1759,7 @@
           </div>
         </div>
         <div class="next-section">
-          <button class="next-section-btn" onclick="switchTab('colours-tab')">View Colour Collection</button>
+          <button class="next-section-btn golden-border-btn" onclick="switchTab('colours-tab')">View Colour Collection</button>
         </div>
       </div>
       
@@ -1767,7 +1805,7 @@
           </div>
         </div>
         <div class="next-section">
-          <button class="next-section-btn" onclick="switchTab('prices-tab')">View Prices</button>
+          <button class="next-section-btn golden-border-btn" onclick="switchTab('prices-tab')">View Prices</button>
         </div>
       </div>
       
@@ -1807,7 +1845,7 @@
       </div>
       
       <div class="next-section">
-        <button class="next-section-btn" onclick="switchTab('about-tab')">View About</button>
+        <button class="next-section-btn golden-border-btn" onclick="switchTab('about-tab')">View About</button>
       </div>
       
       <!-- Footer Image -->
@@ -2123,11 +2161,16 @@
         }
       });
       
-      // Scroll to top of the tab content
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+      // Calculate header height for proper offset
+      const headerHeight = document.querySelector('header').offsetHeight;
+      
+      // Scroll to top of the tab content with header offset
+      setTimeout(() => {
+        window.scrollTo({
+          top: targetTab.offsetTop - headerHeight,
+          behavior: 'smooth'
+        });
+      }, 1800); // Delay to ensure DOM/layout is ready
       
       // Trigger animations for new tab
       setTimeout(() => {
