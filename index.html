@@ -61,7 +61,7 @@
       font-size: clamp(24px, 8vw, 32px);
       color: var(--dark);
       z-index: 9999;
-      animation: fadeOut 1.5s ease 3.5s forwards; /* Updated delay to 3.5s */
+      animation: fadeOut 1.5s ease 2s forwards;
       overflow: hidden;
     }
 
@@ -2124,16 +2124,24 @@
         }
       });
       
-      // FIX: Reset scroll to top - Improved solution
+      // FIX: Reset scroll to top
       window.scrollTo({
         top: 0,
-        behavior: 'smooth'
+        behavior: 'auto'
       });
       
-      // Ensure gallery animations trigger properly
+      // FIX: Ensure smooth scrolling to top after rendering
+      setTimeout(() => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }, 100);
+      
+      // Trigger animations for new tab
       setTimeout(() => {
         animateGalleryItems();
-      }, 300); // Slightly longer delay to ensure rendering completes
+      }, 100);
     }
     
     // Animate gallery items when tab becomes active
@@ -2494,7 +2502,7 @@
         // Initialize slideshow
         initSlideshow();
         slideInterval = setInterval(nextSlide, 2500);
-      }, 5000); // Increased to 5 seconds (3.5s display + 1.5s fade out)
+      }, 2000); // Reduced to 2 seconds
     });
   </script>
 </body>
