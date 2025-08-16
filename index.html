@@ -61,7 +61,7 @@
       font-size: clamp(24px, 8vw, 32px);
       color: var(--dark);
       z-index: 9999;
-      animation: fadeOut 1.5s ease 3.5s forwards;
+      animation: fadeOut 1.5s ease 2s forwards;
       overflow: hidden;
     }
 
@@ -189,8 +189,8 @@
     }
     
     @keyframes rotateLight {
-      0% { transform: rotate(0deg); background-position: 0% 0%; }
-      100% { transform: rotate(360deg); background-position: 100% 100%; }
+      0% { transform: rotate(0deg); background-position: 0% 50%; }
+      100% { transform: rotate(360deg); background-position: 100% 50%; }
     }
 
     /* Top Header */
@@ -647,8 +647,9 @@
       z-index: 1;
     }
     
-    /* NEW: Rotating golden light effect for View Bride Gallery button */
-    .view-bride-btn::before {
+    /* Enhanced Golden Ring Effect */
+    .view-bride-btn::before,
+    .next-section-btn::before {
       content: '';
       position: absolute;
       top: -6px;
@@ -657,9 +658,16 @@
       bottom: -6px;
       background: linear-gradient(45deg, #ffd700, #ff9900, #ffd700, #ff9900);
       background-size: 200% 200%;
-      border-radius: 55px; /* Adjusted for button size */
+      border-radius: 55px;
       z-index: -1;
       animation: rotateLight 2.5s linear infinite;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+    
+    .view-bride-btn:hover::before,
+    .next-section-btn:hover::before {
+      opacity: 1;
     }
     
     .view-bride-btn:hover {
@@ -1020,84 +1028,11 @@
       overflow: hidden;
     }
     
-    /* Rotating golden light effect */
-    .next-section-btn::before {
-      content: '';
-      position: absolute;
-      top: -6px;
-      left: -6px;
-      right: -6px;
-      bottom: -6px;
-      background: linear-gradient(45deg, #ffd700, #ff9900, #ffd700, #ff9900);
-      background-size: 200% 200%;
-      border-radius: 35px;
-      z-index: -1;
-      animation: rotateLight 2.5s linear infinite;
-    }
-    
     .next-section-btn:hover {
       transform: translateY(-3px);
       box-shadow: 0 8px 20px rgba(128, 0, 32, 0.4);
     }
     
-    /* NEW: Golden Rotating Border Animation */
-    .golden-border-animation {
-      position: absolute;
-      top: -3px;
-      left: -3px;
-      right: -3px;
-      bottom: -3px;
-      border-radius: 50px;
-      overflow: hidden;
-      z-index: -1;
-    }
-    
-    .golden-border-animation::before {
-      content: '';
-      position: absolute;
-      width: 200%;
-      height: 200%;
-      background: conic-gradient(
-        transparent,
-        var(--luxury-gold),
-        transparent,
-        var(--luxury-gold),
-        transparent
-      );
-      animation: rotateBorder 3s linear infinite;
-    }
-    
-    .next-section-btn .golden-border-animation::before {
-      animation-duration: 3s;
-    }
-    
-    .view-bride-btn .golden-border-animation::before {
-      animation-duration: 3.5s;
-    }
-    
-    @keyframes rotateBorder {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-    
-    .next-section-btn:hover .golden-border-animation::before,
-    .view-bride-btn:hover .golden-border-animation::before {
-      animation-duration: 4s;
-    }
-    
-    .next-section-btn .golden-border-animation::after,
-    .view-bride-btn .golden-border-animation::after {
-      content: '';
-      position: absolute;
-      inset: 2px;
-      background: linear-gradient(135deg, var(--luxury-maroon), var(--luxury-gold));
-      border-radius: 50px;
-    }
-
     /* Footer */
     .footer {
       padding: 40px 15px 30px;
@@ -1594,7 +1529,6 @@
         <!-- View Bride Gallery Button with new animation -->
         <a href="#" class="view-bride-btn" onclick="switchTab('bride-tab')">
           <span>View Bride Gallery <i class="fas fa-arrow-right"></i></span>
-          <div class="golden-border-animation"></div>
         </a>
       </div>
       
@@ -1689,7 +1623,6 @@
         <div class="next-section">
           <button class="next-section-btn" onclick="switchTab('guests-tab')">
             <span>View Guest Designs</span>
-            <div class="golden-border-animation"></div>
           </button>
         </div>
       </div>
@@ -1785,7 +1718,6 @@
         <div class="next-section">
           <button class="next-section-btn" onclick="switchTab('colours-tab')">
             <span>View Colour Collection</span>
-            <div class="golden-border-animation"></div>
           </button>
         </div>
       </div>
@@ -1834,7 +1766,6 @@
         <div class="next-section">
           <button class="next-section-btn" onclick="switchTab('prices-tab')">
             <span>View Prices</span>
-            <div class="golden-border-animation"></div>
           </button>
         </div>
       </div>
@@ -1877,7 +1808,6 @@
       <div class="next-section">
         <button class="next-section-btn" onclick="switchTab('about-tab')">
           <span>View About</span>
-          <div class="golden-border-animation"></div>
         </button>
       </div>
       
@@ -2175,7 +2105,7 @@
       dot.addEventListener('click', () => goToSlide(index));
     });
     
-    // Tab switching functionality - ENHANCED TO ALWAYS START AT TOP WITH HEADER OFFSET
+    // Fixed tab switching functionality
     function switchTab(tabId) {
       // Hide all tab contents
       document.querySelectorAll('.tab-content').forEach(tab => {
@@ -2194,23 +2124,19 @@
         }
       });
       
-      // Scroll to top of the tab content with header offset
-      const headerHeight = 60; // Height of the fixed header
-      const scrollPosition = headerHeight;
-      
-      // Scroll immediately to top (with header offset)
+      // FIX: Reset scroll to top
       window.scrollTo({
-        top: scrollPosition,
-        behavior: 'smooth'
+        top: 0,
+        behavior: 'auto'
       });
       
-      // Scroll again after a short delay to ensure correct position
+      // FIX: Ensure smooth scrolling to top after rendering
       setTimeout(() => {
         window.scrollTo({
-          top: scrollPosition,
+          top: 0,
           behavior: 'smooth'
         });
-      }, 300);
+      }, 100);
       
       // Trigger animations for new tab
       setTimeout(() => {
@@ -2576,7 +2502,7 @@
         // Initialize slideshow
         initSlideshow();
         slideInterval = setInterval(nextSlide, 2500);
-      }, 3000);
+      }, 2000); // Reduced to 2 seconds
     });
   </script>
 </body>
