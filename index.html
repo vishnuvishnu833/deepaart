@@ -61,7 +61,7 @@
       font-size: clamp(24px, 8vw, 32px);
       color: var(--dark);
       z-index: 9999;
-      animation: fadeOut 1.5s ease 2s forwards;
+      animation: fadeOut 1.5s ease 3.5s forwards; /* Updated delay to 3.5s */
       overflow: hidden;
     }
 
@@ -2124,24 +2124,16 @@
         }
       });
       
-      // FIX: Reset scroll to top
+      // FIX: Reset scroll to top - Improved solution
       window.scrollTo({
         top: 0,
-        behavior: 'auto'
+        behavior: 'smooth'
       });
       
-      // FIX: Ensure smooth scrolling to top after rendering
-      setTimeout(() => {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      }, 100);
-      
-      // Trigger animations for new tab
+      // Ensure gallery animations trigger properly
       setTimeout(() => {
         animateGalleryItems();
-      }, 100);
+      }, 300); // Slightly longer delay to ensure rendering completes
     }
     
     // Animate gallery items when tab becomes active
@@ -2502,7 +2494,7 @@
         // Initialize slideshow
         initSlideshow();
         slideInterval = setInterval(nextSlide, 2500);
-      }, 2000); // Reduced to 2 seconds
+      }, 5000); // Increased to 5 seconds (3.5s display + 1.5s fade out)
     });
   </script>
 </body>
