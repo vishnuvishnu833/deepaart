@@ -2041,11 +2041,9 @@
       const slides = document.querySelectorAll('.slide');
       const dots = document.querySelectorAll('.dot');
       
-      // Remove active classes
       slides.forEach(slide => slide.classList.remove('active'));
       dots.forEach(dot => dot.classList.remove('active'));
       
-      // Add active classes
       slides[currentSlide].classList.add('active');
       dots[currentSlide].classList.add('active');
     }
@@ -2100,23 +2098,19 @@
       slideInterval = setInterval(nextSlide, 2500);
     }
     
-    // Setup dot navigation
     document.querySelectorAll('.dot').forEach((dot, index) => {
       dot.addEventListener('click', () => goToSlide(index));
     });
     
     // Fixed tab switching functionality
     function switchTab(tabId) {
-      // Hide all tab contents
       document.querySelectorAll('.tab-content').forEach(tab => {
         tab.classList.remove('active');
       });
       
-      // Show selected tab
       const targetTab = document.getElementById(tabId);
       targetTab.classList.add('active');
       
-      // Update navigation items
       document.querySelectorAll('.nav-item').forEach(item => {
         item.classList.remove('active');
         if(item.getAttribute('data-tab') === tabId) {
@@ -2124,37 +2118,25 @@
         }
       });
       
-      // FIXED: New scroll solution using requestAnimationFrame
-      // Wait for the next animation frame to ensure DOM updates
       requestAnimationFrame(() => {
-        // Force a layout reflow to ensure tab is rendered
         targetTab.offsetHeight;
-        
-        // Scroll to top of the page
         window.scrollTo({
           top: 0,
           behavior: 'smooth'
         });
-        
-        // Trigger animations for new tab
         animateGalleryItems();
       });
     }
     
-    // Animate gallery items when tab becomes active
     function animateGalleryItems() {
       const activeTab = document.querySelector('.tab-content.active');
-      
-      // Get all gallery items in active tab
       const items = activeTab.querySelectorAll('.gallery-item, .colour-item, .thank-you-item');
       
-      // Reset all animations
       items.forEach(item => {
         item.style.animation = 'none';
         item.style.opacity = '0';
       });
       
-      // Reapply animations after a small delay
       setTimeout(() => {
         items.forEach((item, index) => {
           const animationType = index % 4;
@@ -2172,7 +2154,6 @@
       }, 50);
     }
     
-    // Setup tab navigation
     document.querySelectorAll('.nav-item').forEach(item => {
       item.addEventListener('click', function(e) {
         e.preventDefault();
@@ -2181,7 +2162,6 @@
       });
     });
     
-    // Setup FAQ toggles
     document.querySelectorAll('.faq-question').forEach(question => {
       question.addEventListener('click', function() {
         const faqItem = this.parentNode;
@@ -2189,9 +2169,31 @@
       });
     });
     
+    // Smooth scroll with sticky header offset (60px)
+    function goToSection(sectionId) {
+      const target = document.getElementById(sectionId);
+      if (!target) return;
+
+      const headerHeight = 60; // sticky header height
+      const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = targetPosition - headerHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+
+    // Attach next-section buttons
+    document.querySelectorAll("[data-next]").forEach(btn => {
+      btn.addEventListener("click", function () {
+        const nextId = this.getAttribute("data-next");
+        goToSection(nextId);
+      });
+    });
+
     // Image zoom functionality
     function zoomImage(img, galleryName) {
-      // Get all images in the current gallery
       const container = img.closest('.section');
       currentGallery = galleryName;
       
@@ -2207,15 +2209,12 @@
         galleryItems = Array.from(container.querySelectorAll('.thank-you-grid img'));
       }
       
-      // Find the index of the clicked image
       currentIndex = galleryItems.indexOf(img);
       
-      // Show the image in the lightbox
       const lightboxImg = document.getElementById('lightbox-img');
       lightboxImg.src = img.src;
       lightboxImg.style.display = 'block';
       
-      // Reset zoom and position
       lightboxScale = 1;
       currentX = 0;
       currentY = 0;
@@ -2225,21 +2224,14 @@
       document.body.style.overflow = 'hidden';
     }
     
-    // Video playback functionality
+    // Video playback
     function playVideo(videoElement) {
       const videoPlayer = document.getElementById('video-player');
       const fullscreenVideo = document.getElementById('fullscreen-video');
-      
-      // Get video source
       const source = videoElement.querySelector('source').getAttribute('data-src');
       
-      // Set video source
       fullscreenVideo.src = source;
-      
-      // Show video player
       videoPlayer.classList.add('show');
-      
-      // Play the video with sound
       fullscreenVideo.muted = false;
       fullscreenVideo.controls = true;
       fullscreenVideo.play().catch(e => console.error('Video play failed:', e));
@@ -2249,12 +2241,9 @@
       const videoPlayer = document.getElementById('video-player');
       const fullscreenVideo = document.getElementById('fullscreen-video');
       
-      // Pause and reset video
       fullscreenVideo.pause();
       fullscreenVideo.currentTime = 0;
       fullscreenVideo.src = '';
-      
-      // Hide video player
       videoPlayer.classList.remove('show');
       document.body.style.overflow = '';
     }
@@ -2281,12 +2270,9 @@
       const lightboxImg = document.getElementById('lightbox-img');
       const item = galleryItems[currentIndex];
       lightboxImg.src = item.src;
-      
-      // Reset zoom and position
       resetZoom();
     }
     
-    // Zoom functionality
     function zoomIn() {
       lightboxScale = Math.min(lightboxScale + 0.25, 3);
       updateLightboxTransform();
@@ -2309,14 +2295,12 @@
       lightboxImg.style.transform = `translate(${currentX}px, ${currentY}px) scale(${lightboxScale})`;
     }
     
-    // Drag functionality
     const lightboxImg = document.getElementById('lightbox-img');
-    
     lightboxImg.addEventListener('mousedown', startDrag);
     lightboxImg.addEventListener('touchstart', startDrag, { passive: false });
     
     function startDrag(e) {
-      if (lightboxScale <= 1) return; // Only allow dragging when zoomed
+      if (lightboxScale <= 1) return;
       isDragging = true;
       
       if (e.type === 'touchstart') {
@@ -2362,9 +2346,8 @@
       lightboxImg.style.cursor = lightboxScale > 1 ? 'grab' : 'default';
     }
     
-    // Pinch-to-zoom functionality
+    // Pinch-to-zoom
     let initialDistance = null;
-    
     lightboxImg.addEventListener('touchstart', handleTouchStart, { passive: false });
     lightboxImg.addEventListener('touchmove', handleTouchMove, { passive: false });
     
@@ -2389,7 +2372,6 @@
         const scaleChange = (currentDistance - initialDistance) * 0.005 + 1;
         const newScale = lightboxScale * scaleChange;
         
-        // Limit zoom scale
         if (newScale > 0.5 && newScale < 3) {
           lightboxScale = newScale;
           updateLightboxTransform();
@@ -2397,19 +2379,16 @@
       }
     }
     
-    // Close lightbox when clicking outside image
     document.getElementById('lightbox').addEventListener('click', function(e) {
       if (e.target === this || e.target.classList.contains('lightbox-close')) {
         closeLightbox();
       }
     });
     
-    // Prevent closing when clicking on image or controls
     document.querySelector('.lightbox-content').addEventListener('click', function(e) {
       e.stopPropagation();
     });
     
-    // Keyboard navigation for lightbox
     document.addEventListener('keydown', function(e) {
       if (document.getElementById('lightbox').classList.contains('show')) {
         if (e.key === 'Escape') {
@@ -2428,9 +2407,8 @@
       }
     });
 
-    // Preloader function
+    // Preloader
     window.addEventListener("load", function() {
-      // Create decorative flowers for the splash screen
       const preloader = document.getElementById('preloader');
       for (let i = 0; i < 8; i++) {
         const flower = document.createElement('div');
@@ -2444,7 +2422,6 @@
         preloader.appendChild(flower);
       }
       
-      // Create sparkles
       for (let i = 0; i < 12; i++) {
         const sparkle = document.createElement('div');
         sparkle.className = 'sparkle';
@@ -2454,9 +2431,7 @@
         preloader.appendChild(sparkle);
       }
       
-      // Lazy load videos
       const lazyVideos = document.querySelectorAll('video[loading="lazy"]');
-      
       const lazyVideoObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -2465,7 +2440,6 @@
             if (source && source.dataset.src) {
               source.src = source.dataset.src;
               video.load();
-              // Play if it's in view and autoplay is set
               if (video.autoplay) {
                 video.play().catch(e => console.log('Autoplay prevented:', e));
               }
@@ -2483,24 +2457,21 @@
         document.getElementById("preloader").style.display = "none";
         document.getElementById("main-content").style.display = "block";
         
-        // Autoplay videos
         const wVideo = document.getElementById('w-video');
         if (wVideo) {
           wVideo.play().catch(e => console.log('Autoplay prevented:', e));
         }
         
-        // Autoplay videos in thank you section
         document.querySelectorAll('video').forEach(video => {
           if (video !== wVideo && video.autoplay) {
             video.play().catch(e => console.log('Autoplay prevented:', e));
           }
         });
         
-        // Initialize slideshow
         initSlideshow();
         slideInterval = setInterval(nextSlide, 2500);
-      }, 2000); // Reduced to 2 seconds
+      }, 2000);
     });
-  </script>
+</script>
 </body>
 </html>
