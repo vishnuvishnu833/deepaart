@@ -624,66 +624,6 @@
       transform: scale(1.1);
     }
 
-    /* View Bride Gallery Button */
-    .view-bride-btn {
-      display: block;
-      width: fit-content;
-      margin: 20px auto;
-      padding: 14px 32px;
-      background: linear-gradient(135deg, var(--luxury-maroon), var(--luxury-gold));
-      color: white;
-      border: none;
-      border-radius: 50px;
-      font-weight: bold;
-      font-family: var(--font-heading);
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: all 0.4s;
-      position: relative;
-      overflow: hidden;
-      text-decoration: none;
-      text-align: center;
-      box-shadow: 0 5px 15px rgba(128, 0, 32, 0.3);
-      z-index: 1;
-    }
-    
-    /* Enhanced Golden Ring Effect */
-    .view-bride-btn::before,
-    .next-section-btn::before {
-      content: '';
-      position: absolute;
-      top: -6px;
-      left: -6px;
-      right: -6px;
-      bottom: -6px;
-      background: linear-gradient(45deg, #ffd700, #ff9900, #ffd700, #ff9900);
-      background-size: 200% 200%;
-      border-radius: 55px;
-      z-index: -1;
-      animation: rotateLight 2.5s linear infinite;
-      opacity: 0.8;
-      transition: opacity 0.3s;
-    }
-    
-    .view-bride-btn:hover::before,
-    .next-section-btn:hover::before {
-      opacity: 1;
-    }
-    
-    .view-bride-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(128, 0, 32, 0.4);
-    }
-    
-    .view-bride-btn i {
-      margin-left: 8px;
-      transition: transform 0.3s;
-    }
-    
-    .view-bride-btn:hover i {
-      transform: translateX(5px);
-    }
-
     /* Gallery Grids */
     .gallery-grid,
     .thank-you-grid {
@@ -1003,34 +943,42 @@
       max-height: 300px;
     }
     
-    /* Next Section Button */
-    .next-section {
-      display: flex;
-      justify-content: center;
-      margin: 25px 0 15px;
+    /* NEW: Golden Halo Effect */
+    .halo-container {
       position: relative;
+      display: inline-block;
+      border-radius: 10px;
+      overflow: visible;
     }
     
-    .next-section-btn {
-      background: linear-gradient(135deg, var(--luxury-maroon), var(--luxury-gold));
-      color: white;
-      border: none;
-      padding: 12px 25px;
-      border-radius: 30px;
-      font-weight: bold;
-      font-family: var(--font-heading);
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.3s;
-      box-shadow: 0 5px 15px rgba(128, 0, 32, 0.3);
-      position: relative;
+    .halo-container::before {
+      content: '';
+      position: absolute;
+      top: -12px;
+      left: -12px;
+      right: -12px;
+      bottom: -12px;
+      border-radius: 16px;
+      background: linear-gradient(45deg, 
+        transparent 40%, 
+        rgba(212, 175, 55, 0.6) 50%, 
+        transparent 60%);
+      background-size: 200% 200%;
       z-index: 1;
-      overflow: hidden;
+      animation: rotateHalo 4s linear infinite;
+      pointer-events: none;
+      opacity: 0.8;
     }
     
-    .next-section-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(128, 0, 32, 0.4);
+    @keyframes rotateHalo {
+      0% {
+        background-position: 0% 0%;
+        transform: rotate(0deg);
+      }
+      100% {
+        background-position: 100% 100%;
+        transform: rotate(360deg);
+      }
     }
     
     /* Footer */
@@ -1525,11 +1473,6 @@
             </div>
           </div>
         </div>
-        
-        <!-- View Bride Gallery Button with new animation -->
-        <a href="#" class="view-bride-btn" onclick="switchTab('bride-tab')">
-          <span>View Bride Gallery <i class="fas fa-arrow-right"></i></span>
-        </a>
       </div>
       
       <!-- Footer Image -->
@@ -1617,13 +1560,10 @@
             <img src="images/L8.jpeg" alt="Bridal design 24" onclick="zoomImage(this, 'bride')">
           </div>
           <div class="gallery-item">
-            <img src="images/L9.jpeg" alt="Bridal design 25" onclick="zoomImage(this, 'bride')">
+            <div class="halo-container">
+              <img src="images/L9.jpeg" alt="Bridal design 25" onclick="zoomImage(this, 'bride')">
+            </div>
           </div>
-        </div>
-        <div class="next-section">
-          <button class="next-section-btn" onclick="switchTab('guests-tab')">
-            <span>View Guest Designs</span>
-          </button>
         </div>
       </div>
       
@@ -1712,13 +1652,10 @@
             <img src="guest/G24.jpeg" alt="Guest design 24" onclick="zoomImage(this, 'guests')">
           </div>
           <div class="gallery-item">
-            <img src="guest/G25.jpeg" alt="Guest design 25" onclick="zoomImage(this, 'guests')">
+            <div class="halo-container">
+              <img src="guest/G25.jpeg" alt="Guest design 25" onclick="zoomImage(this, 'guests')">
+            </div>
           </div>
-        </div>
-        <div class="next-section">
-          <button class="next-section-btn" onclick="switchTab('colours-tab')">
-            <span>View Colour Collection</span>
-          </button>
         </div>
       </div>
       
@@ -1760,13 +1697,10 @@
             <img src="colour/C8.jpeg" alt="Shade Chart" onclick="zoomImage(this, 'colours')">
           </div>
           <div class="colour-item">
-            <img src="colour/C9.jpeg" alt="Maroon Colour" onclick="zoomImage(this, 'colours')">
+            <div class="halo-container">
+              <img src="colour/C9.jpeg" alt="Maroon Colour" onclick="zoomImage(this, 'colours')">
+            </div>
           </div>
-        </div>
-        <div class="next-section">
-          <button class="next-section-btn" onclick="switchTab('prices-tab')">
-            <span>View Prices</span>
-          </button>
         </div>
       </div>
       
@@ -1803,12 +1737,6 @@
         <h2><i class="fas fa-gift"></i> Special Offers</h2>
         <p>Book your wedding package and get free mehendi for the mother of the bride!</p>
         <p>Refer a friend and get 10% off your next appointment.</p>
-      </div>
-      
-      <div class="next-section">
-        <button class="next-section-btn" onclick="switchTab('about-tab')">
-          <span>View About</span>
-        </button>
       </div>
       
       <!-- Footer Image -->
@@ -1918,10 +1846,12 @@
             </video>
           </div>
           <div class="thank-you-item">
-            <video autoplay muted loop playsinline poster="thanks/4p.jpeg" loading="lazy" onclick="playVideo(this)">
-              <source data-src="thanks/4.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
+            <div class="halo-container">
+              <video autoplay muted loop playsinline poster="thanks/4p.jpeg" loading="lazy" onclick="playVideo(this)">
+                <source data-src="thanks/4.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
           </div>
         </div>
       </div>
@@ -2040,8 +1970,12 @@
     function initSlideshow() {
       const slides = document.querySelectorAll('.slide');
       const dots = document.querySelectorAll('.dot');
+      
+      // Remove active classes
       slides.forEach(slide => slide.classList.remove('active'));
       dots.forEach(dot => dot.classList.remove('active'));
+      
+      // Add active classes
       slides[currentSlide].classList.add('active');
       dots[currentSlide].classList.add('active');
     }
@@ -2049,33 +1983,45 @@
     function nextSlide() {
       const slides = document.querySelectorAll('.slide');
       const dots = document.querySelectorAll('.dot');
+      
       slides[currentSlide].classList.remove('active');
       dots[currentSlide].classList.remove('active');
+      
       currentSlide = (currentSlide + 1) % slides.length;
+      
       slides[currentSlide].classList.add('active');
       dots[currentSlide].classList.add('active');
+      
       resetSlideInterval();
     }
     
     function prevSlide() {
       const slides = document.querySelectorAll('.slide');
       const dots = document.querySelectorAll('.dot');
+      
       slides[currentSlide].classList.remove('active');
       dots[currentSlide].classList.remove('active');
+      
       currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      
       slides[currentSlide].classList.add('active');
       dots[currentSlide].classList.add('active');
+      
       resetSlideInterval();
     }
     
     function goToSlide(index) {
       const slides = document.querySelectorAll('.slide');
       const dots = document.querySelectorAll('.dot');
+      
       slides[currentSlide].classList.remove('active');
       dots[currentSlide].classList.remove('active');
+      
       currentSlide = index;
+      
       slides[currentSlide].classList.add('active');
       dots[currentSlide].classList.add('active');
+      
       resetSlideInterval();
     }
     
@@ -2084,55 +2030,82 @@
       slideInterval = setInterval(nextSlide, 2500);
     }
     
+    // Setup dot navigation
     document.querySelectorAll('.dot').forEach((dot, index) => {
       dot.addEventListener('click', () => goToSlide(index));
     });
     
     // Fixed tab switching functionality
     function switchTab(tabId) {
+      // Hide all tab contents
       document.querySelectorAll('.tab-content').forEach(tab => {
         tab.classList.remove('active');
       });
+      
+      // Show selected tab
       const targetTab = document.getElementById(tabId);
       targetTab.classList.add('active');
+      
+      // Update navigation items
       document.querySelectorAll('.nav-item').forEach(item => {
         item.classList.remove('active');
         if(item.getAttribute('data-tab') === tabId) {
           item.classList.add('active');
         }
       });
-      requestAnimationFrame(() => {
-        targetTab.offsetHeight;
+      
+      // FIX: Reset scroll to top
+      window.scrollTo({
+        top: 0,
+        behavior: 'auto'
+      });
+      
+      // FIX: Ensure smooth scrolling to top after rendering
+      setTimeout(() => {
         window.scrollTo({
           top: 0,
           behavior: 'smooth'
         });
+      }, 100);
+      
+      // Trigger animations for new tab
+      setTimeout(() => {
         animateGalleryItems();
-      });
+      }, 100);
     }
     
+    // Animate gallery items when tab becomes active
     function animateGalleryItems() {
       const activeTab = document.querySelector('.tab-content.active');
+      
+      // Get all gallery items in active tab
       const items = activeTab.querySelectorAll('.gallery-item, .colour-item, .thank-you-item');
+      
+      // Reset all animations
       items.forEach(item => {
         item.style.animation = 'none';
         item.style.opacity = '0';
       });
+      
+      // Reapply animations after a small delay
       setTimeout(() => {
         items.forEach((item, index) => {
           const animationType = index % 4;
           let animationName = '';
+          
           switch(animationType) {
             case 0: animationName = 'slideFromTop'; break;
             case 1: animationName = 'slideFromRight'; break;
             case 2: animationName = 'slideFromBottom'; break;
             case 3: animationName = 'slideFromLeft'; break;
           }
+          
           item.style.animation = `${animationName} 0.8s ease forwards`;
         });
       }, 50);
     }
     
+    // Setup tab navigation
     document.querySelectorAll('.nav-item').forEach(item => {
       item.addEventListener('click', function(e) {
         e.preventDefault();
@@ -2141,6 +2114,7 @@
       });
     });
     
+    // Setup FAQ toggles
     document.querySelectorAll('.faq-question').forEach(question => {
       question.addEventListener('click', function() {
         const faqItem = this.parentNode;
@@ -2148,68 +2122,57 @@
       });
     });
     
-    // ✅ Smooth scroll with sticky header auto offset
-    function goToSection(sectionId) {
-      const target = document.getElementById(sectionId);
-      if (!target) return;
-      
-      // Scroll into view
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-      
-      // Adjust for header height after scroll finishes
-      setTimeout(() => {
-        const header = document.querySelector("header");
-        const headerHeight = header ? header.offsetHeight : 60;
-        window.scrollBy({
-          top: -headerHeight,
-          behavior: "instant"
-        });
-      }, 400); // matches smooth scroll timing
-    }
-    
-    // Attach next-section buttons
-    document.querySelectorAll("[data-next]").forEach(btn => {
-      btn.addEventListener("click", function () {
-        const nextId = this.getAttribute("data-next");
-        goToSection(nextId);
-      });
-    });
-
     // Image zoom functionality
     function zoomImage(img, galleryName) {
+      // Get all images in the current gallery
       const container = img.closest('.section');
       currentGallery = galleryName;
+      
       if (galleryName === 'home') {
         galleryItems = Array.from(container.querySelectorAll('.featured-item img'));
-      } else if (galleryName === 'bride' || galleryName === 'guests') {
+      } else if (galleryName === 'bride') {
+        galleryItems = Array.from(container.querySelectorAll('.gallery-grid .gallery-item img'));
+      } else if (galleryName === 'guests') {
         galleryItems = Array.from(container.querySelectorAll('.gallery-grid .gallery-item img'));
       } else if (galleryName === 'colours') {
         galleryItems = Array.from(container.querySelectorAll('.colour-grid .colour-item img'));
       } else if (galleryName === 'about') {
-        galleryItems = Array.from(container.querySelectorAll('.thank-you-grid img'));
+        galleryItems = Array.from(container.querySelectorAll('.thank-you-grid img, .thank-you-grid video'));
       }
+      
+      // Find the index of the clicked image
       currentIndex = galleryItems.indexOf(img);
+      
+      // Show the image in the lightbox
       const lightboxImg = document.getElementById('lightbox-img');
       lightboxImg.src = img.src;
       lightboxImg.style.display = 'block';
+      
+      // Reset zoom and position
       lightboxScale = 1;
       currentX = 0;
       currentY = 0;
       updateLightboxTransform();
+      
       document.getElementById('lightbox').classList.add('show');
       document.body.style.overflow = 'hidden';
     }
     
-    // Video playback
+    // Video playback functionality
     function playVideo(videoElement) {
       const videoPlayer = document.getElementById('video-player');
       const fullscreenVideo = document.getElementById('fullscreen-video');
+      
+      // Get video source
       const source = videoElement.querySelector('source').getAttribute('data-src');
+      
+      // Set video source
       fullscreenVideo.src = source;
+      
+      // Show video player
       videoPlayer.classList.add('show');
+      
+      // Play the video with sound
       fullscreenVideo.muted = false;
       fullscreenVideo.controls = true;
       fullscreenVideo.play().catch(e => console.error('Video play failed:', e));
@@ -2218,9 +2181,13 @@
     function closeVideoPlayer() {
       const videoPlayer = document.getElementById('video-player');
       const fullscreenVideo = document.getElementById('fullscreen-video');
+      
+      // Pause and reset video
       fullscreenVideo.pause();
       fullscreenVideo.currentTime = 0;
       fullscreenVideo.src = '';
+      
+      // Hide video player
       videoPlayer.classList.remove('show');
       document.body.style.overflow = '';
     }
@@ -2247,9 +2214,12 @@
       const lightboxImg = document.getElementById('lightbox-img');
       const item = galleryItems[currentIndex];
       lightboxImg.src = item.src;
+      
+      // Reset zoom and position
       resetZoom();
     }
     
+    // Zoom functionality
     function zoomIn() {
       lightboxScale = Math.min(lightboxScale + 0.25, 3);
       updateLightboxTransform();
@@ -2272,13 +2242,16 @@
       lightboxImg.style.transform = `translate(${currentX}px, ${currentY}px) scale(${lightboxScale})`;
     }
     
+    // Drag functionality
     const lightboxImg = document.getElementById('lightbox-img');
+    
     lightboxImg.addEventListener('mousedown', startDrag);
     lightboxImg.addEventListener('touchstart', startDrag, { passive: false });
     
     function startDrag(e) {
-      if (lightboxScale <= 1) return;
+      if (lightboxScale <= 1) return; // Only allow dragging when zoomed
       isDragging = true;
+      
       if (e.type === 'touchstart') {
         startX = e.touches[0].clientX - currentX;
         startY = e.touches[0].clientY - currentY;
@@ -2286,16 +2259,19 @@
         startX = e.clientX - currentX;
         startY = e.clientY - currentY;
       }
+      
       document.addEventListener('mousemove', drag);
       document.addEventListener('touchmove', drag, { passive: false });
       document.addEventListener('mouseup', endDrag);
       document.addEventListener('touchend', endDrag);
+      
       lightboxImg.style.cursor = 'grabbing';
     }
     
     function drag(e) {
       if (!isDragging) return;
       e.preventDefault();
+      
       let clientX, clientY;
       if (e.type === 'touchmove') {
         clientX = e.touches[0].clientX;
@@ -2304,6 +2280,7 @@
         clientX = e.clientX;
         clientY = e.clientY;
       }
+      
       currentX = clientX - startX;
       currentY = clientY - startY;
       updateLightboxTransform();
@@ -2318,8 +2295,9 @@
       lightboxImg.style.cursor = lightboxScale > 1 ? 'grab' : 'default';
     }
     
-    // Pinch-to-zoom
+    // Pinch-to-zoom functionality
     let initialDistance = null;
+    
     lightboxImg.addEventListener('touchstart', handleTouchStart, { passive: false });
     lightboxImg.addEventListener('touchmove', handleTouchMove, { passive: false });
     
@@ -2340,8 +2318,11 @@
           e.touches[0].clientX - e.touches[1].clientX,
           e.touches[0].clientY - e.touches[1].clientY
         );
+        
         const scaleChange = (currentDistance - initialDistance) * 0.005 + 1;
         const newScale = lightboxScale * scaleChange;
+        
+        // Limit zoom scale
         if (newScale > 0.5 && newScale < 3) {
           lightboxScale = newScale;
           updateLightboxTransform();
@@ -2349,16 +2330,19 @@
       }
     }
     
+    // Close lightbox when clicking outside image
     document.getElementById('lightbox').addEventListener('click', function(e) {
       if (e.target === this || e.target.classList.contains('lightbox-close')) {
         closeLightbox();
       }
     });
     
+    // Prevent closing when clicking on image or controls
     document.querySelector('.lightbox-content').addEventListener('click', function(e) {
       e.stopPropagation();
     });
     
+    // Keyboard navigation for lightbox
     document.addEventListener('keydown', function(e) {
       if (document.getElementById('lightbox').classList.contains('show')) {
         if (e.key === 'Escape') {
@@ -2377,8 +2361,9 @@
       }
     });
 
-    // Preloader
+    // Preloader function
     window.addEventListener("load", function() {
+      // Create decorative flowers for the splash screen
       const preloader = document.getElementById('preloader');
       for (let i = 0; i < 8; i++) {
         const flower = document.createElement('div');
@@ -2391,6 +2376,8 @@
         flower.style.height = flower.style.width;
         preloader.appendChild(flower);
       }
+      
+      // Create sparkles
       for (let i = 0; i < 12; i++) {
         const sparkle = document.createElement('div');
         sparkle.className = 'sparkle';
@@ -2399,7 +2386,10 @@
         sparkle.style.animationDelay = `${Math.random() * 2}s`;
         preloader.appendChild(sparkle);
       }
+      
+      // Lazy load videos
       const lazyVideos = document.querySelectorAll('video[loading="lazy"]');
+      
       const lazyVideoObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -2408,6 +2398,7 @@
             if (source && source.dataset.src) {
               source.src = source.dataset.src;
               video.load();
+              // Play if it's in view and autoplay is set
               if (video.autoplay) {
                 video.play().catch(e => console.log('Autoplay prevented:', e));
               }
@@ -2416,26 +2407,33 @@
           }
         });
       }, { rootMargin: "200px" });
+      
       lazyVideos.forEach(video => {
         lazyVideoObserver.observe(video);
       });
+      
       setTimeout(() => {
         document.getElementById("preloader").style.display = "none";
         document.getElementById("main-content").style.display = "block";
+        
+        // Autoplay videos
         const wVideo = document.getElementById('w-video');
         if (wVideo) {
           wVideo.play().catch(e => console.log('Autoplay prevented:', e));
         }
+        
+        // Autoplay videos in thank you section
         document.querySelectorAll('video').forEach(video => {
           if (video !== wVideo && video.autoplay) {
             video.play().catch(e => console.log('Autoplay prevented:', e));
           }
         });
+        
+        // Initialize slideshow
         initSlideshow();
         slideInterval = setInterval(nextSlide, 2500);
-      }, 2000);
+      }, 2000); // Reduced to 2 seconds
     });
-</script>
+  </script>
 </body>
 </html>
-
