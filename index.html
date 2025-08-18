@@ -2040,10 +2040,8 @@
     function initSlideshow() {
       const slides = document.querySelectorAll('.slide');
       const dots = document.querySelectorAll('.dot');
-      
       slides.forEach(slide => slide.classList.remove('active'));
       dots.forEach(dot => dot.classList.remove('active'));
-      
       slides[currentSlide].classList.add('active');
       dots[currentSlide].classList.add('active');
     }
@@ -2051,45 +2049,33 @@
     function nextSlide() {
       const slides = document.querySelectorAll('.slide');
       const dots = document.querySelectorAll('.dot');
-      
       slides[currentSlide].classList.remove('active');
       dots[currentSlide].classList.remove('active');
-      
       currentSlide = (currentSlide + 1) % slides.length;
-      
       slides[currentSlide].classList.add('active');
       dots[currentSlide].classList.add('active');
-      
       resetSlideInterval();
     }
     
     function prevSlide() {
       const slides = document.querySelectorAll('.slide');
       const dots = document.querySelectorAll('.dot');
-      
       slides[currentSlide].classList.remove('active');
       dots[currentSlide].classList.remove('active');
-      
       currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-      
       slides[currentSlide].classList.add('active');
       dots[currentSlide].classList.add('active');
-      
       resetSlideInterval();
     }
     
     function goToSlide(index) {
       const slides = document.querySelectorAll('.slide');
       const dots = document.querySelectorAll('.dot');
-      
       slides[currentSlide].classList.remove('active');
       dots[currentSlide].classList.remove('active');
-      
       currentSlide = index;
-      
       slides[currentSlide].classList.add('active');
       dots[currentSlide].classList.add('active');
-      
       resetSlideInterval();
     }
     
@@ -2107,17 +2093,14 @@
       document.querySelectorAll('.tab-content').forEach(tab => {
         tab.classList.remove('active');
       });
-      
       const targetTab = document.getElementById(tabId);
       targetTab.classList.add('active');
-      
       document.querySelectorAll('.nav-item').forEach(item => {
         item.classList.remove('active');
         if(item.getAttribute('data-tab') === tabId) {
           item.classList.add('active');
         }
       });
-      
       requestAnimationFrame(() => {
         targetTab.offsetHeight;
         window.scrollTo({
@@ -2131,24 +2114,20 @@
     function animateGalleryItems() {
       const activeTab = document.querySelector('.tab-content.active');
       const items = activeTab.querySelectorAll('.gallery-item, .colour-item, .thank-you-item');
-      
       items.forEach(item => {
         item.style.animation = 'none';
         item.style.opacity = '0';
       });
-      
       setTimeout(() => {
         items.forEach((item, index) => {
           const animationType = index % 4;
           let animationName = '';
-          
           switch(animationType) {
             case 0: animationName = 'slideFromTop'; break;
             case 1: animationName = 'slideFromRight'; break;
             case 2: animationName = 'slideFromBottom'; break;
             case 3: animationName = 'slideFromLeft'; break;
           }
-          
           item.style.animation = `${animationName} 0.8s ease forwards`;
         });
       }, 50);
@@ -2169,21 +2148,28 @@
       });
     });
     
-    // Smooth scroll with sticky header offset (60px)
+    // ✅ Smooth scroll with sticky header auto offset
     function goToSection(sectionId) {
       const target = document.getElementById(sectionId);
       if (!target) return;
-
-      const headerHeight = 60; // sticky header height
-      const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
-      const offsetPosition = targetPosition - headerHeight;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
+      
+      // Scroll into view
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
       });
+      
+      // Adjust for header height after scroll finishes
+      setTimeout(() => {
+        const header = document.querySelector("header");
+        const headerHeight = header ? header.offsetHeight : 60;
+        window.scrollBy({
+          top: -headerHeight,
+          behavior: "instant"
+        });
+      }, 400); // matches smooth scroll timing
     }
-
+    
     // Attach next-section buttons
     document.querySelectorAll("[data-next]").forEach(btn => {
       btn.addEventListener("click", function () {
@@ -2196,30 +2182,23 @@
     function zoomImage(img, galleryName) {
       const container = img.closest('.section');
       currentGallery = galleryName;
-      
       if (galleryName === 'home') {
         galleryItems = Array.from(container.querySelectorAll('.featured-item img'));
-      } else if (galleryName === 'bride') {
-        galleryItems = Array.from(container.querySelectorAll('.gallery-grid .gallery-item img'));
-      } else if (galleryName === 'guests') {
+      } else if (galleryName === 'bride' || galleryName === 'guests') {
         galleryItems = Array.from(container.querySelectorAll('.gallery-grid .gallery-item img'));
       } else if (galleryName === 'colours') {
         galleryItems = Array.from(container.querySelectorAll('.colour-grid .colour-item img'));
       } else if (galleryName === 'about') {
         galleryItems = Array.from(container.querySelectorAll('.thank-you-grid img'));
       }
-      
       currentIndex = galleryItems.indexOf(img);
-      
       const lightboxImg = document.getElementById('lightbox-img');
       lightboxImg.src = img.src;
       lightboxImg.style.display = 'block';
-      
       lightboxScale = 1;
       currentX = 0;
       currentY = 0;
       updateLightboxTransform();
-      
       document.getElementById('lightbox').classList.add('show');
       document.body.style.overflow = 'hidden';
     }
@@ -2229,7 +2208,6 @@
       const videoPlayer = document.getElementById('video-player');
       const fullscreenVideo = document.getElementById('fullscreen-video');
       const source = videoElement.querySelector('source').getAttribute('data-src');
-      
       fullscreenVideo.src = source;
       videoPlayer.classList.add('show');
       fullscreenVideo.muted = false;
@@ -2240,7 +2218,6 @@
     function closeVideoPlayer() {
       const videoPlayer = document.getElementById('video-player');
       const fullscreenVideo = document.getElementById('fullscreen-video');
-      
       fullscreenVideo.pause();
       fullscreenVideo.currentTime = 0;
       fullscreenVideo.src = '';
@@ -2302,7 +2279,6 @@
     function startDrag(e) {
       if (lightboxScale <= 1) return;
       isDragging = true;
-      
       if (e.type === 'touchstart') {
         startX = e.touches[0].clientX - currentX;
         startY = e.touches[0].clientY - currentY;
@@ -2310,19 +2286,16 @@
         startX = e.clientX - currentX;
         startY = e.clientY - currentY;
       }
-      
       document.addEventListener('mousemove', drag);
       document.addEventListener('touchmove', drag, { passive: false });
       document.addEventListener('mouseup', endDrag);
       document.addEventListener('touchend', endDrag);
-      
       lightboxImg.style.cursor = 'grabbing';
     }
     
     function drag(e) {
       if (!isDragging) return;
       e.preventDefault();
-      
       let clientX, clientY;
       if (e.type === 'touchmove') {
         clientX = e.touches[0].clientX;
@@ -2331,7 +2304,6 @@
         clientX = e.clientX;
         clientY = e.clientY;
       }
-      
       currentX = clientX - startX;
       currentY = clientY - startY;
       updateLightboxTransform();
@@ -2368,10 +2340,8 @@
           e.touches[0].clientX - e.touches[1].clientX,
           e.touches[0].clientY - e.touches[1].clientY
         );
-        
         const scaleChange = (currentDistance - initialDistance) * 0.005 + 1;
         const newScale = lightboxScale * scaleChange;
-        
         if (newScale > 0.5 && newScale < 3) {
           lightboxScale = newScale;
           updateLightboxTransform();
@@ -2421,7 +2391,6 @@
         flower.style.height = flower.style.width;
         preloader.appendChild(flower);
       }
-      
       for (let i = 0; i < 12; i++) {
         const sparkle = document.createElement('div');
         sparkle.className = 'sparkle';
@@ -2430,7 +2399,6 @@
         sparkle.style.animationDelay = `${Math.random() * 2}s`;
         preloader.appendChild(sparkle);
       }
-      
       const lazyVideos = document.querySelectorAll('video[loading="lazy"]');
       const lazyVideoObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
@@ -2448,26 +2416,21 @@
           }
         });
       }, { rootMargin: "200px" });
-      
       lazyVideos.forEach(video => {
         lazyVideoObserver.observe(video);
       });
-      
       setTimeout(() => {
         document.getElementById("preloader").style.display = "none";
         document.getElementById("main-content").style.display = "block";
-        
         const wVideo = document.getElementById('w-video');
         if (wVideo) {
           wVideo.play().catch(e => console.log('Autoplay prevented:', e));
         }
-        
         document.querySelectorAll('video').forEach(video => {
           if (video !== wVideo && video.autoplay) {
             video.play().catch(e => console.log('Autoplay prevented:', e));
           }
         });
-        
         initSlideshow();
         slideInterval = setInterval(nextSlide, 2500);
       }, 2000);
@@ -2475,3 +2438,4 @@
 </script>
 </body>
 </html>
+
