@@ -2124,24 +2124,21 @@
         }
       });
       
-      // FIX: Reset scroll to top
-      window.scrollTo({
-        top: 0,
-        behavior: 'auto'
-      });
-      
-      // FIX: Ensure smooth scrolling to top after rendering
-      setTimeout(() => {
+      // FIXED: New scroll solution using requestAnimationFrame
+      // Wait for the next animation frame to ensure DOM updates
+      requestAnimationFrame(() => {
+        // Force a layout reflow to ensure tab is rendered
+        targetTab.offsetHeight;
+        
+        // Scroll to top of the page
         window.scrollTo({
           top: 0,
           behavior: 'smooth'
         });
-      }, 100);
-      
-      // Trigger animations for new tab
-      setTimeout(() => {
+        
+        // Trigger animations for new tab
         animateGalleryItems();
-      }, 100);
+      });
     }
     
     // Animate gallery items when tab becomes active
