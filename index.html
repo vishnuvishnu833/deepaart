@@ -54,14 +54,14 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: linear-gradient(135deg, #fff8f0 0%, var(--light) 100%);
+      background: #000;
       display: flex;
       justify-content: center;
       align-items: center;
       font-size: clamp(24px, 8vw, 32px);
-      color: var(--dark);
+      color: white;
       z-index: 9999;
-      animation: fadeOut 1.5s ease 2s forwards;
+      animation: fadeOut 1.5s ease 3.5s forwards;
       overflow: hidden;
     }
 
@@ -69,6 +69,7 @@
       text-align: center;
       padding: 20px;
       position: relative;
+      width: 100%;
     }
 
     .mehendi-pattern {
@@ -77,7 +78,7 @@
       height: 100%;
       top: 0;
       left: 0;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M30,50 Q50,30 70,50 T90,50" fill="none" stroke="%23a0522d" stroke-width="0.5" opacity="0.3"/></svg>');
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M30,50 Q50,30 70,50 T90,50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5" opacity="0.3"/></svg>');
       opacity: 0.2;
       z-index: 0;
     }
@@ -85,18 +86,41 @@
     #preloader h1 {
       font-family: var(--font-heading);
       font-size: clamp(32px, 10vw, 48px);
-      color: var(--luxury-maroon);
+      color: white;
       margin-bottom: 10px;
-      animation: fadeIn 1s ease forwards, float 3s ease-in-out infinite;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+      text-shadow: 0 0 10px rgba(255,255,255,0.5);
       position: relative;
       z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    #preloader h1 .word {
+      opacity: 0;
+      display: inline-block;
+    }
+
+    #preloader h1 .word:nth-child(1) {
+      animation: glowWord 1.5s ease 0.5s forwards, blink 2s ease 2s infinite;
+      color: #ff6b6b;
+    }
+
+    #preloader h1 .word:nth-child(2) {
+      animation: glowWord 1.5s ease 1s forwards, blink 2s ease 2.2s infinite;
+      color: #4ecdc4;
+    }
+
+    #preloader h1 .word:nth-child(3) {
+      animation: glowWord 1.5s ease 1.5s forwards, blink 2s ease 2.4s infinite;
+      color: #ffe66d;
     }
 
     #preloader .hindi-line {
       font-family: 'Georgia', serif;
       font-size: clamp(18px, 6vw, 24px);
-      color: var(--luxury-maroon);
+      color: white;
       margin-top: 20px;
       animation: fadeIn 1s ease 0.5s forwards;
       opacity: 0;
@@ -108,9 +132,9 @@
       font-family: 'Georgia', serif;
       font-style: italic;
       font-size: clamp(14px, 4vw, 16px);
-      color: var(--dark);
+      color: rgba(255,255,255,0.8);
       margin-top: 30px;
-      animation: fadeIn 1s ease 1s forwards;
+      animation: fadeIn 1s ease 2s forwards;
       opacity: 0;
       position: relative;
       z-index: 1;
@@ -120,7 +144,7 @@
       position: absolute;
       width: 30px;
       height: 30px;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 Q60,30 50,50 Q40,30 50,10" fill="%23a0522d" opacity="0.6"/></svg>');
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 Q60,30 50,50 Q40,30 50,10" fill="rgba(255,255,255,0.5)" opacity="0.6"/></svg>');
       background-size: contain;
       animation: float 4s ease-in-out infinite, fadeIn 1s ease forwards;
       z-index: 0;
@@ -155,6 +179,16 @@
 
     @keyframes fadeOut {
       to { opacity: 0; visibility: hidden; }
+    }
+    
+    @keyframes glowWord {
+      from { opacity: 0; transform: translateY(20px); text-shadow: 0 0 0 rgba(255,255,255,0); }
+      to { opacity: 1; transform: translateY(0); text-shadow: 0 0 20px currentColor, 0 0 40px rgba(255,255,255,0.8); }
+    }
+    
+    @keyframes blink {
+      0%, 100% { opacity: 1; text-shadow: 0 0 20px currentColor, 0 0 40px rgba(255,255,255,0.8); }
+      50% { opacity: 0.8; text-shadow: 0 0 10px currentColor, 0 0 20px rgba(255,255,255,0.6); }
     }
     
     @keyframes pulse {
@@ -404,6 +438,46 @@
       height: 100%;
       object-fit: cover;
       display: block;
+    }
+    
+    /* Golden Halo Effect for Footer Images */
+    .footer-image-section .halo-container {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+      overflow: visible;
+    }
+    
+    .footer-image-section .halo-container::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      border-radius: 0;
+      background: linear-gradient(45deg, 
+        transparent 40%, 
+        rgba(212, 175, 55, 0.6) 50%, 
+        transparent 60%);
+      background-size: 200% 200%;
+      z-index: 1;
+      animation: rotateHalo 4s linear infinite;
+      pointer-events: none;
+      opacity: 0.8;
+    }
+    
+    @keyframes rotateHalo {
+      0% {
+        background-position: 0% 0%;
+        transform: rotate(0deg);
+      }
+      100% {
+        background-position: 100% 100%;
+        transform: rotate(360deg);
+      }
     }
 
     /* Home Tab */
@@ -943,44 +1017,6 @@
       max-height: 300px;
     }
     
-    /* NEW: Golden Halo Effect */
-    .halo-container {
-      position: relative;
-      display: inline-block;
-      border-radius: 10px;
-      overflow: visible;
-    }
-    
-    .halo-container::before {
-      content: '';
-      position: absolute;
-      top: -12px;
-      left: -12px;
-      right: -12px;
-      bottom: -12px;
-      border-radius: 16px;
-      background: linear-gradient(45deg, 
-        transparent 40%, 
-        rgba(212, 175, 55, 0.6) 50%, 
-        transparent 60%);
-      background-size: 200% 200%;
-      z-index: 1;
-      animation: rotateHalo 4s linear infinite;
-      pointer-events: none;
-      opacity: 0.8;
-    }
-    
-    @keyframes rotateHalo {
-      0% {
-        background-position: 0% 0%;
-        transform: rotate(0deg);
-      }
-      100% {
-        background-position: 100% 100%;
-        transform: rotate(360deg);
-      }
-    }
-    
     /* Footer */
     .footer {
       padding: 40px 15px 30px;
@@ -1386,8 +1422,12 @@
       <div class="sparkle" style="top:70%; left:40%; animation-delay:1.1s;"></div>
       <div class="sparkle" style="top:50%; left:70%; animation-delay:1.5s;"></div>
       
+      <h1>
+        <span class="word">Deepa</span>
+        <span class="word">Mehendi</span>
+        <span class="word">Artist</span>
+      </h1>
       <div class="hindi-line">श्री हित हरिवंश</div>
-      <h1>Deepa Mehendi Artist</h1>
       <div class="blessing">🌟 शुभ मंगल सौभाग्य 🌟</div>
     </div>
   </div>
@@ -1475,9 +1515,11 @@
         </div>
       </div>
       
-      <!-- Footer Image -->
+      <!-- Footer Image with Golden Halo -->
       <div class="footer-image-section">
-        <img src="foot/f1.jpeg" alt="Bridal Mehendi Design" class="footer-image">
+        <div class="halo-container">
+          <img src="foot/f1.jpeg" alt="Bridal Mehendi Design" class="footer-image">
+        </div>
       </div>
     </div>
 
@@ -1560,16 +1602,16 @@
             <img src="images/L8.jpeg" alt="Bridal design 24" onclick="zoomImage(this, 'bride')">
           </div>
           <div class="gallery-item">
-            <div class="halo-container">
-              <img src="images/L9.jpeg" alt="Bridal design 25" onclick="zoomImage(this, 'bride')">
-            </div>
+            <img src="images/L9.jpeg" alt="Bridal design 25" onclick="zoomImage(this, 'bride')">
           </div>
         </div>
       </div>
       
-      <!-- Footer Image -->
+      <!-- Footer Image with Golden Halo -->
       <div class="footer-image-section">
-        <img src="foot/f2.jpeg" alt="Bridal Hand Design" class="footer-image">
+        <div class="halo-container">
+          <img src="foot/f2.jpeg" alt="Bridal Hand Design" class="footer-image">
+        </div>
       </div>
     </div>
 
@@ -1652,16 +1694,16 @@
             <img src="guest/G24.jpeg" alt="Guest design 24" onclick="zoomImage(this, 'guests')">
           </div>
           <div class="gallery-item">
-            <div class="halo-container">
-              <img src="guest/G25.jpeg" alt="Guest design 25" onclick="zoomImage(this, 'guests')">
-            </div>
+            <img src="guest/G25.jpeg" alt="Guest design 25" onclick="zoomImage(this, 'guests')">
           </div>
         </div>
       </div>
       
-      <!-- Footer Image -->
+      <!-- Footer Image with Golden Halo -->
       <div class="footer-image-section">
-        <img src="foot/f3.jpeg" alt="Guest Mehendi Design" class="footer-image">
+        <div class="halo-container">
+          <img src="foot/f3.jpeg" alt="Guest Mehendi Design" class="footer-image">
+        </div>
       </div>
     </div>
 
@@ -1697,16 +1739,16 @@
             <img src="colour/C8.jpeg" alt="Shade Chart" onclick="zoomImage(this, 'colours')">
           </div>
           <div class="colour-item">
-            <div class="halo-container">
-              <img src="colour/C9.jpeg" alt="Maroon Colour" onclick="zoomImage(this, 'colours')">
-            </div>
+            <img src="colour/C9.jpeg" alt="Maroon Colour" onclick="zoomImage(this, 'colours')">
           </div>
         </div>
       </div>
       
-      <!-- Footer Image -->
+      <!-- Footer Image with Golden Halo -->
       <div class="footer-image-section">
-        <img src="foot/f6.jpeg" alt="Mehendi Colour Collection" class="footer-image">
+        <div class="halo-container">
+          <img src="foot/f6.jpeg" alt="Mehendi Colour Collection" class="footer-image">
+        </div>
       </div>
     </div>
 
@@ -1739,9 +1781,11 @@
         <p>Refer a friend and get 10% off your next appointment.</p>
       </div>
       
-      <!-- Footer Image -->
+      <!-- Footer Image with Golden Halo -->
       <div class="footer-image-section">
-        <img src="foot/f4.jpeg" alt="Mehendi Pricing" class="footer-image">
+        <div class="halo-container">
+          <img src="foot/f4.jpeg" alt="Mehendi Pricing" class="footer-image">
+        </div>
       </div>
     </div>
 
@@ -1846,19 +1890,19 @@
             </video>
           </div>
           <div class="thank-you-item">
-            <div class="halo-container">
-              <video autoplay muted loop playsinline poster="thanks/4p.jpeg" loading="lazy" onclick="playVideo(this)">
-                <source data-src="thanks/4.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-            </div>
+            <video autoplay muted loop playsinline poster="thanks/4p.jpeg" loading="lazy" onclick="playVideo(this)">
+              <source data-src="thanks/4.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       </div>
       
-      <!-- Footer Image -->
+      <!-- Footer Image with Golden Halo -->
       <div class="footer-image-section">
-        <img src="foot/f5.jpeg" alt="Mehendi Artist at Work" class="footer-image">
+        <div class="halo-container">
+          <img src="foot/f5.jpeg" alt="Mehendi Artist at Work" class="footer-image">
+        </div>
       </div>
       
       <!-- Footer -->
@@ -2432,7 +2476,7 @@
         // Initialize slideshow
         initSlideshow();
         slideInterval = setInterval(nextSlide, 2500);
-      }, 2000); // Reduced to 2 seconds
+      }, 3500); // Match animation duration
     });
   </script>
 </body>
