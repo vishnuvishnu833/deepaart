@@ -48,155 +48,223 @@
     }
 
 /* Splash Screen */
-#preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: #000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: clamp(24px, 8vw, 32px);
-  color: white;
-  z-index: 9999;
-  animation: fadeOut 1.5s ease 3.5s forwards;
-  overflow: hidden;
-}
 
-.preloader-content {
-  text-align: center;
-  padding: 20px;
-  position: relative;
-  width: 100%;
-}
-
-.mehendi-pattern {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M30,50 Q50,30 70,50 T90,50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5" opacity="0.3"/></svg>');
-  opacity: 0.2;
-  z-index: 0;
-}
-
-#preloader h1 {
-  font-family: var(--font-heading);
-  font-size: clamp(32px, 10vw, 48px);
-  color: white;
-  margin-bottom: 10px;
-  text-shadow: 0 0 10px rgba(255,255,255,0.5);
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-}
-
-#preloader h1 .word {
-  opacity: 0;
-  display: inline-block;
-  color: white; /* sab text white */
-  position: relative;
-  animation: glowWord 1.5s ease forwards;
-}
-
-/* Golden flowing stroke effect */
-#preloader h1 .word::before {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  color: transparent;
-  -webkit-text-stroke: 2px gold;
-  background: linear-gradient(90deg, gold, #ffcc00, gold);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  clip-path: text;
-  animation: strokeFlow 3s linear infinite;
-}
-
-#preloader .hindi-line {
-  font-family: 'Georgia', serif;
-  font-size: clamp(18px, 6vw, 24px);
-  color: white;
-  margin-top: 20px;
-  animation: fadeIn 1s ease 0.5s forwards;
-  opacity: 0;
-  position: relative;
-  z-index: 1;
-}
-
-#preloader .blessing {
-  font-family: 'Georgia', serif;
-  font-style: italic;
-  font-size: clamp(14px, 4vw, 16px);
-  color: rgba(255,255,255,0.8);
-  margin-top: 30px;
-  animation: fadeIn 1s ease 2s forwards;
-  opacity: 0;
-  position: relative;
-  z-index: 1;
-}
-
-.flower {
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 Q60,30 50,50 Q40,30 50,10" fill="rgba(255,255,255,0.5)" opacity="0.6"/></svg>');
-  background-size: contain;
-  animation: float 4s ease-in-out infinite, fadeIn 1s ease forwards;
-  z-index: 0;
-}
-
-.sparkle {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background: var(--luxury-gold);
-  border-radius: 50%;
-  animation: sparkle 2s infinite;
-  opacity: 0;
-  z-index: 0;
-}
-
-/* Animations */
-@keyframes sparkle {
-  0% { opacity: 0; transform: scale(0.2); }
-  50% { opacity: 1; transform: scale(1); }
-  100% { opacity: 0; transform: scale(0.2); }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-15px) rotate(5deg); }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeOut {
-  to { opacity: 0; visibility: hidden; }
-}
-
-@keyframes glowWord {
-  from { opacity: 0; transform: translateY(20px); text-shadow: 0 0 0 rgba(255,255,255,0); }
-  to { opacity: 1; transform: translateY(0); text-shadow: 0 0 20px white, 0 0 40px rgba(255,255,255,0.8); }
-}
-
-@keyframes strokeFlow {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
-}
-
+        /* Splash Screen */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: clamp(24px, 8vw, 32px);
+            color: white;
+            z-index: 9999;
+            animation: fadeOut 1.5s ease 3.5s forwards;
+            overflow: hidden;
+        }
+        
+        .preloader-content {
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            width: 100%;
+        }
+        
+        .mehendi-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M30,50 Q50,30 70,50 T90,50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5" opacity="0.3"/></svg>');
+            opacity: 0.2;
+            z-index: 0;
+        }
+        
+        #preloader h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(32px, 10vw, 48px);
+            color: white;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        #preloader h1 .word {
+            opacity: 0;
+            display: inline-block;
+            position: relative;
+            color: white;
+        }
+        
+        /* Gold border effect for Deepa Mehendi */
+        #preloader h1 .gold-border {
+            padding: 4px 8px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+        
+        .gold-border::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, 
+                transparent 0%, 
+                transparent 40%, 
+                var(--luxury-gold) 50%, 
+                transparent 60%, 
+                transparent 100%);
+            background-size: 300% 300%;
+            background-position: 0% 0%;
+            z-index: -1;
+            animation: rotateBorder 1.5s linear infinite;
+            border-radius: 6px;
+        }
+        
+        /* Animation timing */
+        #preloader h1 .word:nth-child(1) {
+            animation: glowWord 1.5s ease 0.5s forwards, blink 2s ease 2s infinite;
+        }
+        
+        #preloader h1 .word:nth-child(2) {
+            animation: glowWord 1.5s ease 1s forwards, blink 2s ease 2.2s infinite;
+        }
+        
+        #preloader h1 .word:nth-child(3) {
+            animation: glowWord 1.5s ease 1.5s forwards, blink 2s ease 2.4s infinite;
+        }
+        
+        #preloader .hindi-line {
+            font-family: 'Georgia', serif;
+            font-size: clamp(18px, 6vw, 24px);
+            color: white;
+            margin-top: 20px;
+            animation: fadeIn 1s ease 0.5s forwards;
+            opacity: 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        #preloader .blessing {
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            font-size: clamp(14px, 4vw, 16px);
+            color: rgba(255,255,255,0.8);
+            margin-top: 30px;
+            animation: fadeIn 1s ease 2s forwards;
+            opacity: 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .flower {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 Q60,30 50,50 Q40,30 50,10" fill="rgba(255,255,255,0.5)" opacity="0.6"/></svg>');
+            background-size: contain;
+            animation: float 4s ease-in-out infinite, fadeIn 1s ease forwards;
+            z-index: 0;
+        }
+        
+        .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--luxury-gold);
+            border-radius: 50%;
+            animation: sparkle 2s infinite;
+            opacity: 0;
+            z-index: 0;
+        }
+        
+        /* Animations */
+        @keyframes rotateBorder {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+        
+        @keyframes sparkle {
+            0% { opacity: 0; transform: scale(0.2); }
+            50% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0.2); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeOut {
+            to { opacity: 0; visibility: hidden; }
+        }
+        
+        @keyframes glowWord {
+            from { opacity: 0; transform: translateY(20px); text-shadow: 0 0 0 rgba(255,255,255,0); }
+            to { opacity: 1; transform: translateY(0); text-shadow: 0 0 20px rgba(255,255,255,0.5), 0 0 40px rgba(255,255,255,0.3); }
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; text-shadow: 0 0 20px rgba(255,255,255,0.5), 0 0 40px rgba(255,255,255,0.3); }
+            50% { opacity: 0.8; text-shadow: 0 0 10px rgba(255,255,255,0.3), 0 0 20px rgba(255,255,255,0.2); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+        @keyframes slideFromTop {
+            from { transform: translateY(-100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes slideFromRight {
+            from { transform: translateX(100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideFromBottom {
+            from { transform: translateY(100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes slideFromLeft {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes shine {
+            0% { background-position: -100% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        @keyframes rotateLight {
+            0% { transform: rotate(0deg); background-position: 0% 50%; }
+            100% { transform: rotate(360deg); background-position: 100% 50%; }
+        }
 
     /* Top Header */
     header {
