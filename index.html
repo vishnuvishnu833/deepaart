@@ -47,278 +47,325 @@
       background-color: var(--light);
     }
 
-/* Splash Screen */
-#preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: clamp(24px, 8vw, 32px);
-    color: white;
-    z-index: 9999;
-    animation: fadeOut 1.5s ease 3.5s forwards;
-    overflow: hidden;
-}
+    /* Enhanced Splash Screen with Golden Border */
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: clamp(24px, 8vw, 32px);
+      color: white;
+      z-index: 9999;
+      animation: fadeOut 1.5s ease 3.5s forwards;
+      overflow: hidden;
+    }
 
-.preloader-content {
-    text-align: center;
-    padding: 20px;
-    position: relative;
-    width: 100%;
-}
+    #preloader::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, 
+        transparent 40%, 
+        rgba(212, 175, 55, 0.3) 50%, 
+        transparent 60%);
+      background-size: 300% 300%;
+      z-index: 2;
+      animation: rotateLight 4s linear infinite;
+      pointer-events: none;
+    }
 
-.mehendi-pattern {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M30,50 Q50,30 70,50 T90,50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5" opacity="0.3"/></svg>');
-    opacity: 0.2;
-    z-index: 0;
-}
+    #preloader::after {
+      content: '';
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      right: 5px;
+      bottom: 5px;
+      border: 2px solid transparent;
+      border-image: linear-gradient(45deg, 
+        transparent 40%, 
+        var(--luxury-gold) 50%, 
+        transparent 60%);
+      border-image-slice: 1;
+      background-size: 300% 300%;
+      z-index: 2;
+      animation: rotateLight 3s linear infinite;
+      pointer-events: none;
+    }
 
-#preloader h1 {
-    font-family: var(--font-heading);
-    font-size: clamp(32px, 10vw, 48px);
-    color: white;
-    margin-bottom: 10px;
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-}
+    .preloader-content {
+      text-align: center;
+      padding: 20px;
+      position: relative;
+      width: 100%;
+      z-index: 3;
+    }
 
-#preloader h1 .word {
-    opacity: 0;
-    display: inline-block;
-    position: relative;
-    color: white;
-}
+    .mehendi-pattern {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M30,50 Q50,30 70,50 T90,50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5" opacity="0.3"/></svg>');
+      opacity: 0.2;
+      z-index: 0;
+    }
 
-/* Enhanced Gold border effect for Deepa Mehendi */
-#preloader h1 .gold-border {
-    padding: 4px 8px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 4px;
-}
+    #preloader h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(32px, 10vw, 48px);
+      color: white;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
 
-.gold-border::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, 
-        transparent 0%, 
-        transparent 30%, 
-        var(--luxury-gold) 40%, 
-        var(--luxury-gold) 60%, 
-        transparent 70%, 
-        transparent 100%);
-    background-size: 300% 300%;
-    background-position: 0% 0%;
-    z-index: -1;
-    animation: snakeBorder 3s linear infinite;
-    border-radius: 6px;
-    clip-path: polygon(
+    #preloader h1 .word {
+      opacity: 0;
+      display: inline-block;
+      position: relative;
+      color: white;
+    }
+
+    /* Enhanced Gold border effect for Deepa Mehendi */
+    #preloader h1 .gold-border {
+      padding: 4px 8px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+
+    .gold-border::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, 
+        transparent 40%, 
+        var(--luxury-gold) 50%, 
+        transparent 60%);
+      background-size: 300% 300%;
+      background-position: 0% 0%;
+      z-index: -1;
+      animation: snakeBorder 3s linear infinite;
+      border-radius: 6px;
+      clip-path: polygon(
         0% 0%, 100% 0%, 100% 100%, 0% 100%,
         0% 0%, 5% 5%, 95% 5%, 95% 95%, 5% 95%, 5% 5%
-    );
-}
+      );
+    }
 
-/* Subtle green leaves background */
-.leaf-decoration {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 C60,0 80,20 70,40 C90,30 80,50 60,50 C70,70 40,70 50,50 C30,60 20,40 30,30 C10,40 20,20 50,10" fill="rgba(100,150,100,0.1)" transform="rotate(30,50,50)"/></svg>');
-    background-size: 100px 100px;
-    opacity: 0.3;
-    z-index: 0;
-    animation: leafFloat 20s linear infinite;
-}
+    /* Subtle green leaves background */
+    .leaf-decoration {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 C60,0 80,20 70,40 C90,30 80,50 60,50 C70,70 40,70 50,50 C30,60 20,40 30,30 C10,40 20,20 50,10" fill="rgba(100,150,100,0.1)" transform="rotate(30,50,50)"/></svg>');
+      background-size: 100px 100px;
+      opacity: 0.3;
+      z-index: 0;
+      animation: leafFloat 20s linear infinite;
+    }
 
-/* Animation timing */
-#preloader h1 .word:nth-child(1) {
-    animation: glowWord 1.5s ease 0.5s forwards, blink 2s ease 2s infinite;
-}
+    /* Animation timing */
+    #preloader h1 .word:nth-child(1) {
+      animation: glowWord 1.5s ease 0.5s forwards, blink 2s ease 2s infinite;
+    }
 
-#preloader h1 .word:nth-child(2) {
-    animation: glowWord 1.5s ease 1s forwards, blink 2s ease 2.2s infinite;
-}
+    #preloader h1 .word:nth-child(2) {
+      animation: glowWord 1.5s ease 1s forwards, blink 2s ease 2.2s infinite;
+    }
 
-#preloader h1 .word:nth-child(3) {
-    animation: glowWord 1.5s ease 1.5s forwards, blink 2s ease 2.4s infinite;
-}
+    #preloader h1 .word:nth-child(3) {
+      animation: glowWord 1.5s ease 1.5s forwards, blink 2s ease 2.4s infinite;
+    }
 
-#preloader .hindi-line {
-    font-family: 'Georgia', serif;
-    font-size: clamp(18px, 6vw, 24px);
-    color: white;
-    margin-top: 20px;
-    animation: fadeIn 1s ease 0.5s forwards;
-    opacity: 0;
-    position: relative;
-    z-index: 1;
-}
+    #preloader .hindi-line {
+      font-family: 'Georgia', serif;
+      font-size: clamp(18px, 6vw, 24px);
+      color: white;
+      margin-top: 20px;
+      animation: fadeIn 1s ease 0.5s forwards;
+      opacity: 0;
+      position: relative;
+      z-index: 1;
+    }
 
-#preloader .blessing {
-    font-family: 'Georgia', serif;
-    font-style: italic;
-    font-size: clamp(14px, 4vw, 16px);
-    color: rgba(255,255,255,0.8);
-    margin-top: 30px;
-    animation: fadeIn 1s ease 2s forwards;
-    opacity: 0;
-    position: relative;
-    z-index: 1;
-}
+    #preloader .blessing {
+      font-family: 'Georgia', serif;
+      font-style: italic;
+      font-size: clamp(14px, 4vw, 16px);
+      color: rgba(255,255,255,0.8);
+      margin-top: 30px;
+      animation: fadeIn 1s ease 2s forwards;
+      opacity: 0;
+      position: relative;
+      z-index: 1;
+    }
 
-.flower {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 Q60,30 50,50 Q40,30 50,10" fill="rgba(255,255,255,0.5)" opacity="0.6"/></svg>');
-    background-size: contain;
-    animation: float 4s ease-in-out infinite, fadeIn 1s ease forwards;
-    z-index: 0;
-}
+    .flower {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 Q60,30 50,50 Q40,30 50,10" fill="rgba(255,255,255,0.5)" opacity="0.6"/></svg>');
+      background-size: contain;
+      animation: float 4s ease-in-out infinite, fadeIn 1s ease forwards;
+      z-index: 0;
+    }
 
-.sparkle {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    background: var(--luxury-gold);
-    border-radius: 50%;
-    animation: sparkle 2s infinite;
-    opacity: 0;
-    z-index: 0;
-}
+    .sparkle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: var(--luxury-gold);
+      border-radius: 50%;
+      animation: sparkle 2s infinite;
+      opacity: 0;
+      z-index: 0;
+    }
 
-/* Animations */
-@keyframes snakeBorder {
-    0% {
+    /* Animations */
+    @keyframes snakeBorder {
+      0% {
         background-position: 0% 0%;
         clip-path: polygon(
-            0% 0%, 100% 0%, 100% 100%, 0% 100%,
-            0% 0%, 5% 5%, 95% 5%, 95% 95%, 5% 95%, 5% 5%
+          0% 0%, 100% 0%, 100% 100%, 0% 100%,
+          0% 0%, 5% 5%, 95% 5%, 95% 95%, 5% 95%, 5% 5%
         );
-    }
-    25% {
+      }
+      25% {
         clip-path: polygon(
-            0% 0%, 100% 0%, 100% 100%, 0% 100%,
-            0% 0%, 5% 5%, 95% 5%, 95% 95%, 5% 95%, 5% 5%
+          0% 0%, 100% 0%, 100% 100%, 0% 100%,
+          0% 0%, 5% 5%, 95% 5%, 95% 95%, 5% 95%, 5% 5%
         );
-    }
-    50% {
+      }
+      50% {
         background-position: 100% 100%;
         clip-path: polygon(
-            0% 0%, 100% 0%, 100% 100%, 0% 100%,
-            0% 0%, 3% 3%, 97% 3%, 97% 97%, 3% 97%, 3% 3%
+          0% 0%, 100% 0%, 100% 100%, 0% 100%,
+          0% 0%, 3% 3%, 97% 3%, 97% 97%, 3% 97%, 3% 3%
         );
-    }
-    75% {
+      }
+      75% {
         clip-path: polygon(
-            0% 0%, 100% 0%, 100% 100%, 0% 100%,
-            0% 0%, 7% 7%, 93% 7%, 93% 93%, 7% 93%, 7% 7%
+          0% 0%, 100% 0%, 100% 100%, 0% 100%,
+          0% 0%, 7% 7%, 93% 7%, 93% 93%, 7% 93%, 7% 7%
         );
-    }
-    100% {
+      }
+      100% {
         background-position: 0% 0%;
         clip-path: polygon(
-            0% 0%, 100% 0%, 100% 100%, 0% 100%,
-            0% 0%, 5% 5%, 95% 5%, 95% 95%, 5% 95%, 5% 5%
+          0% 0%, 100% 0%, 100% 100%, 0% 100%,
+          0% 0%, 5% 5%, 95% 5%, 95% 95%, 5% 95%, 5% 5%
         );
+      }
     }
-}
 
-@keyframes leafFloat {
-    0% {
+    @keyframes leafFloat {
+      0% {
         background-position: 0 0;
-    }
-    100% {
+      }
+      100% {
         background-position: 100px 100px;
+      }
     }
-}
 
-@keyframes sparkle {
-    0% { opacity: 0; transform: scale(0.2); }
-    50% { opacity: 1; transform: scale(1); }
-    100% { opacity: 0; transform: scale(0.2); }
-}
+    @keyframes sparkle {
+      0% { opacity: 0; transform: scale(0.2); }
+      50% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(0.2); }
+    }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-15px) rotate(5deg); }
-}
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(5deg); }
+    }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-@keyframes fadeOut {
-    to { opacity: 0; visibility: hidden; }
-}
+    @keyframes fadeOut {
+      to { opacity: 0; visibility: hidden; }
+    }
 
-@keyframes glowWord {
-    from { opacity: 0; transform: translateY(20px); text-shadow: 0 0 0 rgba(255,255,255,0); }
-    to { opacity: 1; transform: translateY(0); text-shadow: 0 0 20px rgba(255,255,255,0.5), 0 0 40px rgba(255,255,255,0.3); }
-}
+    @keyframes glowWord {
+      from { opacity: 0; transform: translateY(20px); text-shadow: 0 0 0 rgba(255,255,255,0); }
+      to { opacity: 1; transform: translateY(0); text-shadow: 0 0 20px rgba(255,255,255,0.5), 0 0 40px rgba(255,255,255,0.3); }
+    }
 
-@keyframes blink {
-    0%, 100% { opacity: 1; text-shadow: 0 0 20px rgba(255,255,255,0.5), 0 0 40px rgba(255,255,255,0.3); }
-    50% { opacity: 0.8; text-shadow: 0 0 10px rgba(255,255,255,0.3), 0 0 20px rgba(255,255,255,0.2); }
-}
+    @keyframes blink {
+      0%, 100% { opacity: 1; text-shadow: 0 0 20px rgba(255,255,255,0.5), 0 0 40px rgba(255,255,255,0.3); }
+      50% { opacity: 0.8; text-shadow: 0 0 10px rgba(255,255,255,0.3), 0 0 20px rgba(255,255,255,0.2); }
+    }
 
-@keyframes pulse {
-    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-    70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
-    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-}
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+      70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
 
-@keyframes slideFromTop {
-    from { transform: translateY(-100px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
+    @keyframes slideFromTop {
+      from { transform: translateY(-100px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
 
-@keyframes slideFromRight {
-    from { transform: translateX(100px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-}
+    @keyframes slideFromRight {
+      from { transform: translateX(100px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
 
-@keyframes slideFromBottom {
-    from { transform: translateY(100px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
+    @keyframes slideFromBottom {
+      from { transform: translateY(100px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
 
-@keyframes slideFromLeft {
-    from { transform: translateX(-100px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-}
+    @keyframes slideFromLeft {
+      from { transform: translateX(-100px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
 
-@keyframes shine {
-    0% { background-position: -100% 0; }
-    100% { background-position: 200% 0; }
-}
+    @keyframes shine {
+      0% { background-position: -100% 0; }
+      100% { background-position: 200% 0; }
+    }
 
-@keyframes rotateLight {
-    0% { transform: rotate(0deg); background-position: 0% 50%; }
-    100% { transform: rotate(360deg); background-position: 100% 50%; }
-}
+    @keyframes rotateLight {
+      0% { transform: rotate(0deg); background-position: 0% 50%; }
+      100% { transform: rotate(360deg); background-position: 100% 50%; }
+    }
 
+    /* Enhanced transition animation */
+    @keyframes cinematicReveal {
+      0% { 
+        opacity: 0; 
+        transform: scale(1.1) translateY(20px);
+        filter: blur(10px);
+      }
+      100% { 
+        opacity: 1; 
+        transform: scale(1) translateY(0);
+        filter: blur(0);
+      }
+    }
 
     /* Top Header */
     header {
@@ -681,114 +728,123 @@
       font-style: italic;
     }
 
-    /* Featured Designs Slideshow */
-    .slideshow-container {
+    /* Premium Featured Designs Slideshow - Apple/Samsung style */
+    .premium-slideshow-container {
       position: relative;
       width: 100%;
-      height: 80vh; /* 80% screen height for better balance */
-      margin: 0;
-      border-radius: 0;
+      height: 80vh;
+      margin: 30px 0;
+      border-radius: 20px;
       overflow: hidden;
-      box-shadow: none;
-      transition: all 0.4s;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      perspective: 1000px;
+      animation: cinematicReveal 1.5s ease-out;
     }
 
-    .slide {
+    .premium-slide {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       opacity: 0;
-      transition: opacity 1s ease-in-out;
+      transition: opacity 1.2s cubic-bezier(0.23, 1, 0.32, 1), transform 1.2s cubic-bezier(0.23, 1, 0.32, 1);
       display: flex;
       align-items: center;
       justify-content: center;
+      transform-style: preserve-3d;
     }
 
-    .slide.active {
+    .premium-slide.active {
       opacity: 1;
       z-index: 2;
+      transform: translateZ(0);
     }
 
-    .slide img {
+    .premium-slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 8s ease;
+      transition: transform 8s cubic-bezier(0.23, 1, 0.32, 1);
+      transform: scale(1.1);
     }
 
-    .slide.active img {
+    .premium-slide.active img {
       transform: scale(1.05);
     }
 
-    .slide-caption {
+    .premium-slide-caption {
       position: absolute;
       bottom: 0;
       left: 0;
       width: 100%;
-      background: rgba(0, 0, 0, 0.5);
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
       color: white;
-      padding: 10px;
+      padding: 20px;
       text-align: center;
       font-family: var(--font-heading);
       z-index: 3;
-      font-size: 1rem;
-      letter-spacing: 0.5px;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+      backdrop-filter: blur(5px);
     }
 
-    .slideshow-dots {
+    .premium-slideshow-dots {
       position: absolute;
-      bottom: 15px;
+      bottom: 25px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
-      gap: 6px;
+      gap: 10px;
       z-index: 4;
     }
 
-    .dot {
-      width: 10px;
-      height: 10px;
+    .premium-dot {
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.5);
       cursor: pointer;
-      transition: all 0.3s;
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
     }
 
-    .dot.active {
+    .premium-dot.active {
       background: var(--luxury-gold);
-      transform: scale(1.3);
+      transform: scale(1.4);
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
     }
 
-    .slideshow-controls {
+    .premium-slideshow-controls {
       position: absolute;
       top: 50%;
       width: 100%;
       display: flex;
       justify-content: space-between;
-      padding: 0 10px;
+      padding: 0 20px;
       transform: translateY(-50%);
       z-index: 4;
     }
 
-    .slideshow-btn {
-      width: 40px;
-      height: 40px;
+    .premium-slideshow-btn {
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.5);
       color: white;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       cursor: pointer;
       transition: all 0.3s;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255,255,255,0.1);
     }
 
-    .slideshow-btn:hover {
-      background: rgba(0, 0, 0, 0.9);
+    .premium-slideshow-btn:hover {
+      background: rgba(0, 0, 0, 0.8);
       transform: scale(1.1);
+      color: var(--luxury-gold);
     }
 
     /* Gallery Grids */
@@ -1459,7 +1515,7 @@
         font-size: 1.5rem;
       }
       
-      .slideshow-container {
+      .premium-slideshow-container {
         aspect-ratio: 16/9;
       }
       
@@ -1488,7 +1544,7 @@
     }
     
     @media (min-width: 992px) {
-      .slideshow-container {
+      .premium-slideshow-container {
         aspect-ratio: 16/9;
       }
       
@@ -1500,7 +1556,7 @@
   </style>
 </head>
 <body>
-  <!-- Splash Screen -->
+  <!-- Enhanced Splash Screen with Golden Border -->
   <div id="preloader">
     <div class="mehendi-pattern"></div>
     <div class="preloader-content">
@@ -1516,9 +1572,9 @@
       <div class="sparkle" style="top:50%; left:70%; animation-delay:1.5s;"></div>
       
       <h1>
-        <span class="word">Deepa</span>
-        <span class="word">Mehendi</span>
-        <span class="word">Artist</span>
+        <span class="word gold-border">Deepa</span>
+        <span class="word gold-border">Mehendi</span>
+        <span class="word gold-border">Artist</span>
       </h1>
       <div class="hindi-line">श्री हित हरिवंश</div>
       <div class="blessing">🌟 शुभ मंगल सौभाग्य 🌟</div>
@@ -1569,39 +1625,39 @@
         </p>
       </div>
 
-      <!-- Featured Designs Slideshow -->
+      <!-- Premium Featured Designs Slideshow -->
       <div class="section">
         <h2><i class="fas fa-crown"></i> Bridal Designs</h2>
         
-        <div class="slideshow-container">
-          <div class="slide active">
+        <div class="premium-slideshow-container">
+          <div class="premium-slide active">
             <img src="images/H2.jpeg" alt="Bridal design 1">
-            <div class="slide-caption">Traditional Rajasthani Design</div>
+            <div class="premium-slide-caption">Traditional Rajasthani Design</div>
           </div>
-          <div class="slide">
+          <div class="premium-slide">
             <img src="images/H3.jpeg" alt="Bridal design 2">
           </div>
-          <div class="slide">
+          <div class="premium-slide">
             <img src="images/H4.jpeg" alt="Bridal design 3">
-            <div class="slide-caption">Modern Fusion Style</div>
+            <div class="premium-slide-caption">Modern Fusion Style</div>
           </div>
-          <div class="slide">
+          <div class="premium-slide">
             <img src="images/H5.jpeg" alt="Bridal design 4">
-            <div class="slide-caption">Classic Arabic Design</div>
+            <div class="premium-slide-caption">Classic Arabic Design</div>
           </div>
           
-          <div class="slideshow-dots">
-            <div class="dot active"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
+          <div class="premium-slideshow-dots">
+            <div class="premium-dot active"></div>
+            <div class="premium-dot"></div>
+            <div class="premium-dot"></div>
+            <div class="premium-dot"></div>
           </div>
           
-          <div class="slideshow-controls">
-            <div class="slideshow-btn" onclick="prevSlide()">
+          <div class="premium-slideshow-controls">
+            <div class="premium-slideshow-btn" onclick="prevSlide()">
               <i class="fas fa-chevron-left"></i>
             </div>
-            <div class="slideshow-btn" onclick="nextSlide()">
+            <div class="premium-slideshow-btn" onclick="nextSlide()">
               <i class="fas fa-chevron-right"></i>
             </div>
           </div>
@@ -2105,8 +2161,8 @@
     
     // Initialize slideshow
     function initSlideshow() {
-      const slides = document.querySelectorAll('.slide');
-      const dots = document.querySelectorAll('.dot');
+      const slides = document.querySelectorAll('.premium-slide');
+      const dots = document.querySelectorAll('.premium-dot');
       
       // Remove active classes
       slides.forEach(slide => slide.classList.remove('active'));
@@ -2118,8 +2174,8 @@
     }
     
     function nextSlide() {
-      const slides = document.querySelectorAll('.slide');
-      const dots = document.querySelectorAll('.dot');
+      const slides = document.querySelectorAll('.premium-slide');
+      const dots = document.querySelectorAll('.premium-dot');
       
       slides[currentSlide].classList.remove('active');
       dots[currentSlide].classList.remove('active');
@@ -2133,8 +2189,8 @@
     }
     
     function prevSlide() {
-      const slides = document.querySelectorAll('.slide');
-      const dots = document.querySelectorAll('.dot');
+      const slides = document.querySelectorAll('.premium-slide');
+      const dots = document.querySelectorAll('.premium-dot');
       
       slides[currentSlide].classList.remove('active');
       dots[currentSlide].classList.remove('active');
@@ -2148,8 +2204,8 @@
     }
     
     function goToSlide(index) {
-      const slides = document.querySelectorAll('.slide');
-      const dots = document.querySelectorAll('.dot');
+      const slides = document.querySelectorAll('.premium-slide');
+      const dots = document.querySelectorAll('.premium-dot');
       
       slides[currentSlide].classList.remove('active');
       dots[currentSlide].classList.remove('active');
@@ -2164,11 +2220,11 @@
     
     function resetSlideInterval() {
       clearInterval(slideInterval);
-      slideInterval = setInterval(nextSlide, 2500);
+      slideInterval = setInterval(nextSlide, 3500);
     }
     
     // Setup dot navigation
-    document.querySelectorAll('.dot').forEach((dot, index) => {
+    document.querySelectorAll('.premium-dot').forEach((dot, index) => {
       dot.addEventListener('click', () => goToSlide(index));
     });
     
@@ -2498,7 +2554,7 @@
       }
     });
 
-    // Preloader function
+    // Enhanced preloader function with cinematic transition
     window.addEventListener("load", function() {
       // Create decorative flowers for the splash screen
       const preloader = document.getElementById('preloader');
@@ -2550,25 +2606,33 @@
       });
       
       setTimeout(() => {
-        document.getElementById("preloader").style.display = "none";
-        document.getElementById("main-content").style.display = "block";
+        // Add cinematic transition effect
+        document.getElementById("preloader").style.animation = "cinematicReveal 1.5s ease-out forwards reverse";
         
-        // Autoplay videos
-        const wVideo = document.getElementById('w-video');
-        if (wVideo) {
-          wVideo.play().catch(e => console.log('Autoplay prevented:', e));
-        }
-        
-        // Autoplay videos in thank you section
-        document.querySelectorAll('video').forEach(video => {
-          if (video !== wVideo && video.autoplay) {
-            video.play().catch(e => console.log('Autoplay prevented:', e));
+        setTimeout(() => {
+          document.getElementById("preloader").style.display = "none";
+          document.getElementById("main-content").style.display = "block";
+          
+          // Add cinematic reveal to main content
+          document.getElementById("main-content").style.animation = "cinematicReveal 1.5s ease-out";
+          
+          // Autoplay videos
+          const wVideo = document.getElementById('w-video');
+          if (wVideo) {
+            wVideo.play().catch(e => console.log('Autoplay prevented:', e));
           }
-        });
-        
-        // Initialize slideshow
-        initSlideshow();
-        slideInterval = setInterval(nextSlide, 2500);
+          
+          // Autoplay videos in thank you section
+          document.querySelectorAll('video').forEach(video => {
+            if (video !== wVideo && video.autoplay) {
+              video.play().catch(e => console.log('Autoplay prevented:', e));
+            }
+          });
+          
+          // Initialize slideshow
+          initSlideshow();
+          slideInterval = setInterval(nextSlide, 3500);
+        }, 1500);
       }, 3500); // Match animation duration
     });
   </script>
