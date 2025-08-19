@@ -47,7 +47,7 @@
       background-color: var(--light);
     }
 
-    /* Enhanced Splash Screen with Golden Border */
+    /* Enhanced Splash Screen with Golden Border - Smoother Transition */
     #preloader {
       position: fixed;
       top: 0;
@@ -61,7 +61,7 @@
       font-size: clamp(24px, 8vw, 32px);
       color: white;
       z-index: 9999;
-      animation: fadeOut 1.5s ease 3.5s forwards;
+      animation: fadeOut 1s ease 3s forwards;
       overflow: hidden;
     }
 
@@ -728,6 +728,142 @@
       font-style: italic;
     }
 
+    /* Premium Bridal Cards Section */
+    .bridal-cards-section {
+      padding: 25px 0;
+    }
+    
+    .bridal-cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+    
+    .bridal-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      transition: all 0.4s ease;
+      position: relative;
+    }
+    
+    .bridal-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+    }
+    
+    .bridal-card-image {
+      position: relative;
+      width: 100%;
+      height: 280px;
+      overflow: hidden;
+    }
+    
+    .bridal-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    
+    .bridal-card:hover .bridal-card-image img {
+      transform: scale(1.05);
+    }
+    
+    .bridal-card-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .bridal-card:hover .bridal-card-overlay {
+      opacity: 1;
+    }
+    
+    .view-details-btn {
+      background: rgba(212, 175, 55, 0.9);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      cursor: pointer;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+    
+    .bridal-card:hover .view-details-btn {
+      transform: translateY(0);
+    }
+    
+    .view-details-btn:hover {
+      background: var(--luxury-gold);
+      transform: scale(1.05);
+    }
+    
+    .bridal-card-content {
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .bridal-card-title {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      color: var(--luxury-maroon);
+      margin-bottom: 10px;
+    }
+    
+    .bridal-card-description {
+      color: #666;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+    
+    .bridal-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(0,0,0,0.1);
+    }
+    
+    .bridal-card-price {
+      font-family: var(--font-heading);
+      color: var(--luxury-gold);
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    
+    .bridal-card-action {
+      background: var(--luxury-maroon);
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .bridal-card-action:hover {
+      background: var(--dark);
+      transform: scale(1.05);
+    }
+    
     /* Premium Featured Designs Slideshow - Apple/Samsung style */
     .premium-slideshow-container {
       position: relative;
@@ -1489,7 +1625,53 @@
     @media (min-width: 768px) {
       body {
         padding-top: 70px;
-      }
+      padding-bottom: 0;
+      overflow-x: hidden;
+      overflow-y: auto;
+      height: auto;
+      min-height: 100vh;
+      position: relative;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      font-smooth: always;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    
+    @media (min-width: 768px) {
+      body {
+        padding-top: 70px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      height: auto;
+      min-height: 100vh;
+      position: relative;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      font-smooth: always;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
       
       .bottom-nav {
         max-width: 600px;
@@ -1541,6 +1723,10 @@
       .elegant-text {
         font-size: 1.6rem;
       }
+      
+      .bridal-cards-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
     
     @media (min-width: 992px) {
@@ -1551,6 +1737,10 @@
       .gallery-grid,
       .thank-you-grid {
         grid-template-columns: repeat(4, 1fr);
+      }
+      
+      .bridal-cards-container {
+        grid-template-columns: repeat(3, 1fr);
       }
     }
   </style>
@@ -1625,9 +1815,68 @@
         </p>
       </div>
 
+      <!-- Premium Bridal Cards Section -->
+      <div class="section bridal-cards-section">
+        <h2><i class="fas fa-crown"></i> Bridal Collection</h2>
+        <p>Exquisite designs crafted especially for the bride</p>
+        
+        <div class="bridal-cards-container">
+          <div class="bridal-card">
+            <div class="bridal-card-image">
+              <img src="images/H2.jpeg" alt="Traditional Rajasthani Design">
+              <div class="bridal-card-overlay">
+                <button class="view-details-btn" onclick="zoomImage(this.parentElement.parentElement.querySelector('img'), 'home')">View Details</button>
+              </div>
+            </div>
+            <div class="bridal-card-content">
+              <h3 class="bridal-card-title">Traditional Rajasthani</h3>
+              <p class="bridal-card-description">Intricate patterns with traditional motifs perfect for the royal bride</p>
+              <div class="bridal-card-footer">
+                <span class="bridal-card-price">₹5,100+</span>
+                <button class="bridal-card-action" onclick="switchTab('bride-tab')">Explore</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bridal-card">
+            <div class="bridal-card-image">
+              <img src="images/H4.jpeg" alt="Modern Fusion Style">
+              <div class="bridal-card-overlay">
+                <button class="view-details-btn" onclick="zoomImage(this.parentElement.parentElement.querySelector('img'), 'home')">View Details</button>
+              </div>
+            </div>
+            <div class="bridal-card-content">
+              <h3 class="bridal-card-title">Modern Fusion</h3>
+              <p class="bridal-card-description">Contemporary designs blending traditional elements with modern aesthetics</p>
+              <div class="bridal-card-footer">
+                <span class="bridal-card-price">₹5,500+</span>
+                <button class="bridal-card-action" onclick="switchTab('bride-tab')">Explore</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bridal-card">
+            <div class="bridal-card-image">
+              <img src="images/H5.jpeg" alt="Classic Arabic Design">
+              <div class="bridal-card-overlay">
+                <button class="view-details-btn" onclick="zoomImage(this.parentElement.parentElement.querySelector('img'), 'home')">View Details</button>
+              </div>
+            </div>
+            <div class="bridal-card-content">
+              <h3 class="bridal-card-title">Classic Arabic</h3>
+              <p class="bridal-card-description">Elegant floral patterns with flowing lines for a sophisticated look</p>
+              <div class="bridal-card-footer">
+                <span class="bridal-card-price">₹4,800+</span>
+                <button class="bridal-card-action" onclick="switchTab('bride-tab')">Explore</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Premium Featured Designs Slideshow -->
       <div class="section">
-        <h2><i class="fas fa-crown"></i> Bridal Designs</h2>
+        <h2><i class="fas fa-crown"></i> Featured Designs</h2>
         
         <div class="premium-slideshow-container">
           <div class="premium-slide active">
@@ -2322,7 +2571,7 @@
       currentGallery = galleryName;
       
       if (galleryName === 'home') {
-        galleryItems = Array.from(container.querySelectorAll('.featured-item img'));
+        galleryItems = Array.from(container.querySelectorAll('.bridal-card-image img'));
       } else if (galleryName === 'bride') {
         galleryItems = Array.from(container.querySelectorAll('.gallery-grid .gallery-item img'));
       } else if (galleryName === 'guests') {
@@ -2554,7 +2803,7 @@
       }
     });
 
-    // Enhanced preloader function with cinematic transition
+    // Enhanced preloader function with smoother transition
     window.addEventListener("load", function() {
       // Create decorative flowers for the splash screen
       const preloader = document.getElementById('preloader');
@@ -2606,15 +2855,21 @@
       });
       
       setTimeout(() => {
-        // Add cinematic transition effect
-        document.getElementById("preloader").style.animation = "cinematicReveal 1.5s ease-out forwards reverse";
+        // Smooth fade out for preloader
+        document.getElementById("preloader").style.opacity = "0";
+        document.getElementById("preloader").style.transition = "opacity 0.8s ease";
         
         setTimeout(() => {
           document.getElementById("preloader").style.display = "none";
           document.getElementById("main-content").style.display = "block";
           
-          // Add cinematic reveal to main content
-          document.getElementById("main-content").style.animation = "cinematicReveal 1.5s ease-out";
+          // Smooth fade in for main content
+          document.getElementById("main-content").style.opacity = "0";
+          document.getElementById("main-content").style.transition = "opacity 0.8s ease";
+          
+          setTimeout(() => {
+            document.getElementById("main-content").style.opacity = "1";
+          }, 50);
           
           // Autoplay videos
           const wVideo = document.getElementById('w-video');
@@ -2632,8 +2887,8 @@
           // Initialize slideshow
           initSlideshow();
           slideInterval = setInterval(nextSlide, 3500);
-        }, 1500);
-      }, 3500); // Match animation duration
+        }, 800);
+      }, 3000);
     });
   </script>
 </body>
