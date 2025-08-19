@@ -2,11 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Deepa Mehendi Artist | Lucknow</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -22,14 +21,11 @@
       --dark: #4b2e2e;
       --text: #333;
       --white: #ffffff;
-      --shadow: 0 4px 15px rgba(0,0,0,0.1);
       --luxury-gold: #d4af37;
       --luxury-maroon: #800020;
       --font-heading: 'Playfair Display', serif;
       --font-body: 'Montserrat', sans-serif;
       --whatsapp-green: #25D366;
-      --glass-bg: rgba(255, 255, 255, 0.15);
-      --glass-border: rgba(255, 255, 255, 0.18);
     }
 
     html, body {
@@ -42,391 +38,95 @@
     }
 
     body {
-      padding-top: 60px;
+      padding-top: 70px;
       position: relative;
       background-color: var(--light);
     }
 
-    /* Enhanced Splash Screen with Golden Border - Smoother Transition */
+    /* Simple Preloader */
     #preloader {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: #000;
+      background: var(--luxury-maroon);
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      font-size: clamp(24px, 8vw, 32px);
-      color: white;
       z-index: 9999;
-      animation: fadeOut 1s ease 3s forwards;
-      overflow: hidden;
-    }
-
-    #preloader::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(45deg, 
-        transparent 40%, 
-        rgba(212, 175, 55, 0.3) 50%, 
-        transparent 60%);
-      background-size: 300% 300%;
-      z-index: 2;
-      animation: rotateLight 4s linear infinite;
-      pointer-events: none;
-    }
-
-    #preloader::after {
-      content: '';
-      position: absolute;
-      top: 5px;
-      left: 5px;
-      right: 5px;
-      bottom: 5px;
-      border: 2px solid transparent;
-      border-image: linear-gradient(45deg, 
-        transparent 40%, 
-        var(--luxury-gold) 50%, 
-        transparent 60%);
-      border-image-slice: 1;
-      background-size: 300% 300%;
-      z-index: 2;
-      animation: rotateLight 3s linear infinite;
-      pointer-events: none;
-    }
-
-    .preloader-content {
-      text-align: center;
-      padding: 20px;
-      position: relative;
-      width: 100%;
-      z-index: 3;
-    }
-
-    .mehendi-pattern {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M30,50 Q50,30 70,50 T90,50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5" opacity="0.3"/></svg>');
-      opacity: 0.2;
-      z-index: 0;
+      transition: opacity 0.5s ease;
     }
 
     #preloader h1 {
       font-family: var(--font-heading);
-      font-size: clamp(32px, 10vw, 48px);
-      color: white;
-      margin-bottom: 10px;
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
+      font-size: 2.5rem;
+      color: var(--luxury-gold);
+      margin-bottom: 20px;
+      text-align: center;
     }
 
-    #preloader h1 .word {
-      opacity: 0;
-      display: inline-block;
-      position: relative;
-      color: white;
-    }
-
-    /* Enhanced Gold border effect for Deepa Mehendi */
-    #preloader h1 .gold-border {
-      padding: 4px 8px;
-      position: relative;
-      overflow: hidden;
-      border-radius: 4px;
-    }
-
-    .gold-border::before {
-      content: '';
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      background: linear-gradient(45deg, 
-        transparent 40%, 
-        var(--luxury-gold) 50%, 
-        transparent 60%);
-      background-size: 300% 300%;
-      background-position: 0% 0%;
-      z-index: -1;
-      animation: snakeBorder 3s linear infinite;
-      border-radius: 6px;
-      clip-path: polygon(
-        0% 0%, 100% 0%, 100% 100%, 0% 100%,
-        0% 0%, 5% 5%, 95% 5%, 95% 95%, 5% 95%, 5% 5%
-      );
-    }
-
-    /* Subtle green leaves background */
-    .leaf-decoration {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 C60,0 80,20 70,40 C90,30 80,50 60,50 C70,70 40,70 50,50 C30,60 20,40 30,30 C10,40 20,20 50,10" fill="rgba(100,150,100,0.1)" transform="rotate(30,50,50)"/></svg>');
-      background-size: 100px 100px;
-      opacity: 0.3;
-      z-index: 0;
-      animation: leafFloat 20s linear infinite;
-    }
-
-    /* Animation timing */
-    #preloader h1 .word:nth-child(1) {
-      animation: glowWord 1.5s ease 0.5s forwards, blink 2s ease 2s infinite;
-    }
-
-    #preloader h1 .word:nth-child(2) {
-      animation: glowWord 1.5s ease 1s forwards, blink 2s ease 2.2s infinite;
-    }
-
-    #preloader h1 .word:nth-child(3) {
-      animation: glowWord 1.5s ease 1.5s forwards, blink 2s ease 2.4s infinite;
-    }
-
-    #preloader .hindi-line {
-      font-family: 'Georgia', serif;
-      font-size: clamp(18px, 6vw, 24px);
-      color: white;
-      margin-top: 20px;
-      animation: fadeIn 1s ease 0.5s forwards;
-      opacity: 0;
-      position: relative;
-      z-index: 1;
-    }
-
-    #preloader .blessing {
-      font-family: 'Georgia', serif;
-      font-style: italic;
-      font-size: clamp(14px, 4vw, 16px);
-      color: rgba(255,255,255,0.8);
-      margin-top: 30px;
-      animation: fadeIn 1s ease 2s forwards;
-      opacity: 0;
-      position: relative;
-      z-index: 1;
-    }
-
-    .flower {
-      position: absolute;
-      width: 30px;
-      height: 30px;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 Q60,30 50,50 Q40,30 50,10" fill="rgba(255,255,255,0.5)" opacity="0.6"/></svg>');
-      background-size: contain;
-      animation: float 4s ease-in-out infinite, fadeIn 1s ease forwards;
-      z-index: 0;
-    }
-
-    .sparkle {
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      background: var(--luxury-gold);
+    .loader {
+      width: 50px;
+      height: 50px;
+      border: 5px solid rgba(255, 255, 255, 0.2);
       border-radius: 50%;
-      animation: sparkle 2s infinite;
-      opacity: 0;
-      z-index: 0;
+      border-top: 5px solid var(--luxury-gold);
+      animation: spin 1s linear infinite;
     }
 
-    /* Animations */
-    @keyframes snakeBorder {
-      0% {
-        background-position: 0% 0%;
-        clip-path: polygon(
-          0% 0%, 100% 0%, 100% 100%, 0% 100%,
-          0% 0%, 5% 5%, 95% 5%, 95% 95%, 5% 95%, 5% 5%
-        );
-      }
-      25% {
-        clip-path: polygon(
-          0% 0%, 100% 0%, 100% 100%, 0% 100%,
-          0% 0%, 5% 5%, 95% 5%, 95% 95%, 5% 95%, 5% 5%
-        );
-      }
-      50% {
-        background-position: 100% 100%;
-        clip-path: polygon(
-          0% 0%, 100% 0%, 100% 100%, 0% 100%,
-          0% 0%, 3% 3%, 97% 3%, 97% 97%, 3% 97%, 3% 3%
-        );
-      }
-      75% {
-        clip-path: polygon(
-          0% 0%, 100% 0%, 100% 100%, 0% 100%,
-          0% 0%, 7% 7%, 93% 7%, 93% 93%, 7% 93%, 7% 7%
-        );
-      }
-      100% {
-        background-position: 0% 0%;
-        clip-path: polygon(
-          0% 0%, 100% 0%, 100% 100%, 0% 100%,
-          0% 0%, 5% 5%, 95% 5%, 95% 95%, 5% 95%, 5% 5%
-        );
-      }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
-    @keyframes leafFloat {
-      0% {
-        background-position: 0 0;
-      }
-      100% {
-        background-position: 100px 100px;
-      }
-    }
-
-    @keyframes sparkle {
-      0% { opacity: 0; transform: scale(0.2); }
-      50% { opacity: 1; transform: scale(1); }
-      100% { opacity: 0; transform: scale(0.2); }
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-15px) rotate(5deg); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeOut {
-      to { opacity: 0; visibility: hidden; }
-    }
-
-    @keyframes glowWord {
-      from { opacity: 0; transform: translateY(20px); text-shadow: 0 0 0 rgba(255,255,255,0); }
-      to { opacity: 1; transform: translateY(0); text-shadow: 0 0 20px rgba(255,255,255,0.5), 0 0 40px rgba(255,255,255,0.3); }
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; text-shadow: 0 0 20px rgba(255,255,255,0.5), 0 0 40px rgba(255,255,255,0.3); }
-      50% { opacity: 0.8; text-shadow: 0 0 10px rgba(255,255,255,0.3), 0 0 20px rgba(255,255,255,0.2); }
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-      70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
-      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-    }
-
-    @keyframes slideFromTop {
-      from { transform: translateY(-100px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    @keyframes slideFromRight {
-      from { transform: translateX(100px); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
-    }
-
-    @keyframes slideFromBottom {
-      from { transform: translateY(100px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    @keyframes slideFromLeft {
-      from { transform: translateX(-100px); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
-    }
-
-    @keyframes shine {
-      0% { background-position: -100% 0; }
-      100% { background-position: 200% 0; }
-    }
-
-    @keyframes rotateLight {
-      0% { transform: rotate(0deg); background-position: 0% 50%; }
-      100% { transform: rotate(360deg); background-position: 100% 50%; }
-    }
-
-    /* Enhanced transition animation */
-    @keyframes cinematicReveal {
-      0% { 
-        opacity: 0; 
-        transform: scale(1.1) translateY(20px);
-        filter: blur(10px);
-      }
-      100% { 
-        opacity: 1; 
-        transform: scale(1) translateY(0);
-        filter: blur(0);
-      }
-    }
-
-    /* Top Header */
+    /* Header */
     header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       background: var(--white);
-      padding: 8px 12px;
+      padding: 15px;
       z-index: 900;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      height: 60px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-      flex-wrap: nowrap;
-      white-space: nowrap;
-      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
 
     .brand-area {
       display: flex;
       align-items: center;
-      gap: 8px;
-      flex: 1 1 auto;
-      min-width: 0;
+      gap: 10px;
     }
 
     .brand-area h2 {
       font-family: var(--font-heading);
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       color: var(--luxury-maroon);
-      line-height: 1.2;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      font-weight: 600;
     }
 
     .brand-area p {
-      font-size: 0.65rem;
+      font-size: 0.8rem;
       color: var(--luxury-gold);
       font-style: italic;
-      line-height: 1;
     }
 
     .location {
-      font-size: 0.75rem;
-      padding: 6px 10px;
+      font-size: 0.8rem;
+      padding: 8px 12px;
       color: var(--dark);
       font-weight: bold;
       font-family: var(--font-heading);
       display: flex;
       align-items: center;
       gap: 5px;
-      flex-shrink: 0;
     }
 
     .header-whatsapp {
-      background: linear-gradient(135deg, var(--whatsapp-green), #128C7E);
+      background: var(--whatsapp-green);
       color: white;
       border-radius: 50%;
       width: 40px;
@@ -435,8 +135,6 @@
       justify-content: center;
       align-items: center;
       font-size: 1.4rem;
-      margin-left: 10px;
-      flex-shrink: 0;
       transition: all 0.3s;
     }
 
@@ -444,35 +142,34 @@
       transform: scale(1.1);
     }
 
-    /* Bottom Navigation */
-    .bottom-nav {
+    /* Navigation */
+    .nav-container {
       position: fixed;
       bottom: 0;
       left: 0;
       width: 100%;
       background: var(--white);
+      z-index: 900;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+      padding: 10px 0;
+    }
+
+    .nav-items {
       display: flex;
       justify-content: space-around;
-      z-index: 900;
-      padding: 5px 0;
-      height: 70px;
-      box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
-      border-top: 1px solid rgba(0,0,0,0.05);
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     .nav-item {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
       text-decoration: none;
       color: #777;
-      font-size: 0.7rem;
+      font-size: 0.8rem;
       padding: 8px 5px;
-      width: 16.66%;
       transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
     }
 
     .nav-item.active {
@@ -482,50 +179,26 @@
     .nav-item i {
       font-size: 1.3rem;
       margin-bottom: 3px;
-      transition: all 0.3s;
-    }
-
-    .nav-item span {
-      font-size: 0.65rem;
-      transition: all 0.3s;
-    }
-
-    .nav-item.active::before {
-      content: '';
-      position: absolute;
-      top: -5px;
-      width: 60%;
-      height: 3px;
-      background: var(--luxury-gold);
-      border-radius: 2px;
-    }
-
-    .nav-item:hover i {
-      transform: translateY(-5px);
-      color: var(--luxury-gold);
     }
 
     /* Tab Content */
     .tab-content {
       display: none;
-      padding: 15px;
-      animation: fadeIn 0.5s ease;
-      padding-bottom: 90px;
+      padding: 20px;
+      padding-bottom: 80px;
     }
 
     .tab-content.active {
       display: block;
     }
 
-    /* Common Section Styles */
+    /* Sections */
     .section {
       padding: 20px;
       margin-bottom: 20px;
-      position: relative;
-      overflow: hidden;
       background: white;
-      border-radius: 15px;
-      box-shadow: var(--shadow);
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     .section h2 {
@@ -533,24 +206,9 @@
       color: var(--luxury-maroon);
       margin-bottom: 15px;
       font-size: 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
       font-family: var(--font-heading);
-      position: relative;
       padding-bottom: 10px;
-    }
-
-    .section h2::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 2px;
-      background: var(--luxury-gold);
+      border-bottom: 2px solid var(--luxury-gold);
     }
 
     .section p {
@@ -561,78 +219,23 @@
       line-height: 1.6;
     }
 
-    /* NEW: Footer Image Section */
-    .footer-image-section {
-      width: 100%;
-      height: 18vh;
-      overflow: hidden;
-      position: relative;
-      border-radius: 0;
-      margin-top: 30px;
-      margin-bottom: -20px;
-      box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
-    }
-
-    .footer-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    
-    /* Golden Halo Effect for Footer Images */
-    .footer-image-section .halo-container {
-      position: relative;
-      display: inline-block;
-      width: 100%;
-      height: 100%;
-      border-radius: 0;
-      overflow: visible;
-    }
-    
-    .footer-image-section .halo-container::before {
-      content: '';
-      position: absolute;
-      top: -5px;
-      left: -5px;
-      right: -5px;
-      bottom: -5px;
-      border-radius: 0;
-      background: linear-gradient(45deg, 
-        transparent 40%, 
-        rgba(212, 175, 55, 0.6) 50%, 
-        transparent 60%);
-      background-size: 200% 200%;
-      z-index: 1;
-      animation: rotateHalo 4s linear infinite;
-      pointer-events: none;
-      opacity: 0.8;
-    }
-    
-    @keyframes rotateHalo {
-      0% {
-        background-position: 0% 0%;
-        transform: rotate(0deg);
-      }
-      100% {
-        background-position: 100% 100%;
-        transform: rotate(360deg);
-      }
-    }
-
     /* Home Tab */
     .welcome-box {
       width: 100%;
       margin: 0 auto 20px;
-      border-radius: 15px;
+      border-radius: 10px;
       overflow: hidden;
       position: relative;
-      height: 350px;
+      height: 300px;
       background: var(--light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .welcome-box video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 10px;
     }
 
     .welcome-overlay {
@@ -641,471 +244,96 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.1);
+      background: rgba(0,0,0,0.4);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
       padding: 20px;
-      z-index: 2;
     }
 
     .welcome-overlay h1 {
       font-family: var(--font-heading);
-      font-size: 2.8rem;
+      font-size: 2rem;
       color: var(--white);
-      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
       margin-bottom: 15px;
-      animation: fadeInDown 1s ease;
     }
 
     .welcome-overlay p {
       font-family: var(--font-heading);
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       color: var(--white);
       max-width: 600px;
-      margin: 0 auto;
-      text-shadow: 0 1px 5px rgba(0,0,0,0.5);
-      animation: fadeInUp 1s ease 0.2s forwards;
-      opacity: 0;
     }
 
-    .welcome-box video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      border-radius: 15px;
-    }
-
-    /* Elegant Text Section */
     .elegant-text-section {
       text-align: center;
-      padding: 30px 20px;
+      padding: 20px;
       background: linear-gradient(135deg, #fff8f0 0%, #fdf6e9 100%);
-      border-radius: 15px;
-      margin: 25px 0;
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .elegant-text-section::before {
-      content: "";
-      position: absolute;
-      top: -20px;
-      left: -20px;
-      width: 60px;
-      height: 60px;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 Q60,30 50,50 Q40,30 50,10" fill="%23d4af37" opacity="0.2"/></svg>');
-      background-size: contain;
-      z-index: 0;
-    }
-
-    .elegant-text-section::after {
-      content: "";
-      position: absolute;
-      bottom: -20px;
-      right: -20px;
-      width: 60px;
-      height: 60px;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 Q60,30 50,50 Q40,30 50,10" fill="%23d4af37" opacity="0.2"/></svg>');
-      background-size: contain;
-      z-index: 0;
-      transform: rotate(180deg);
+      border-radius: 10px;
+      margin: 20px 0;
     }
 
     .elegant-text {
       font-family: var(--font-heading);
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       color: var(--luxury-maroon);
       line-height: 1.8;
       max-width: 800px;
       margin: 0 auto;
-      position: relative;
-      z-index: 1;
       font-style: italic;
     }
 
-    /* Premium Bridal Cards Section */
-    .bridal-cards-section {
-      padding: 25px 0;
-    }
-    
-    .bridal-cards-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-      margin-top: 20px;
-    }
-    
-    .bridal-card {
-      background: white;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-      transition: all 0.4s ease;
-      position: relative;
-    }
-    
-    .bridal-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-    }
-    
-    .bridal-card-image {
-      position: relative;
-      width: 100%;
-      height: 280px;
-      overflow: hidden;
-    }
-    
-    .bridal-card-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s ease;
-    }
-    
-    .bridal-card:hover .bridal-card-image img {
-      transform: scale(1.05);
-    }
-    
-    .bridal-card-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .bridal-card:hover .bridal-card-overlay {
-      opacity: 1;
-    }
-    
-    .view-details-btn {
-      background: rgba(212, 175, 55, 0.9);
-      color: white;
-      border: none;
-      padding: 12px 25px;
-      border-radius: 30px;
-      font-family: var(--font-heading);
-      font-weight: 600;
-      cursor: pointer;
-      transform: translateY(20px);
-      transition: all 0.3s ease;
-      backdrop-filter: blur(5px);
-    }
-    
-    .bridal-card:hover .view-details-btn {
-      transform: translateY(0);
-    }
-    
-    .view-details-btn:hover {
-      background: var(--luxury-gold);
-      transform: scale(1.05);
-    }
-    
-    .bridal-card-content {
-      padding: 20px;
-      text-align: center;
-    }
-    
-    .bridal-card-title {
-      font-family: var(--font-heading);
-      font-size: 1.3rem;
-      color: var(--luxury-maroon);
-      margin-bottom: 10px;
-    }
-    
-    .bridal-card-description {
-      color: #666;
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin-bottom: 15px;
-    }
-    
-    .bridal-card-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 15px;
-      padding-top: 15px;
-      border-top: 1px solid rgba(0,0,0,0.1);
-    }
-    
-    .bridal-card-price {
-      font-family: var(--font-heading);
-      color: var(--luxury-gold);
-      font-weight: 700;
-      font-size: 1.1rem;
-    }
-    
-    .bridal-card-action {
-      background: var(--luxury-maroon);
-      color: white;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    .bridal-card-action:hover {
-      background: var(--dark);
-      transform: scale(1.05);
-    }
-    
-    /* Premium Featured Designs Slideshow - Apple/Samsung style */
-    .premium-slideshow-container {
-      position: relative;
-      width: 100%;
-      height: 80vh;
-      margin: 30px 0;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-      perspective: 1000px;
-      animation: cinematicReveal 1.5s ease-out;
-    }
-
-    .premium-slide {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      transition: opacity 1.2s cubic-bezier(0.23, 1, 0.32, 1), transform 1.2s cubic-bezier(0.23, 1, 0.32, 1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transform-style: preserve-3d;
-    }
-
-    .premium-slide.active {
-      opacity: 1;
-      z-index: 2;
-      transform: translateZ(0);
-    }
-
-    .premium-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 8s cubic-bezier(0.23, 1, 0.32, 1);
-      transform: scale(1.1);
-    }
-
-    .premium-slide.active img {
-      transform: scale(1.05);
-    }
-
-    .premium-slide-caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-      color: white;
-      padding: 20px;
-      text-align: center;
-      font-family: var(--font-heading);
-      z-index: 3;
-      font-size: 1.2rem;
-      letter-spacing: 1px;
-      backdrop-filter: blur(5px);
-    }
-
-    .premium-slideshow-dots {
-      position: absolute;
-      bottom: 25px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 10px;
-      z-index: 4;
-    }
-
-    .premium-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.5);
-      cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-
-    .premium-dot.active {
-      background: var(--luxury-gold);
-      transform: scale(1.4);
-      box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
-    }
-
-    .premium-slideshow-controls {
-      position: absolute;
-      top: 50%;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      padding: 0 20px;
-      transform: translateY(-50%);
-      z-index: 4;
-    }
-
-    .premium-slideshow-btn {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: rgba(0, 0, 0, 0.5);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      cursor: pointer;
-      transition: all 0.3s;
-      backdrop-filter: blur(5px);
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .premium-slideshow-btn:hover {
-      background: rgba(0, 0, 0, 0.8);
-      transform: scale(1.1);
-      color: var(--luxury-gold);
-    }
-
     /* Gallery Grids */
-    .gallery-grid,
-    .thank-you-grid {
+    .gallery-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
+      gap: 10px;
       margin-top: 15px;
     }
-    
-    /* Colour gallery remains 1 column */
+
+    .gallery-item {
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 1/1;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Single column for colors */
     .colour-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 15px;
       margin-top: 15px;
     }
-    
-    .gallery-item,
-    .thank-you-item {
-      border-radius: 10px;
-      overflow: hidden;
-      position: relative;
-      aspect-ratio: 1/1;
-      transition: all 0.4s ease;
-      opacity: 0;
-      transform-origin: center;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    
-    .colour-item {
-      border-radius: 10px;
-      overflow: hidden;
-      position: relative;
-      transition: all 0.4s ease;
-      opacity: 0;
-      transform-origin: center;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    
-    .gallery-item.video::after {
-      content: "\f04b";
-      font-family: "Font Awesome 5 Free";
-      font-weight: 900;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: var(--white);
-      background: rgba(0,0,0,0.5);
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      z-index: 2;
-    }
-    
-    .gallery-item:nth-child(4n+1),
-    .colour-item:nth-child(4n+1),
-    .thank-you-item:nth-child(4n+1) {
-      animation: slideFromTop 0.8s ease forwards;
-    }
-    
-    .gallery-item:nth-child(4n+2),
-    .colour-item:nth-child(4n+2),
-    .thank-you-item:nth-child(4n+2) {
-      animation: slideFromRight 0.8s ease forwards;
-    }
-    
-    .gallery-item:nth-child(4n+3),
-    .colour-item:nth-child(4n+3),
-    .thank-you-item:nth-child(4n+3) {
-      animation: slideFromBottom 0.8s ease forwards;
-    }
-    
-    .gallery-item:nth-child(4n+4),
-    .colour-item:nth-child(4n+4),
-    .thank-you-item:nth-child(4n+4) {
-      animation: slideFromLeft 0.8s ease forwards;
-    }
-
-    .gallery-item img,
-    .thank-you-item img,
-    .thank-you-item video,
-    .colour-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s ease;
-    }
-
-    .gallery-item:hover,
-    .colour-item:hover,
-    .thank-you-item:hover {
-      transform: scale(1.05) translateY(-5px);
-      z-index: 10;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-    }
-
-    .gallery-item:hover img,
-    .colour-item:hover img,
-    .thank-you-item:hover img,
-    .thank-you-item:hover video {
-      transform: scale(1.1);
-    }
 
     /* Price Table */
     .rate-table {
       width: 100%;
-      font-size: 1.1rem;
+      font-size: 1rem;
       margin-top: 15px;
       font-family: var(--font-heading);
       border-collapse: collapse;
       background: white;
-      border-radius: 15px;
+      border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     }
 
     .rate-table th, .rate-table td {
-      padding: 15px;
+      padding: 12px;
       text-align: center;
     }
 
@@ -1131,9 +359,8 @@
       align-items: center;
       margin-top: 15px;
       background: white;
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      padding: 15px;
+      border-radius: 10px;
     }
 
     .artist-photo {
@@ -1141,12 +368,7 @@
       height: 100px;
       border-radius: 50%;
       object-fit: cover;
-      transition: transform 0.3s;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    
-    .artist-photo:hover {
-      transform: scale(1.05);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
     }
 
     .artist-details {
@@ -1169,9 +391,8 @@
     .journey-section {
       margin-top: 20px;
       background: white;
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      padding: 15px;
+      border-radius: 10px;
     }
 
     .journey-section h3 {
@@ -1183,7 +404,7 @@
       align-items: center;
       gap: 10px;
     }
-    
+
     .journey-section h3 i {
       color: var(--luxury-gold);
     }
@@ -1194,46 +415,40 @@
       font-size: 0.95rem;
       line-height: 1.7;
     }
-    
-    /* Certifications Section */
+
+    /* Certifications */
     .certifications-container {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
       gap: 15px;
       margin-top: 20px;
     }
-    
+
     .certification-card {
       text-align: center;
-      transition: all 0.3s;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       background: white;
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.05);
     }
-    
-    .certification-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    }
-    
+
     .certification-card i {
-      font-size: 2.5rem;
+      font-size: 2rem;
       color: var(--luxury-gold);
       margin-bottom: 10px;
     }
-    
+
     .certification-card p {
       font-size: 0.85rem;
       margin: 0;
       font-weight: bold;
       color: var(--dark);
     }
-    
+
     .certification-subtext {
       font-size: 0.75rem;
       color: #a0522d;
@@ -1241,26 +456,20 @@
       font-weight: normal;
       font-style: italic;
     }
-    
-    .cert-description {
-      font-size: 0.85rem;
-      color: #666;
-      font-style: italic;
-    }
-    
-   /* FAQ Section */
+
+    /* FAQ */
     .faq-container {
       margin-top: 20px;
     }
-    
+
     .faq-item {
       margin-bottom: 15px;
-      border-radius: 10px;
+      border-radius: 8px;
       overflow: hidden;
       background: white;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.05);
     }
-    
+
     .faq-question {
       padding: 15px;
       font-family: var(--font-heading);
@@ -1272,21 +481,21 @@
       align-items: center;
       transition: background 0.3s;
     }
-    
+
     .faq-question:hover {
       color: var(--luxury-maroon);
       background: rgba(212, 175, 55, 0.05);
     }
-    
+
     .faq-question i {
       transition: transform 0.3s;
       color: var(--luxury-gold);
     }
-    
+
     .faq-item.active .faq-question i {
       transform: rotate(180deg);
     }
-    
+
     .faq-answer {
       padding: 0 15px;
       max-height: 0;
@@ -1296,30 +505,29 @@
       line-height: 1.5;
       color: #555;
     }
-    
+
     .faq-item.active .faq-answer {
       padding: 15px;
       max-height: 300px;
     }
-    
+
     /* Footer */
     .footer {
-      padding: 40px 15px 30px;
+      padding: 30px 15px 20px;
       text-align: center;
       background: linear-gradient(135deg, #fff8f0 0%, #fdf6e9 100%);
-      border-radius: 15px;
+      border-radius: 10px;
       margin-top: 30px;
-      box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
     }
-    
+
     .footer-links {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 20px;
-      margin-bottom: 25px;
+      gap: 15px;
+      margin-bottom: 20px;
     }
-    
+
     .footer-links a {
       color: var(--dark);
       text-decoration: none;
@@ -1327,55 +535,38 @@
       font-size: 1rem;
       transition: all 0.3s;
       padding: 5px 10px;
-      position: relative;
     }
 
-    .footer-links a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background-color: var(--luxury-gold);
-      transition: width 0.3s;
-    }
-
-    .footer-links a:hover::after {
-      width: 100%;
-    }
-    
     .footer-links a:hover {
       color: var(--luxury-gold);
     }
-    
+
     .social-icons {
       display: flex;
       justify-content: center;
-      gap: 20px;
-      margin-bottom: 25px;
+      gap: 15px;
+      margin-bottom: 20px;
     }
-    
+
     .social-icons a {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 45px;
-      height: 45px;
+      width: 40px;
+      height: 40px;
       color: var(--dark);
       border-radius: 50%;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       transition: all 0.3s;
       background: rgba(255,255,255,0.8);
-      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
     }
-    
+
     .social-icons a:hover {
       color: var(--luxury-gold);
       transform: translateY(-3px);
-      box-shadow: 0 8px 15px rgba(0,0,0,0.15);
     }
-    
+
     .copyright {
       font-size: 0.85rem;
       opacity: 0.8;
@@ -1384,394 +575,118 @@
       font-style: italic;
     }
 
-    /* Lightbox */
-    .lightbox {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.9);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s;
-    }
-
-    .lightbox.show {
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    .lightbox-content {
+    /* Simple Slideshow */
+    .slideshow-container {
       position: relative;
-      max-width: 95%;
-      max-height: 85vh;
-      width: auto;
-      height: auto;
-      text-align: center;
+      width: 100%;
+      height: 300px;
+      margin: 20px 0;
+      border-radius: 10px;
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
 
-    .lightbox-media {
-      max-width: 100%;
-      max-height: calc(85vh - 70px); /* Space for zoom controls */
-      display: block;
-      border-radius: 10px;
-      margin: 0 auto;
-      transition: transform 0.3s;
-      cursor: move;
-    }
-
-    .lightbox-controls {
+    .slide {
       position: absolute;
-      top: 50%;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      padding: 0 20px;
-      transform: translateY(-50%);
-      pointer-events: none;
-      z-index: 1001;
-    }
-
-    .lightbox-btn {
-      pointer-events: auto;
-      background: rgba(0,0,0,0.5);
-      color: white;
-      border: none;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      font-size: 24px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.3s;
-    }
-
-    .lightbox-btn:hover {
-      background: rgba(0,0,0,0.8);
-    }
-    
-    /* Enhanced zoom controls positioning */
-    .lightbox-zoom-controls {
-      display: flex;
-      gap: 10px;
-      margin-top: 15px;
-      background: rgba(0,0,0,0.7);
-      padding: 10px;
-      border-radius: 30px;
-      transition: opacity 0.3s;
-      opacity: 0.8;
-      position: relative;
-      z-index: 1001;
-    }
-    
-    .lightbox-zoom-controls:hover {
-      opacity: 1;
-    }
-    
-    .zoom-btn {
-      pointer-events: auto;
-      background: white;
-      color: red;
-      border: 2px solid red;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      font-size: 18px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s;
-      font-weight: bold;
-    }
-    
-    .reset-btn {
-      width: auto;
-      padding: 0 15px;
-      border-radius: 20px;
-      font-size: 14px;
-      font-weight: bold;
-      background: white;
-      color: red;
-      border: 2px solid red;
-    }
-    
-    .zoom-btn:hover {
-      background: #ffcccc;
-      transform: scale(1.1);
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      color: white;
-      font-size: 30px;
-      cursor: pointer;
-      background: rgba(0,0,0,0.5);
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.3s;
-      z-index: 1001;
-    }
-    
-    .lightbox-close:hover {
-      background: rgba(0,0,0,0.8);
-    }
-
-    /* Video Player */
-    .video-player {
-      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.9);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
       opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s;
-    }
-    
-    .video-player.show {
-      opacity: 1;
-      pointer-events: all;
-    }
-    
-    .video-player-content {
-      position: relative;
-      max-width: 95%;
-      max-height: 95vh;
-      width: auto;
-      height: auto;
-      text-align: center;
-    }
-    
-    .video-player-content video {
-      max-width: 100%;
-      max-height: 95vh;
-      border-radius: 10px;
-    }
-    
-    .video-player-close {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      color: white;
-      font-size: 24px;
-      cursor: pointer;
-      background: rgba(0,0,0,0.5);
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.3s;
-      z-index: 1001;
-    }
-    
-    .video-player-close:hover {
-      background: rgba(0,0,0,0.8);
+      transition: opacity 0.5s ease;
     }
 
-    /* Animations */
-    @keyframes blink {
-      0%, 50%, 100% { opacity: 1; }
-      25%, 75% { opacity: 0.8; }
+    .slide.active {
+      opacity: 1;
     }
-    
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
-    
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+
+    .slide-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      padding: 10px;
+      text-align: center;
+      font-family: var(--font-heading);
+    }
+
+    .slideshow-dots {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 4;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .dot.active {
+      background: var(--luxury-gold);
+    }
+
+    /* Footer Images */
+    .footer-image {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-top: 20px;
     }
 
     /* Responsive Adjustments */
     @media (min-width: 768px) {
-      body {
-        padding-top: 70px;
-      padding-bottom: 0;
-      overflow-x: hidden;
-      overflow-y: auto;
-      height: auto;
-      min-height: 100vh;
-      position: relative;
-      -webkit-overflow-scrolling: touch;
-      scroll-behavior: smooth;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      text-rendering: optimizeLegibility;
-      font-smooth: always;
-      -webkit-text-size-adjust: 100%;
-      -ms-text-size-adjust: 100%;
-      text-size-adjust: 100%;
-      -webkit-tap-highlight-color: transparent;
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-    
-    @media (min-width: 768px) {
-      body {
-        padding-top: 70px;
-      overflow-x: hidden;
-      overflow-y: auto;
-      height: auto;
-      min-height: 100vh;
-      position: relative;
-      -webkit-overflow-scrolling: touch;
-      scroll-behavior: smooth;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      text-rendering: optimizeLegibility;
-      font-smooth: always;
-      -webkit-text-size-adjust: 100%;
-      -ms-text-size-adjust: 100%;
-      text-size-adjust: 100%;
-      -webkit-tap-highlight-color: transparent;
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-      
-      .bottom-nav {
-        max-width: 600px;
-        left: 50%;
-        transform: translateX(-50%);
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
       }
       
-      .tab-content {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-      }
-      
-      .welcome-box {
-        height: 450px;
+      .welcome-box, .welcome-overlay h1 {
+        height: 400px;
       }
       
       .welcome-overlay h1 {
-        font-size: 3.5rem;
-      }
-      
-      .welcome-overlay p {
-        font-size: 1.5rem;
-      }
-      
-      .premium-slideshow-container {
-        aspect-ratio: 16/9;
-      }
-      
-      .gallery-grid,
-      .thank-you-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 15px;
-      }
-      
-      .colour-grid {
-        max-width: 600px;
-        margin: 0 auto;
-      }
-      
-      .video-player-content {
-        max-width: 85%;
+        font-size: 2.5rem;
       }
       
       .certifications-container {
         grid-template-columns: repeat(3, 1fr);
       }
       
-      .elegant-text {
-        font-size: 1.6rem;
-      }
-      
-      .bridal-cards-container {
-        grid-template-columns: repeat(2, 1fr);
+      .slideshow-container {
+        height: 400px;
       }
     }
-    
+
     @media (min-width: 992px) {
-      .premium-slideshow-container {
-        aspect-ratio: 16/9;
-      }
-      
-      .gallery-grid,
-      .thank-you-grid {
+      .gallery-grid {
         grid-template-columns: repeat(4, 1fr);
-      }
-      
-      .bridal-cards-container {
-        grid-template-columns: repeat(3, 1fr);
       }
     }
   </style>
 </head>
 <body>
-  <!-- Enhanced Splash Screen with Golden Border -->
+  <!-- Simple Preloader -->
   <div id="preloader">
-    <div class="mehendi-pattern"></div>
-    <div class="preloader-content">
-      <div class="flower" style="top:10%; left:15%; transform:rotate(15deg); animation-delay:0.2s;"></div>
-      <div class="flower" style="top:20%; right:20%; transform:rotate(-10deg); animation-delay:0.4s;"></div>
-      <div class="flower" style="bottom:15%; left:25%; transform:rotate(25deg); animation-delay:0.6s;"></div>
-      <div class="flower" style="bottom:25%; right:15%; transform:rotate(-15deg); animation-delay:0.8s;"></div>
-      
-      <!-- Sparkle effects -->
-      <div class="sparkle" style="top:30%; left:25%; animation-delay:0.3s;"></div>
-      <div class="sparkle" style="top:15%; left:60%; animation-delay:0.7s;"></div>
-      <div class="sparkle" style="top:70%; left:40%; animation-delay:1.1s;"></div>
-      <div class="sparkle" style="top:50%; left:70%; animation-delay:1.5s;"></div>
-      
-      <h1>
-        <span class="word gold-border">Deepa</span>
-        <span class="word gold-border">Mehendi</span>
-        <span class="word gold-border">Artist</span>
-      </h1>
-      <div class="hindi-line">श्री हित हरिवंश</div>
-      <div class="blessing">🌟 शुभ मंगल सौभाग्य 🌟</div>
-    </div>
+    <h1>Deepa Mehendi Artist</h1>
+    <div class="loader"></div>
   </div>
 
-  <!-- Top Header -->
+  <!-- Header -->
   <header>
     <div class="brand-area">
       <div class="logo-symbol">
@@ -1815,86 +730,38 @@
         </p>
       </div>
 
-      <!-- Premium Bridal Cards Section -->
-      <div class="section bridal-cards-section">
-        <h2><i class="fas fa-crown"></i> Bridal Collection</h2>
-        <p>Exquisite designs crafted especially for the bride</p>
-        
-        <div class="bridal-cards-container">
-          <div class="bridal-card">
-            <div class="bridal-card-image">
-              <img src="images/H2.jpeg" alt="Traditional Rajasthani Design">
-              <div class="bridal-card-overlay">
-                <button class="view-details-btn" onclick="zoomImage(this.parentElement.parentElement.querySelector('img'), 'home')">View Details</button>
-              </div>
-            </div>
-            </div>
-          
-          <div class="bridal-card">
-            <div class="bridal-card-image">
-              <img src="images/H4.jpeg" alt="Modern Fusion Style">
-              <div class="bridal-card-overlay">
-                <button class="view-details-btn" onclick="zoomImage(this.parentElement.parentElement.querySelector('img'), 'home')">View Details</button>
-              </div>
-            </div>
-            </div>
-          
-          <div class="bridal-card">
-            <div class="bridal-card-image">
-              <img src="images/H5.jpeg" alt="Classic Arabic Design">
-              <div class="bridal-card-overlay">
-                <button class="view-details-btn" onclick="zoomImage(this.parentElement.parentElement.querySelector('img'), 'home')">View Details</button>
-              </div>
-            </div>
-            </div>
-        </div>
-      </div>
-
-      <!-- Premium Featured Designs Slideshow -->
+      <!-- Simple Slideshow -->
       <div class="section">
         <h2><i class="fas fa-crown"></i> Featured Designs</h2>
         
-        <div class="premium-slideshow-container">
-          <div class="premium-slide active">
-            <img src="images/H2.jpeg" alt="Bridal design 1">
-            <div class="premium-slide-caption">Traditional Rajasthani Design</div>
+        <div class="slideshow-container">
+          <div class="slide active">
+            <img src="images/H2.jpeg" alt="Traditional Rajasthani Design">
+            <div class="slide-caption">Traditional Rajasthani Design</div>
           </div>
-          <div class="premium-slide">
-            <img src="images/H3.jpeg" alt="Bridal design 2">
+          <div class="slide">
+            <img src="images/H3.jpeg" alt="Bridal Design">
           </div>
-          <div class="premium-slide">
-            <img src="images/H4.jpeg" alt="Bridal design 3">
-            <div class="premium-slide-caption">Modern Fusion Style</div>
+          <div class="slide">
+            <img src="images/H4.jpeg" alt="Modern Fusion Style">
+            <div class="slide-caption">Modern Fusion Style</div>
           </div>
-          <div class="premium-slide">
-            <img src="images/H5.jpeg" alt="Bridal design 4">
-            <div class="premium-slide-caption">Classic Arabic Design</div>
-          </div>
-          
-          <div class="premium-slideshow-dots">
-            <div class="premium-dot active"></div>
-            <div class="premium-dot"></div>
-            <div class="premium-dot"></div>
-            <div class="premium-dot"></div>
+          <div class="slide">
+            <img src="images/H5.jpeg" alt="Classic Arabic Design">
+            <div class="slide-caption">Classic Arabic Design</div>
           </div>
           
-          <div class="premium-slideshow-controls">
-            <div class="premium-slideshow-btn" onclick="prevSlide()">
-              <i class="fas fa-chevron-left"></i>
-            </div>
-            <div class="premium-slideshow-btn" onclick="nextSlide()">
-              <i class="fas fa-chevron-right"></i>
-            </div>
+          <div class="slideshow-dots">
+            <div class="dot active" data-slide="0"></div>
+            <div class="dot" data-slide="1"></div>
+            <div class="dot" data-slide="2"></div>
+            <div class="dot" data-slide="3"></div>
           </div>
         </div>
       </div>
       
-      <!-- Footer Image with Golden Halo -->
-      <div class="footer-image-section">
-        <div class="halo-container">
-          <img src="foot/f1.jpeg" alt="Bridal Mehendi Design" class="footer-image">
-        </div>
-      </div>
+      <!-- Footer Image -->
+      <img src="foot/f1.jpeg" alt="Bridal Mehendi Design" class="footer-image">
     </div>
 
     <!-- Bride Tab -->
@@ -1904,89 +771,58 @@
         <p>Exquisite designs crafted especially for the bride</p>
         <div class="gallery-grid">
           <div class="gallery-item">
-            <img src="images/H2.jpeg" alt="Bridal design 1" onclick="zoomImage(this, 'bride')">
+            <img src="images/H2.jpeg" alt="Bridal design 1">
           </div>
           <div class="gallery-item">
-            <img src="images/H3.jpeg" alt="Bridal design 2" onclick="zoomImage(this, 'bride')">
+            <img src="images/H3.jpeg" alt="Bridal design 2">
           </div>
           <div class="gallery-item">
-            <img src="images/H4.jpeg" alt="Bridal design 3" onclick="zoomImage(this, 'bride')">
+            <img src="images/H4.jpeg" alt="Bridal design 3">
           </div>
           <div class="gallery-item">
-            <img src="images/H5.jpeg" alt="Bridal design 4" onclick="zoomImage(this, 'bride')">
+            <img src="images/H5.jpeg" alt="Bridal design 4">
           </div>
           <div class="gallery-item">
-            <img src="images/H6.jpeg" alt="Bridal design 5" onclick="zoomImage(this, 'bride')">
+            <img src="images/H6.jpeg" alt="Bridal design 5">
           </div>
           <div class="gallery-item">
-            <img src="images/H7.jpeg" alt="Bridal design 6" onclick="zoomImage(this, 'bride')">
+            <img src="images/H7.jpeg" alt="Bridal design 6">
           </div>
           <div class="gallery-item">
-            <img src="images/H8.jpeg" alt="Bridal design 7" onclick="zoomImage(this, 'bride')">
+            <img src="images/H8.jpeg" alt="Bridal design 7">
           </div>
           <div class="gallery-item">
-            <img src="images/H9.jpeg" alt="Bridal design 8" onclick="zoomImage(this, 'bride')">
+            <img src="images/H9.jpeg" alt="Bridal design 8">
           </div>
           <div class="gallery-item">
-            <img src="images/H10.jpeg" alt="Bridal design 9" onclick="zoomImage(this, 'bride')">
+            <img src="images/H10.jpeg" alt="Bridal design 9">
           </div>
           <div class="gallery-item">
-            <img src="images/H11.jpeg" alt="Bridal design 10" onclick="zoomImage(this, 'bride')">
+            <img src="images/H11.jpeg" alt="Bridal design 10">
           </div>
           <div class="gallery-item">
-            <img src="images/H12.jpeg" alt="Bridal design 11" onclick="zoomImage(this, 'bride')">
+            <img src="images/H12.jpeg" alt="Bridal design 11">
           </div>
           <div class="gallery-item">
-            <img src="images/H13.jpeg" alt="Bridal design 12" onclick="zoomImage(this, 'bride')">
+            <img src="images/H13.jpeg" alt="Bridal design 12">
           </div>
           <div class="gallery-item">
-            <img src="images/H14.jpeg" alt="Bridal design 13" onclick="zoomImage(this, 'bride')">
+            <img src="images/H14.jpeg" alt="Bridal design 13">
           </div>
           <div class="gallery-item">
-            <img src="images/H15.jpeg" alt="Bridal design 14" onclick="zoomImage(this, 'bride')">
+            <img src="images/H15.jpeg" alt="Bridal design 14">
           </div>
           <div class="gallery-item">
-            <img src="images/H16.jpeg" alt="Bridal design 15" onclick="zoomImage(this, 'bride')">
+            <img src="images/H16.jpeg" alt="Bridal design 15">
           </div>
           <div class="gallery-item">
-            <img src="images/H17.jpeg" alt="Bridal design 16" onclick="zoomImage(this, 'bride')">
-          </div>
-          <div class="gallery-item">
-            <img src="images/L1.jpeg" alt="Bridal design 17" onclick="zoomImage(this, 'bride')">
-          </div>
-          <div class="gallery-item">
-            <img src="images/L2.jpeg" alt="Bridal design 18" onclick="zoomImage(this, 'bride')">
-          </div>
-          <div class="gallery-item">
-            <img src="images/L3.jpeg" alt="Bridal design 19" onclick="zoomImage(this, 'bride')">
-          </div>
-          <div class="gallery-item">
-            <img src="images/L4.jpeg" alt="Bridal design 20" onclick="zoomImage(this, 'bride')">
-          </div>
-          <div class="gallery-item">
-            <img src="images/L5.jpeg" alt="Bridal design 21" onclick="zoomImage(this, 'bride')">
-          </div>
-          <div class="gallery-item">
-            <img src="images/L6.jpeg" alt="Bridal design 22" onclick="zoomImage(this, 'bride')">
-          </div>
-          <div class="gallery-item">
-            <img src="images/L7.jpeg" alt="Bridal design 23" onclick="zoomImage(this, 'bride')">
-          </div>
-          <div class="gallery-item">
-            <img src="images/L8.jpeg" alt="Bridal design 24" onclick="zoomImage(this, 'bride')">
-          </div>
-          <div class="gallery-item">
-            <img src="images/L9.jpeg" alt="Bridal design 25" onclick="zoomImage(this, 'bride')">
+            <img src="images/H17.jpeg" alt="Bridal design 16">
           </div>
         </div>
       </div>
       
-      <!-- Footer Image with Golden Halo -->
-      <div class="footer-image-section">
-        <div class="halo-container">
-          <img src="foot/f2.jpeg" alt="Bridal Hand Design" class="footer-image">
-        </div>
-      </div>
+      <!-- Footer Image -->
+      <img src="foot/f2.jpeg" alt="Bridal Hand Design" class="footer-image">
     </div>
 
     <!-- Guests Tab -->
@@ -1996,89 +832,55 @@
         <p>Beautiful designs for all occasions</p>
         <div class="gallery-grid">
           <div class="gallery-item">
-            <img src="guest/G1.jpeg" alt="Guest design 1" onclick="zoomImage(this, 'guests')">
+            <img src="guest/G1.jpeg" alt="Guest design 1">
           </div>
           <div class="gallery-item">
-            <img src="guest/G2.jpeg" alt="Guest design 2" onclick="zoomImage(this, 'guests')">
+            <img src="guest/G2.jpeg" alt="Guest design 2">
           </div>
           <div class="gallery-item">
-            <img src="guest/G3.jpeg" alt="Guest design 3" onclick="zoomImage(this, 'guests')">
+            <img src="guest/G3.jpeg" alt="Guest design 3">
           </div>
           <div class="gallery-item">
-            <img src="guest/G4.jpeg" alt="Guest design 4" onclick="zoomImage(this, 'guests')">
+            <img src="guest/G4.jpeg" alt="Guest design 4">
           </div>
           <div class="gallery-item">
-            <img src="guest/G5.jpeg" alt="Guest design 5" onclick="zoomImage(this, 'guests')">
+            <img src="guest/G5.jpeg" alt="Guest design 5">
           </div>
           <div class="gallery-item">
-            <img src="guest/G6.jpeg" alt="Guest design 6" onclick="zoomImage(this, 'guests')">
+            <img src="guest/G6.jpeg" alt="Guest design 6">
           </div>
           <div class="gallery-item">
-            <img src="guest/G7.jpeg" alt="Guest design 7" onclick="zoomImage(this, 'guests')">
+            <img src="guest/G7.jpeg" alt="Guest design 7">
           </div>
           <div class="gallery-item">
-            <img src="guest/G8.jpeg" alt="Guest design 8" onclick="zoomImage(this, 'guests')">
+            <img src="guest/G8.jpeg" alt="Guest design 8">
           </div>
           <div class="gallery-item">
-            <img src="guest/G9.jpeg" alt="Guest design 9" onclick="zoomImage(this, 'guests')">
+            <img src="guest/G9.jpeg" alt="Guest design 9">
           </div>
           <div class="gallery-item">
-            <img src="guest/G10.jpeg" alt="Guest design 10" onclick="zoomImage(this, 'guests')">
+            <img src="guest/G10.jpeg" alt="Guest design 10">
           </div>
           <div class="gallery-item">
-            <img src="guest/G11.jpeg" alt="Guest design 11" onclick="zoomImage(this, 'guests')">
+            <img src="guest/G11.jpeg" alt="Guest design 11">
           </div>
           <div class="gallery-item">
-            <img src="guest/G12.jpeg" alt="Guest design 12" onclick="zoomImage(this, 'guests')">
+            <img src="guest/G12.jpeg" alt="Guest design 12">
           </div>
           <div class="gallery-item">
-            <img src="guest/G13.jpeg" alt="Guest design 13" onclick="zoomImage(this, 'guests')">
+            <img src="guest/G13.jpeg" alt="Guest design 13">
           </div>
           <div class="gallery-item">
-            <img src="guest/G14.jpeg" alt="Guest design 14" onclick="zoomImage(this, 'guests')">
+            <img src="guest/G14.jpeg" alt="Guest design 14">
           </div>
           <div class="gallery-item">
-            <img src="guest/G15.jpeg" alt="Guest design 15" onclick="zoomImage(this, 'guests')">
-          </div>
-          <div class="gallery-item">
-            <img src="guest/G16.jpeg" alt="Guest design 16" onclick="zoomImage(this, 'guests')">
-          </div>
-          <div class="gallery-item">
-            <img src="guest/G17.jpeg" alt="Guest design 17" onclick="zoomImage(this, 'guests')">
-          </div>
-          <div class="gallery-item">
-            <img src="guest/G18.jpeg" alt="Guest design 18" onclick="zoomImage(this, 'guests')">
-          </div>
-          <div class="gallery-item">
-            <img src="guest/G19.jpeg" alt="Guest design 19" onclick="zoomImage(this, 'guests')">
-          </div>
-          <div class="gallery-item">
-            <img src="guest/G20.jpeg" alt="Guest design 20" onclick="zoomImage(this, 'guests')">
-          </div>
-          <div class="gallery-item">
-            <img src="guest/G21.jpeg" alt="Guest design 21" onclick="zoomImage(this, 'guests')">
-          </div>
-          <div class="gallery-item">
-            <img src="guest/G22.jpeg" alt="Guest design 22" onclick="zoomImage(this, 'guests')">
-          </div>
-          <div class="gallery-item">
-            <img src="guest/G23.jpeg" alt="Guest design 23" onclick="zoomImage(this, 'guests')">
-          </div>
-          <div class="gallery-item">
-            <img src="guest/G24.jpeg" alt="Guest design 24" onclick="zoomImage(this, 'guests')">
-          </div>
-          <div class="gallery-item">
-            <img src="guest/G25.jpeg" alt="Guest design 25" onclick="zoomImage(this, 'guests')">
+            <img src="guest/G15.jpeg" alt="Guest design 15">
           </div>
         </div>
       </div>
       
-      <!-- Footer Image with Golden Halo -->
-      <div class="footer-image-section">
-        <div class="halo-container">
-          <img src="foot/f3.jpeg" alt="Guest Mehendi Design" class="footer-image">
-        </div>
-      </div>
+      <!-- Footer Image -->
+      <img src="foot/f3.jpeg" alt="Guest Mehendi Design" class="footer-image">
     </div>
 
     <!-- Colours Tab -->
@@ -2088,42 +890,29 @@
         <p>Natural shades for beautiful results</p>
         
         <div class="colour-grid">
-          <div class="colour-item">
-            <img src="colour/C1.jpeg" alt="Natural Brown" onclick="zoomImage(this, 'colours')">
+          <div class="gallery-item">
+            <img src="colour/C1.jpeg" alt="Natural Brown">
           </div>
-          <div class="colour-item">
-            <img src="colour/C2.jpeg" alt="Rich Maroon" onclick="zoomImage(this, 'colours')">
+          <div class="gallery-item">
+            <img src="colour/C2.jpeg" alt="Rich Maroon">
           </div>
-          <div class="colour-item">
-            <img src="colour/C3.jpeg" alt="Dark Red" onclick="zoomImage(this, 'colours')">
+          <div class="gallery-item">
+            <img src="colour/C3.jpeg" alt="Dark Red">
           </div>
-          <div class="colour-item">
-            <img src="colour/C4.jpeg" alt="Deep Brown" onclick="zoomImage(this, 'colours')">
+          <div class="gallery-item">
+            <img src="colour/C4.jpeg" alt="Deep Brown">
           </div>
-          <div class="colour-item">
-            <img src="colour/C5.jpeg" alt="Vibrant Orange" onclick="zoomImage(this, 'colours')">
+          <div class="gallery-item">
+            <img src="colour/C5.jpeg" alt="Vibrant Orange">
           </div>
-          <div class="colour-item">
-            <img src="colour/C6.jpeg" alt="Premium Cones" onclick="zoomImage(this, 'colours')">
-          </div>
-          <div class="colour-item">
-            <img src="colour/C7.jpeg" alt="Dark Red Shade" onclick="zoomImage(this, 'colours')">
-          </div>
-          <div class="colour-item">
-            <img src="colour/C8.jpeg" alt="Shade Chart" onclick="zoomImage(this, 'colours')">
-          </div>
-          <div class="colour-item">
-            <img src="colour/C9.jpeg" alt="Maroon Colour" onclick="zoomImage(this, 'colours')">
+          <div class="gallery-item">
+            <img src="colour/C6.jpeg" alt="Premium Cones">
           </div>
         </div>
       </div>
       
-      <!-- Footer Image with Golden Halo -->
-      <div class="footer-image-section">
-        <div class="halo-container">
-          <img src="foot/f6.jpeg" alt="Mehendi Colour Collection" class="footer-image">
-        </div>
-      </div>
+      <!-- Footer Image -->
+      <img src="foot/f6.jpeg" alt="Mehendi Colour Collection" class="footer-image">
     </div>
 
     <!-- Prices Tab -->
@@ -2143,7 +932,7 @@
         </table>
         
         <div style="text-align:center; margin-top:15px;">
-          <p style="font-weight:bold; animation:blink 2s infinite; color: var(--accent);">
+          <p style="font-weight:bold; color: var(--accent);">
             Custom packages available - Contact for details
           </p>
         </div>
@@ -2155,12 +944,8 @@
         <p>Refer a friend and get 10% off your next appointment.</p>
       </div>
       
-      <!-- Footer Image with Golden Halo -->
-      <div class="footer-image-section">
-        <div class="halo-container">
-          <img src="foot/f4.jpeg" alt="Mehendi Pricing" class="footer-image">
-        </div>
-      </div>
+      <!-- Footer Image -->
+      <img src="foot/f4.jpeg" alt="Mehendi Pricing" class="footer-image">
     </div>
 
     <!-- About Tab -->
@@ -2181,7 +966,7 @@
         <div class="journey-section">
           <h3><i class="fas fa-road"></i> My Journey</h3>
           <p>I began my journey as a mehendi artist over 12 years ago. What started as a passion soon became my profession as I mastered various styles including Rajasthani, Arabic, and modern fusion designs.</p>
-          <p>My journey has been filled with memorable moments - from designing mehendi for brides on their most special day to creating intricate patterns for festivals and celebrations. I believe that mehendi is more than just body art; it's a cultural tradition that connects generations and brings joy to celebrations.</p>
+          <p>My journey has been filled with memorable moments - from designing mehendi for brides on their most special day to creating intricate patterns for festivals and celebrations.</p>
         </div>
       </div>
       
@@ -2227,55 +1012,6 @@
             <div class="faq-question">How long does the application take?<i class="fas fa-chevron-down"></i></div>
             <div class="faq-answer">Bridal designs typically take 3-5 hours depending on complexity. Guest designs usually take 30-90 minutes per person.</div>
           </div>
-          <div class="faq-item">
-            <div class="faq-question">What products do you use?<i class="fas fa-chevron-down"></i></div>
-            <div class="faq-answer">We use only natural, chemical-free henna cones made from fresh ingredients to ensure deep, long-lasting color and skin safety.</div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Thank You Notes -->
-      <div class="section">
-        <h2><i class="fas fa-heart"></i> Thank You Notes</h2>
-        <p>Moments of joy and appreciation from our clients</p>
-        <div class="thank-you-grid">
-          <div class="thank-you-item">
-            <img src="images/thankyou1.jpeg" alt="Thank you note 1" onclick="zoomImage(this, 'about')">
-          </div>
-          <div class="thank-you-item">
-            <img src="images/thankyou2.jpeg" alt="Thank you note 2" onclick="zoomImage(this, 'about')">
-          </div>
-          <div class="thank-you-item">
-            <video autoplay muted loop playsinline poster="thanks/1p.jpeg" loading="lazy" onclick="playVideo(this)">
-              <source data-src="thanks/1.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          <div class="thank-you-item">
-            <video autoplay muted loop playsinline poster="thanks/2p.jpeg" loading="lazy" onclick="playVideo(this)">
-              <source data-src="thanks/2.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          <div class="thank-you-item">
-            <video autoplay muted loop playsinline poster="thanks/3p.jpeg" loading="lazy" onclick="playVideo(this)">
-              <source data-src="thanks/3.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          <div class="thank-you-item">
-            <video autoplay muted loop playsinline poster="thanks/4p.jpeg" loading="lazy" onclick="playVideo(this)">
-              <source data-src="thanks/4.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Footer Image with Golden Halo -->
-      <div class="footer-image-section">
-        <div class="halo-container">
-          <img src="foot/f5.jpeg" alt="Mehendi Artist at Work" class="footer-image">
         </div>
       </div>
       
@@ -2310,84 +1046,51 @@
           Crafted with ❤️ in Lucknow
         </div>
       </div>
+      
+      <!-- Footer Image -->
+      <img src="foot/f5.jpeg" alt="Mehendi Artist at Work" class="footer-image">
     </div>
   </div>
 
   <!-- Bottom Navigation -->
-  <nav class="bottom-nav">
-    <a href="#" class="nav-item active" data-tab="home-tab">
-      <i class="fas fa-home"></i>
-      <span>Home</span>
-    </a>
-    <a href="#" class="nav-item" data-tab="bride-tab">
-      <i class="fas fa-crown"></i>
-      <span>Bride</span>
-    </a>
-    <a href="#" class="nav-item" data-tab="guests-tab">
-      <i class="fas fa-users"></i>
-      <span>Guests</span>
-    </a>
-    <a href="#" class="nav-item" data-tab="colours-tab">
-      <i class="fas fa-palette"></i>
-      <span>Colours</span>
-    </a>
-    <a href="#" class="nav-item" data-tab="prices-tab">
-      <i class="fas fa-tags"></i>
-      <span>Prices</span>
-    </a>
-    <a href="#" class="nav-item" data-tab="about-tab">
-      <i class="fas fa-user"></i>
-      <span>About</span>
-    </a>
-  </nav>
-
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox">
-    <div class="lightbox-content">
-      <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
-      <img src="" alt="" class="lightbox-media" id="lightbox-img">
-      <div class="lightbox-zoom-controls">
-        <button class="zoom-btn" onclick="zoomIn()">+</button>
-        <button class="zoom-btn" onclick="zoomOut()">-</button>
-        <button class="zoom-btn reset-btn" onclick="resetZoom()">Reset Zoom</button>
-      </div>
-    </div>
-    <div class="lightbox-controls">
-      <button class="lightbox-btn" onclick="prevImage()">❮</button>
-      <button class="lightbox-btn" onclick="nextImage()">❯</button>
-    </div>
-  </div>
-  
-  <!-- Video Player -->
-  <div class="video-player" id="video-player">
-    <div class="video-player-content">
-      <button class="video-player-close" onclick="closeVideoPlayer()">&times;</button>
-      <video id="fullscreen-video" controls>
-        Your browser does not support the video tag.
-      </video>
+  <div class="nav-container">
+    <div class="nav-items">
+      <a href="#" class="nav-item active" data-tab="home-tab">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+      </a>
+      <a href="#" class="nav-item" data-tab="bride-tab">
+        <i class="fas fa-crown"></i>
+        <span>Bride</span>
+      </a>
+      <a href="#" class="nav-item" data-tab="guests-tab">
+        <i class="fas fa-users"></i>
+        <span>Guests</span>
+      </a>
+      <a href="#" class="nav-item" data-tab="colours-tab">
+        <i class="fas fa-palette"></i>
+        <span>Colours</span>
+      </a>
+      <a href="#" class="nav-item" data-tab="prices-tab">
+        <i class="fas fa-tags"></i>
+        <span>Prices</span>
+      </a>
+      <a href="#" class="nav-item" data-tab="about-tab">
+        <i class="fas fa-user"></i>
+        <span>About</span>
+      </a>
     </div>
   </div>
 
   <script>
-    // Global variables for image navigation
-    let currentGallery = '';
-    let currentIndex = 0;
-    let galleryItems = [];
-    let lightboxScale = 1;
-    let currentX = 0;
-    let currentY = 0;
-    let startX = 0;
-    let startY = 0;
-    let isDragging = false;
-    
-    // Slideshow variables
+    // Global variables
     let currentSlide = 0;
     let slideInterval;
     
     // Initialize slideshow
     function initSlideshow() {
-      const slides = document.querySelectorAll('.premium-slide');
-      const dots = document.querySelectorAll('.premium-dot');
+      const slides = document.querySelectorAll('.slide');
+      const dots = document.querySelectorAll('.dot');
       
       // Remove active classes
       slides.forEach(slide => slide.classList.remove('active'));
@@ -2398,39 +1101,9 @@
       dots[currentSlide].classList.add('active');
     }
     
-    function nextSlide() {
-      const slides = document.querySelectorAll('.premium-slide');
-      const dots = document.querySelectorAll('.premium-dot');
-      
-      slides[currentSlide].classList.remove('active');
-      dots[currentSlide].classList.remove('active');
-      
-      currentSlide = (currentSlide + 1) % slides.length;
-      
-      slides[currentSlide].classList.add('active');
-      dots[currentSlide].classList.add('active');
-      
-      resetSlideInterval();
-    }
-    
-    function prevSlide() {
-      const slides = document.querySelectorAll('.premium-slide');
-      const dots = document.querySelectorAll('.premium-dot');
-      
-      slides[currentSlide].classList.remove('active');
-      dots[currentSlide].classList.remove('active');
-      
-      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-      
-      slides[currentSlide].classList.add('active');
-      dots[currentSlide].classList.add('active');
-      
-      resetSlideInterval();
-    }
-    
     function goToSlide(index) {
-      const slides = document.querySelectorAll('.premium-slide');
-      const dots = document.querySelectorAll('.premium-dot');
+      const slides = document.querySelectorAll('.slide');
+      const dots = document.querySelectorAll('.dot');
       
       slides[currentSlide].classList.remove('active');
       dots[currentSlide].classList.remove('active');
@@ -2448,12 +1121,27 @@
       slideInterval = setInterval(nextSlide, 3500);
     }
     
+    function nextSlide() {
+      const slides = document.querySelectorAll('.slide');
+      const dots = document.querySelectorAll('.dot');
+      
+      slides[currentSlide].classList.remove('active');
+      dots[currentSlide].classList.remove('active');
+      
+      currentSlide = (currentSlide + 1) % slides.length;
+      
+      slides[currentSlide].classList.add('active');
+      dots[currentSlide].classList.add('active');
+      
+      resetSlideInterval();
+    }
+    
     // Setup dot navigation
-    document.querySelectorAll('.premium-dot').forEach((dot, index) => {
+    document.querySelectorAll('.dot').forEach((dot, index) => {
       dot.addEventListener('click', () => goToSlide(index));
     });
     
-    // Fixed tab switching functionality
+    // Tab switching functionality
     function switchTab(tabId) {
       // Hide all tab contents
       document.querySelectorAll('.tab-content').forEach(tab => {
@@ -2472,55 +1160,11 @@
         }
       });
       
-      // FIX: Reset scroll to top
+      // Scroll to top
       window.scrollTo({
         top: 0,
-        behavior: 'auto'
+        behavior: 'smooth'
       });
-      
-      // FIX: Ensure smooth scrolling to top after rendering
-      setTimeout(() => {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      }, 100);
-      
-      // Trigger animations for new tab
-      setTimeout(() => {
-        animateGalleryItems();
-      }, 100);
-    }
-    
-    // Animate gallery items when tab becomes active
-    function animateGalleryItems() {
-      const activeTab = document.querySelector('.tab-content.active');
-      
-      // Get all gallery items in active tab
-      const items = activeTab.querySelectorAll('.gallery-item, .colour-item, .thank-you-item');
-      
-      // Reset all animations
-      items.forEach(item => {
-        item.style.animation = 'none';
-        item.style.opacity = '0';
-      });
-      
-      // Reapply animations after a small delay
-      setTimeout(() => {
-        items.forEach((item, index) => {
-          const animationType = index % 4;
-          let animationName = '';
-          
-          switch(animationType) {
-            case 0: animationName = 'slideFromTop'; break;
-            case 1: animationName = 'slideFromRight'; break;
-            case 2: animationName = 'slideFromBottom'; break;
-            case 3: animationName = 'slideFromLeft'; break;
-          }
-          
-          item.style.animation = `${animationName} 0.8s ease forwards`;
-        });
-      }, 50);
     }
     
     // Setup tab navigation
@@ -2540,331 +1184,21 @@
       });
     });
     
-    // Image zoom functionality
-    function zoomImage(img, galleryName) {
-      // Get all images in the current gallery
-      const container = img.closest('.section');
-      currentGallery = galleryName;
-      
-      if (galleryName === 'home') {
-        galleryItems = Array.from(container.querySelectorAll('.bridal-card-image img'));
-      } else if (galleryName === 'bride') {
-        galleryItems = Array.from(container.querySelectorAll('.gallery-grid .gallery-item img'));
-      } else if (galleryName === 'guests') {
-        galleryItems = Array.from(container.querySelectorAll('.gallery-grid .gallery-item img'));
-      } else if (galleryName === 'colours') {
-        galleryItems = Array.from(container.querySelectorAll('.colour-grid .colour-item img'));
-      } else if (galleryName === 'about') {
-        galleryItems = Array.from(container.querySelectorAll('.thank-you-grid img, .thank-you-grid video'));
-      }
-      
-      // Find the index of the clicked image
-      currentIndex = galleryItems.indexOf(img);
-      
-      // Show the image in the lightbox
-      const lightboxImg = document.getElementById('lightbox-img');
-      lightboxImg.src = img.src;
-      lightboxImg.style.display = 'block';
-      
-      // Reset zoom and position
-      lightboxScale = 1;
-      currentX = 0;
-      currentY = 0;
-      updateLightboxTransform();
-      
-      document.getElementById('lightbox').classList.add('show');
-      document.body.style.overflow = 'hidden';
-    }
-    
-    // Video playback functionality
-    function playVideo(videoElement) {
-      const videoPlayer = document.getElementById('video-player');
-      const fullscreenVideo = document.getElementById('fullscreen-video');
-      
-      // Get video source
-      const source = videoElement.querySelector('source').getAttribute('data-src');
-      
-      // Set video source
-      fullscreenVideo.src = source;
-      
-      // Show video player
-      videoPlayer.classList.add('show');
-      
-      // Play the video with sound
-      fullscreenVideo.muted = false;
-      fullscreenVideo.controls = true;
-      fullscreenVideo.play().catch(e => console.error('Video play failed:', e));
-    }
-
-    function closeVideoPlayer() {
-      const videoPlayer = document.getElementById('video-player');
-      const fullscreenVideo = document.getElementById('fullscreen-video');
-      
-      // Pause and reset video
-      fullscreenVideo.pause();
-      fullscreenVideo.currentTime = 0;
-      fullscreenVideo.src = '';
-      
-      // Hide video player
-      videoPlayer.classList.remove('show');
-      document.body.style.overflow = '';
-    }
-
-    function closeLightbox() {
-      document.getElementById('lightbox').classList.remove('show');
-      document.body.style.overflow = '';
-      resetZoom();
-    }
-    
-    function nextImage() {
-      if (galleryItems.length === 0) return;
-      currentIndex = (currentIndex + 1) % galleryItems.length;
-      updateLightboxImage();
-    }
-    
-    function prevImage() {
-      if (galleryItems.length === 0) return;
-      currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
-      updateLightboxImage();
-    }
-    
-    function updateLightboxImage() {
-      const lightboxImg = document.getElementById('lightbox-img');
-      const item = galleryItems[currentIndex];
-      lightboxImg.src = item.src;
-      
-      // Reset zoom and position
-      resetZoom();
-    }
-    
-    // Zoom functionality
-    function zoomIn() {
-      lightboxScale = Math.min(lightboxScale + 0.25, 3);
-      updateLightboxTransform();
-    }
-    
-    function zoomOut() {
-      lightboxScale = Math.max(lightboxScale - 0.25, 1);
-      updateLightboxTransform();
-    }
-    
-    function resetZoom() {
-      lightboxScale = 1;
-      currentX = 0;
-      currentY = 0;
-      updateLightboxTransform();
-    }
-    
-    function updateLightboxTransform() {
-      const lightboxImg = document.getElementById('lightbox-img');
-      lightboxImg.style.transform = `translate(${currentX}px, ${currentY}px) scale(${lightboxScale})`;
-    }
-    
-    // Drag functionality
-    const lightboxImg = document.getElementById('lightbox-img');
-    
-    lightboxImg.addEventListener('mousedown', startDrag);
-    lightboxImg.addEventListener('touchstart', startDrag, { passive: false });
-    
-    function startDrag(e) {
-      if (lightboxScale <= 1) return; // Only allow dragging when zoomed
-      isDragging = true;
-      
-      if (e.type === 'touchstart') {
-        startX = e.touches[0].clientX - currentX;
-        startY = e.touches[0].clientY - currentY;
-      } else {
-        startX = e.clientX - currentX;
-        startY = e.clientY - currentY;
-      }
-      
-      document.addEventListener('mousemove', drag);
-      document.addEventListener('touchmove', drag, { passive: false });
-      document.addEventListener('mouseup', endDrag);
-      document.addEventListener('touchend', endDrag);
-      
-      lightboxImg.style.cursor = 'grabbing';
-    }
-    
-    function drag(e) {
-      if (!isDragging) return;
-      e.preventDefault();
-      
-      let clientX, clientY;
-      if (e.type === 'touchmove') {
-        clientX = e.touches[0].clientX;
-        clientY = e.touches[0].clientY;
-      } else {
-        clientX = e.clientX;
-        clientY = e.clientY;
-      }
-      
-      currentX = clientX - startX;
-      currentY = clientY - startY;
-      updateLightboxTransform();
-    }
-    
-    function endDrag() {
-      isDragging = false;
-      document.removeEventListener('mousemove', drag);
-      document.removeEventListener('touchmove', drag);
-      document.removeEventListener('mouseup', endDrag);
-      document.removeEventListener('touchend', endDrag);
-      lightboxImg.style.cursor = lightboxScale > 1 ? 'grab' : 'default';
-    }
-    
-    // Pinch-to-zoom functionality
-    let initialDistance = null;
-    
-    lightboxImg.addEventListener('touchstart', handleTouchStart, { passive: false });
-    lightboxImg.addEventListener('touchmove', handleTouchMove, { passive: false });
-    
-    function handleTouchStart(e) {
-      if (e.touches.length === 2) {
-        e.preventDefault();
-        initialDistance = Math.hypot(
-          e.touches[0].clientX - e.touches[1].clientX,
-          e.touches[0].clientY - e.touches[1].clientY
-        );
-      }
-    }
-    
-    function handleTouchMove(e) {
-      if (e.touches.length === 2 && initialDistance) {
-        e.preventDefault();
-        const currentDistance = Math.hypot(
-          e.touches[0].clientX - e.touches[1].clientX,
-          e.touches[0].clientY - e.touches[1].clientY
-        );
-        
-        const scaleChange = (currentDistance - initialDistance) * 0.005 + 1;
-        const newScale = lightboxScale * scaleChange;
-        
-        // Limit zoom scale
-        if (newScale > 0.5 && newScale < 3) {
-          lightboxScale = newScale;
-          updateLightboxTransform();
-        }
-      }
-    }
-    
-    // Close lightbox when clicking outside image
-    document.getElementById('lightbox').addEventListener('click', function(e) {
-      if (e.target === this || e.target.classList.contains('lightbox-close')) {
-        closeLightbox();
-      }
-    });
-    
-    // Prevent closing when clicking on image or controls
-    document.querySelector('.lightbox-content').addEventListener('click', function(e) {
-      e.stopPropagation();
-    });
-    
-    // Keyboard navigation for lightbox
-    document.addEventListener('keydown', function(e) {
-      if (document.getElementById('lightbox').classList.contains('show')) {
-        if (e.key === 'Escape') {
-          closeLightbox();
-        } else if (e.key === 'ArrowRight') {
-          nextImage();
-        } else if (e.key === 'ArrowLeft') {
-          prevImage();
-        } else if (e.key === '+') {
-          zoomIn();
-        } else if (e.key === '-') {
-          zoomOut();
-        } else if (e.key === '0') {
-          resetZoom();
-        }
-      }
-    });
-
-    // Enhanced preloader function with smoother transition
+    // Preloader and initialization
     window.addEventListener("load", function() {
-      // Create decorative flowers for the splash screen
-      const preloader = document.getElementById('preloader');
-      for (let i = 0; i < 8; i++) {
-        const flower = document.createElement('div');
-        flower.className = 'flower';
-        flower.style.top = `${Math.random() * 80 + 10}%`;
-        flower.style.left = `${Math.random() * 80 + 10}%`;
-        flower.style.transform = `rotate(${Math.random() * 60 - 30}deg)`;
-        flower.style.animationDelay = `${Math.random() * 0.5}s`;
-        flower.style.width = `${Math.random() * 20 + 15}px`;
-        flower.style.height = flower.style.width;
-        preloader.appendChild(flower);
-      }
-      
-      // Create sparkles
-      for (let i = 0; i < 12; i++) {
-        const sparkle = document.createElement('div');
-        sparkle.className = 'sparkle';
-        sparkle.style.top = `${Math.random() * 90 + 5}%`;
-        sparkle.style.left = `${Math.random() * 90 + 5}%`;
-        sparkle.style.animationDelay = `${Math.random() * 2}s`;
-        preloader.appendChild(sparkle);
-      }
-      
-      // Lazy load videos
-      const lazyVideos = document.querySelectorAll('video[loading="lazy"]');
-      
-      const lazyVideoObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const video = entry.target;
-            const source = video.querySelector('source');
-            if (source && source.dataset.src) {
-              source.src = source.dataset.src;
-              video.load();
-              // Play if it's in view and autoplay is set
-              if (video.autoplay) {
-                video.play().catch(e => console.log('Autoplay prevented:', e));
-              }
-            }
-            lazyVideoObserver.unobserve(video);
-          }
-        });
-      }, { rootMargin: "200px" });
-      
-      lazyVideos.forEach(video => {
-        lazyVideoObserver.observe(video);
-      });
-      
+      // Simple preloader timeout
       setTimeout(() => {
-        // Smooth fade out for preloader
         document.getElementById("preloader").style.opacity = "0";
-        document.getElementById("preloader").style.transition = "opacity 0.8s ease";
         
         setTimeout(() => {
           document.getElementById("preloader").style.display = "none";
           document.getElementById("main-content").style.display = "block";
           
-          // Smooth fade in for main content
-          document.getElementById("main-content").style.opacity = "0";
-          document.getElementById("main-content").style.transition = "opacity 0.8s ease";
-          
-          setTimeout(() => {
-            document.getElementById("main-content").style.opacity = "1";
-          }, 50);
-          
-          // Autoplay videos
-          const wVideo = document.getElementById('w-video');
-          if (wVideo) {
-            wVideo.play().catch(e => console.log('Autoplay prevented:', e));
-          }
-          
-          // Autoplay videos in thank you section
-          document.querySelectorAll('video').forEach(video => {
-            if (video !== wVideo && video.autoplay) {
-              video.play().catch(e => console.log('Autoplay prevented:', e));
-            }
-          });
-          
           // Initialize slideshow
           initSlideshow();
           slideInterval = setInterval(nextSlide, 3500);
-        }, 800);
-      }, 3000);
+        }, 500);
+      }, 1500);
     });
   </script>
 </body>
