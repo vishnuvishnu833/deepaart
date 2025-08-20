@@ -728,51 +728,70 @@
       font-style: italic;
     }
 
-    /* Premium Bridal Cards Section */
-    .bridal-cards-section {
-      padding: 25px 0;
-    }
-    
-    .bridal-cards-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-      margin-top: 20px;
-    }
-    
-    .bridal-card {
-      background: white;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-      transition: all 0.4s ease;
+    /* NEW: Premium Card Stack for Bridal Collection */
+    .card-stack-container {
       position: relative;
+      height: 400px;
+      width: 100%;
+      max-width: 300px;
+      margin: 40px auto;
+      perspective: 1000px;
     }
-    
-    .bridal-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-    }
-    
-    .bridal-card-image {
+
+    .card-stack {
       position: relative;
       width: 100%;
-      height: 280px;
-      overflow: hidden;
+      height: 100%;
+      transform-style: preserve-3d;
     }
-    
-    .bridal-card-image img {
+
+    .stacked-card {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      cursor: pointer;
+      transform-origin: center bottom;
+    }
+
+    .stacked-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.6s ease;
+      transition: transform 0.5s ease;
     }
-    
-    .bridal-card:hover .bridal-card-image img {
-      transform: scale(1.05);
+
+    /* Individual card positioning in the stack */
+    .stacked-card:nth-child(1) {
+      transform: translateY(-5px) translateX(-5px) rotate(-3deg);
+      z-index: 1;
     }
-    
-    .bridal-card-overlay {
+
+    .stacked-card:nth-child(2) {
+      transform: translateY(-2px) translateX(0) rotate(0deg);
+      z-index: 2;
+    }
+
+    .stacked-card:nth-child(3) {
+      transform: translateY(0) translateX(5px) rotate(3deg);
+      z-index: 3;
+    }
+
+    /* Hover effects */
+    .stacked-card:hover {
+      transform: translateY(-20px) scale(1.05) rotate(0deg) !important;
+      z-index: 10;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    }
+
+    .stacked-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .stacked-card-overlay {
       position: absolute;
       top: 0;
       left: 0;
@@ -780,16 +799,16 @@
       height: 100%;
       background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
       opacity: 0;
-      transition: opacity 0.4s ease;
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: opacity 0.3s ease;
     }
-    
-    .bridal-card:hover .bridal-card-overlay {
+
+    .stacked-card:hover .stacked-card-overlay {
       opacity: 1;
     }
-    
+
     .view-details-btn {
       background: rgba(212, 175, 55, 0.9);
       color: white;
@@ -803,67 +822,16 @@
       transition: all 0.3s ease;
       backdrop-filter: blur(5px);
     }
-    
-    .bridal-card:hover .view-details-btn {
+
+    .stacked-card:hover .view-details-btn {
       transform: translateY(0);
     }
-    
+
     .view-details-btn:hover {
       background: var(--luxury-gold);
       transform: scale(1.05);
     }
-    
-    .bridal-card-content {
-      padding: 20px;
-      text-align: center;
-    }
-    
-    .bridal-card-title {
-      font-family: var(--font-heading);
-      font-size: 1.3rem;
-      color: var(--luxury-maroon);
-      margin-bottom: 10px;
-    }
-    
-    .bridal-card-description {
-      color: #666;
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin-bottom: 15px;
-    }
-    
-    .bridal-card-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 15px;
-      padding-top: 15px;
-      border-top: 1px solid rgba(0,0,0,0.1);
-    }
-    
-    .bridal-card-price {
-      font-family: var(--font-heading);
-      color: var(--luxury-gold);
-      font-weight: 700;
-      font-size: 1.1rem;
-    }
-    
-    .bridal-card-action {
-      background: var(--luxury-maroon);
-      color: white;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    .bridal-card-action:hover {
-      background: var(--dark);
-      transform: scale(1.05);
-    }
-    
+
     /* Premium Featured Designs Slideshow - Apple/Samsung style */
     .premium-slideshow-container {
       position: relative;
@@ -1397,7 +1365,7 @@
       align-items: center;
       z-index: 1000;
       opacity: 0;
-      pointer-events: none;
+      pointer-events: null;
       transition: opacity 0.3s;
     }
 
@@ -1724,8 +1692,10 @@
         font-size: 1.6rem;
       }
       
-      .bridal-cards-container {
-        grid-template-columns: repeat(2, 1fr);
+      /* Card stack adjustments for tablet */
+      .card-stack-container {
+        max-width: 350px;
+        height: 450px;
       }
     }
     
@@ -1739,8 +1709,10 @@
         grid-template-columns: repeat(4, 1fr);
       }
       
-      .bridal-cards-container {
-        grid-template-columns: repeat(3, 1fr);
+      /* Card stack adjustments for desktop */
+      .card-stack-container {
+        max-width: 400px;
+        height: 500px;
       }
     }
   </style>
@@ -1815,38 +1787,32 @@
         </p>
       </div>
 
-      <!-- Premium Bridal Cards Section -->
+      <!-- Premium Bridal Cards Stack Section -->
       <div class="section bridal-cards-section">
         <h2><i class="fas fa-crown"></i> Bridal Collection</h2>
         <p>Exquisite designs crafted especially for the bride</p>
         
-        <div class="bridal-cards-container">
-          <div class="bridal-card">
-            <div class="bridal-card-image">
+        <div class="card-stack-container">
+          <div class="card-stack">
+            <div class="stacked-card">
               <img src="images/H2.jpeg" alt="Traditional Rajasthani Design">
-              <div class="bridal-card-overlay">
-                <button class="view-details-btn" onclick="zoomImage(this.parentElement.parentElement.querySelector('img'), 'home')">View Details</button>
+              <div class="stacked-card-overlay">
+                <button class="view-details-btn" onclick="zoomImage(this.parentElement.parentElement, 'home')">View Details</button>
               </div>
             </div>
-            </div>
-          
-          <div class="bridal-card">
-            <div class="bridal-card-image">
+            <div class="stacked-card">
               <img src="images/H4.jpeg" alt="Modern Fusion Style">
-              <div class="bridal-card-overlay">
-                <button class="view-details-btn" onclick="zoomImage(this.parentElement.parentElement.querySelector('img'), 'home')">View Details</button>
+              <div class="stacked-card-overlay">
+                <button class="view-details-btn" onclick="zoomImage(this.parentElement.parentElement, 'home')">View Details</button>
               </div>
             </div>
-            </div>
-          
-          <div class="bridal-card">
-            <div class="bridal-card-image">
+            <div class="stacked-card">
               <img src="images/H5.jpeg" alt="Classic Arabic Design">
-              <div class="bridal-card-overlay">
-                <button class="view-details-btn" onclick="zoomImage(this.parentElement.parentElement.querySelector('img'), 'home')">View Details</button>
+              <div class="stacked-card-overlay">
+                <button class="view-details-btn" onclick="zoomImage(this.parentElement.parentElement, 'home')">View Details</button>
               </div>
             </div>
-            </div>
+          </div>
         </div>
       </div>
 
@@ -2418,7 +2384,7 @@
       const dots = document.querySelectorAll('.premium-dot');
       
       slides[currentSlide].classList.remove('active');
-      dots[currentSlide].classList.remove('active');
+      dots[currentSlide].classList.remove('active'));
       
       currentSlide = (currentSlide - 1 + slides.length) % slides.length;
       
@@ -2547,7 +2513,7 @@
       currentGallery = galleryName;
       
       if (galleryName === 'home') {
-        galleryItems = Array.from(container.querySelectorAll('.bridal-card-image img'));
+        galleryItems = Array.from(container.querySelectorAll('.stacked-card img'));
       } else if (galleryName === 'bride') {
         galleryItems = Array.from(container.querySelectorAll('.gallery-grid .gallery-item img'));
       } else if (galleryName === 'guests') {
@@ -2563,7 +2529,7 @@
       
       // Show the image in the lightbox
       const lightboxImg = document.getElementById('lightbox-img');
-      lightboxImg.src = img.src;
+      lightboxImg.src = img.src || img.querySelector('img').src;
       lightboxImg.style.display = 'block';
       
       // Reset zoom and position
@@ -2631,7 +2597,7 @@
     function updateLightboxImage() {
       const lightboxImg = document.getElementById('lightbox-img');
       const item = galleryItems[currentIndex];
-      lightboxImg.src = item.src;
+      lightboxImg.src = item.src || item.querySelector('img').src;
       
       // Reset zoom and position
       resetZoom();
@@ -2801,7 +2767,7 @@
         sparkle.className = 'sparkle';
         sparkle.style.top = `${Math.random() * 90 + 5}%`;
         sparkle.style.left = `${Math.random() * 90 + 5}%`;
-        sparkle.style.animationDelay = `${Math.random() * 2}s`;
+        sparkle.style.animationDelay = `${Math.random() * 2)s`;
         preloader.appendChild(sparkle);
       }
       
