@@ -47,7 +47,7 @@
       background-color: var(--light);
     }
 
-    /* Enhanced Splash Screen with Golden Border - Smoother Transition */
+    /* Enhanced Splash Screen with Golden Border */
     #preloader {
       position: fixed;
       top: 0;
@@ -61,7 +61,7 @@
       font-size: clamp(24px, 8vw, 32px);
       color: white;
       z-index: 9999;
-      animation: fadeOut 1s ease 3s forwards;
+      animation: fadeOut 1.5s ease 3.5s forwards;
       overflow: hidden;
     }
 
@@ -728,110 +728,6 @@
       font-style: italic;
     }
 
-    /* NEW: Premium Card Stack for Bridal Collection */
-    .card-stack-container {
-      position: relative;
-      height: 400px;
-      width: 100%;
-      max-width: 300px;
-      margin: 40px auto;
-      perspective: 1000px;
-    }
-
-    .card-stack {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transform-style: preserve-3d;
-    }
-
-    .stacked-card {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-      cursor: pointer;
-      transform-origin: center bottom;
-    }
-
-    .stacked-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-
-    /* Individual card positioning in the stack */
-    .stacked-card:nth-child(1) {
-      transform: translateY(-5px) translateX(-5px) rotate(-3deg);
-      z-index: 1;
-    }
-
-    .stacked-card:nth-child(2) {
-      transform: translateY(-2px) translateX(0) rotate(0deg);
-      z-index: 2;
-    }
-
-    .stacked-card:nth-child(3) {
-      transform: translateY(0) translateX(5px) rotate(3deg);
-      z-index: 3;
-    }
-
-    /* Hover effects */
-    .stacked-card:hover {
-      transform: translateY(-20px) scale(1.05) rotate(0deg) !important;
-      z-index: 10;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-    }
-
-    .stacked-card:hover img {
-      transform: scale(1.1);
-    }
-
-    .stacked-card-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
-      opacity: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.3s ease;
-    }
-
-    .stacked-card:hover .stacked-card-overlay {
-      opacity: 1;
-    }
-
-    .view-details-btn {
-      background: rgba(212, 175, 55, 0.9);
-      color: white;
-      border: none;
-      padding: 12px 25px;
-      border-radius: 30px;
-      font-family: var(--font-heading);
-      font-weight: 600;
-      cursor: pointer;
-      transform: translateY(20px);
-      transition: all 0.3s ease;
-      backdrop-filter: blur(5px);
-    }
-
-    .stacked-card:hover .view-details-btn {
-      transform: translateY(0);
-    }
-
-    .view-details-btn:hover {
-      background: var(--luxury-gold);
-      transform: scale(1.05);
-    }
-
     /* Premium Featured Designs Slideshow - Apple/Samsung style */
     .premium-slideshow-container {
       position: relative;
@@ -1166,7 +1062,7 @@
     /* Certifications Section */
     .certifications-container {
       display: grid;
-      grid-template-columns: repeat(auto-full, minmax(150px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
       gap: 15px;
       margin-top: 20px;
     }
@@ -1450,8 +1346,8 @@
     .zoom-btn {
       pointer-events: auto;
       background: white;
-      color: #333;
-      border: 2px solid #333;
+      color: red;
+      border: 2px solid red;
       width: 40px;
       height: 40px;
       border-radius: 50%;
@@ -1471,12 +1367,12 @@
       font-size: 14px;
       font-weight: bold;
       background: white;
-      color: #333;
-      border: 2px solid #333;
+      color: red;
+      border: 2px solid red;
     }
     
     .zoom-btn:hover {
-      background: #f0f0f0;
+      background: #ffcccc;
       transform: scale(1.1);
     }
 
@@ -1593,35 +1489,12 @@
     @media (min-width: 768px) {
       body {
         padding-top: 70px;
-        padding-bottom: 0;
-        overflow-x: hidden;
-        overflow-y: auto;
-        height: auto;
-        min-height: 100vh;
-        position: relative;
-        -webkit-overflow-scrolling: touch;
-        scroll-behavior: smooth;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-rendering: optimizeLegibility;
-        font-smooth: always;
-        -webkit-text-size-adjust: 100%;
-        -ms-text-size-adjust: 100%;
-        text-size-adjust: 100%;
-        -webkit-tap-highlight-color: transparent;
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
       }
       
       .bottom-nav {
         max-width: 600px;
         left: 50%;
         transform: translateX(-50%);
-        border-radius: 35px 35px 0 0;
-        bottom: 0;
       }
       
       .tab-content {
@@ -1643,7 +1516,7 @@
       }
       
       .premium-slideshow-container {
-        height: 500px;
+        aspect-ratio: 16/9;
       }
       
       .gallery-grid,
@@ -1668,28 +1541,16 @@
       .elegant-text {
         font-size: 1.6rem;
       }
-      
-      /* Card stack adjustments for tablet */
-      .card-stack-container {
-        max-width: 350px;
-        height: 450px;
-      }
     }
     
     @media (min-width: 992px) {
       .premium-slideshow-container {
-        height: 600px;
+        aspect-ratio: 16/9;
       }
       
       .gallery-grid,
       .thank-you-grid {
         grid-template-columns: repeat(4, 1fr);
-      }
-      
-      /* Card stack adjustments for desktop */
-      .card-stack-container {
-        max-width: 400px;
-        height: 500px;
       }
     }
   </style>
@@ -1747,7 +1608,7 @@
     <!-- Home Tab -->
     <div id="home-tab" class="tab-content active">
       <div class="welcome-box">
-        <video autoplay muted loop playsinline id="w-video" preload="auto">
+        <video autoplay muted loop playsinline id="w-video" loading="lazy">
           <source src="index/w.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
@@ -1764,38 +1625,9 @@
         </p>
       </div>
 
-      <!-- Premium Bridal Cards Stack Section -->
-      <div class="section bridal-cards-section">
-        <h2><i class="fas fa-crown"></i> Bridal Collection</h2>
-        <p>Exquisite designs crafted especially for the bride</p>
-        
-        <div class="card-stack-container">
-          <div class="card-stack">
-            <div class="stacked-card">
-              <img src="images/H2.jpeg" alt="Traditional Rajasthani Design">
-              <div class="stacked-card-overlay">
-                <button class="view-details-btn" onclick="zoomImage(this.parentElement.parentElement, 'home')">View Details</button>
-              </div>
-            </div>
-            <div class="stacked-card">
-              <img src="images/H4.jpeg" alt="Modern Fusion Style">
-              <div class="stacked-card-overlay">
-                <button class="view-details-btn" onclick="zoomImage(this.parentElement.parentElement, 'home')">View Details</button>
-              </div>
-            </div>
-            <div class="stacked-card">
-              <img src="images/H5.jpeg" alt="Classic Arabic Design">
-              <div class="stacked-card-overlay">
-                <button class="view-details-btn" onclick="zoomImage(this.parentElement.parentElement, 'home')">View Details</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <!-- Premium Featured Designs Slideshow -->
       <div class="section">
-        <h2><i class="fas fa-crown"></i> Featured Designs</h2>
+        <h2><i class="fas fa-crown"></i> Bridal Designs</h2>
         
         <div class="premium-slideshow-container">
           <div class="premium-slide active">
@@ -2189,25 +2021,25 @@
             <img src="images/thankyou2.jpeg" alt="Thank you note 2" onclick="zoomImage(this, 'about')">
           </div>
           <div class="thank-you-item">
-            <video autoplay muted loop playsinline poster="thanks/1p.jpeg" preload="auto" onclick="playVideo(this)">
+            <video autoplay muted loop playsinline poster="thanks/1p.jpeg" loading="lazy" onclick="playVideo(this)">
               <source data-src="thanks/1.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
           <div class="thank-you-item">
-            <video autoplay muted loop playsinline poster="thanks/2p.jpeg" preload="auto" onclick="playVideo(this)">
+            <video autoplay muted loop playsinline poster="thanks/2p.jpeg" loading="lazy" onclick="playVideo(this)">
               <source data-src="thanks/2.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
           <div class="thank-you-item">
-            <video autoplay muted loop playsinline poster="thanks/3p.jpeg" preload="auto" onclick="playVideo(this)">
+            <video autoplay muted loop playsinline poster="thanks/3p.jpeg" loading="lazy" onclick="playVideo(this)">
               <source data-src="thanks/3.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
           <div class="thank-you-item">
-            <video autoplay muted loop playsinline poster="thanks/4p.jpeg" preload="auto" onclick="playVideo(this)">
+            <video autoplay muted loop playsinline poster="thanks/4p.jpeg" loading="lazy" onclick="playVideo(this)">
               <source data-src="thanks/4.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
@@ -2490,7 +2322,7 @@
       currentGallery = galleryName;
       
       if (galleryName === 'home') {
-        galleryItems = Array.from(container.querySelectorAll('.stacked-card img'));
+        galleryItems = Array.from(container.querySelectorAll('.featured-item img'));
       } else if (galleryName === 'bride') {
         galleryItems = Array.from(container.querySelectorAll('.gallery-grid .gallery-item img'));
       } else if (galleryName === 'guests') {
@@ -2506,7 +2338,7 @@
       
       // Show the image in the lightbox
       const lightboxImg = document.getElementById('lightbox-img');
-      lightboxImg.src = img.src || img.querySelector('img').src;
+      lightboxImg.src = img.src;
       lightboxImg.style.display = 'block';
       
       // Reset zoom and position
@@ -2574,7 +2406,7 @@
     function updateLightboxImage() {
       const lightboxImg = document.getElementById('lightbox-img');
       const item = galleryItems[currentIndex];
-      lightboxImg.src = item.src || item.querySelector('img').src;
+      lightboxImg.src = item.src;
       
       // Reset zoom and position
       resetZoom();
@@ -2722,7 +2554,7 @@
       }
     });
 
-    // Enhanced preloader function with smoother transition
+    // Enhanced preloader function with cinematic transition
     window.addEventListener("load", function() {
       // Create decorative flowers for the splash screen
       const preloader = document.getElementById('preloader');
@@ -2749,7 +2581,7 @@
       }
       
       // Lazy load videos
-      const lazyVideos = document.querySelectorAll('video[preload="auto"]');
+      const lazyVideos = document.querySelectorAll('video[loading="lazy"]');
       
       const lazyVideoObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
@@ -2774,21 +2606,15 @@
       });
       
       setTimeout(() => {
-        // Smooth fade out for preloader
-        document.getElementById("preloader").style.opacity = "0";
-        document.getElementById("preloader").style.transition = "opacity 0.8s ease";
+        // Add cinematic transition effect
+        document.getElementById("preloader").style.animation = "cinematicReveal 1.5s ease-out forwards reverse";
         
         setTimeout(() => {
           document.getElementById("preloader").style.display = "none";
           document.getElementById("main-content").style.display = "block";
           
-          // Smooth fade in for main content
-          document.getElementById("main-content").style.opacity = "0";
-          document.getElementById("main-content").style.transition = "opacity 0.8s ease";
-          
-          setTimeout(() => {
-            document.getElementById("main-content").style.opacity = "1";
-          }, 50);
+          // Add cinematic reveal to main content
+          document.getElementById("main-content").style.animation = "cinematicReveal 1.5s ease-out";
           
           // Autoplay videos
           const wVideo = document.getElementById('w-video');
@@ -2806,8 +2632,8 @@
           // Initialize slideshow
           initSlideshow();
           slideInterval = setInterval(nextSlide, 3500);
-        }, 800);
-      }, 3000);
+        }, 1500);
+      }, 3500); // Match animation duration
     });
   </script>
 </body>
